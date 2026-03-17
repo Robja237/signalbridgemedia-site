@@ -29,15 +29,30 @@
     }
 
     body {
-      margin: 0;
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(122,176,255,0.14), transparent 24%),
-        radial-gradient(circle at top right, rgba(184,210,255,0.08), transparent 22%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
-      line-height: 1.6;
-    }
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(122,176,255,0.14), transparent 24%),
+    radial-gradient(circle at top right, rgba(184,210,255,0.08), transparent 22%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+  line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 85%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 85%);
+}
 
     a {
       color: inherit;
@@ -311,8 +326,25 @@
   height: auto;
   display: block;
 }
-    #work {
+   #work {
   scroll-margin-top: 90px;
+}
+
+.compact-video-shell {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 14px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+}
+
+.compact-video {
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.28);
 }
   </style>
 </head>
@@ -349,84 +381,88 @@
 
       <div class="hero-card hero-art-card">
   <svg class="hero-art" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" aria-label="Abstract bridge and media illustration">
-    <defs>
-      <linearGradient id="bridgeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#b8d2ff" stop-opacity="0.95"/>
-        <stop offset="100%" stop-color="#7ab0ff" stop-opacity="0.9"/>
-      </linearGradient>
-      <linearGradient id="panelGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="rgba(255,255,255,0.14)"/>
-        <stop offset="100%" stop-color="rgba(255,255,255,0.03)"/>
-      </linearGradient>
-      <filter id="softGlow">
-        <feGaussianBlur stdDeviation="10" result="blur"/>
-        <feMerge>
-          <feMergeNode in="blur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
+  <defs>
+    <linearGradient id="bridgeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d8e6ff" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#7ab0ff" stop-opacity="0.92"/>
+    </linearGradient>
+    <linearGradient id="panelGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.11)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.03)"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
 
-    <!-- background -->
-    <rect x="0" y="0" width="700" height="500" rx="26" fill="rgba(255,255,255,0.02)"/>
+  <!-- soft background -->
+  <rect x="0" y="0" width="700" height="500" rx="30" fill="rgba(255,255,255,0.015)"/>
 
-    <!-- abstract media panels -->
-    <rect x="78" y="78" width="180" height="112" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.09)"/>
-    <rect x="292" y="58" width="224" height="138" rx="20" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
-    <rect x="470" y="228" width="140" height="94" rx="16" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
-    <rect x="122" y="236" width="196" height="124" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.07)"/>
+  <!-- media panels -->
+  <rect x="82" y="92" width="164" height="100" rx="24" fill="url(#panelGlow)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="286" y="64" width="232" height="142" rx="28" fill="url(#panelGlow)" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="122" y="244" width="202" height="118" rx="24" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.07)"/>
+  <rect x="468" y="240" width="142" height="90" rx="22" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.07)"/>
 
-    <!-- play/media details -->
-    <circle cx="154" cy="122" r="22" fill="rgba(122,176,255,0.14)" stroke="rgba(122,176,255,0.55)"/>
-    <polygon points="148,110 148,134 168,122" fill="#b8d2ff"/>
-    <rect x="326" y="92" width="110" height="12" rx="6" fill="rgba(255,255,255,0.15)"/>
-    <rect x="326" y="114" width="150" height="10" rx="5" fill="rgba(255,255,255,0.08)"/>
-    <rect x="326" y="133" width="95" height="10" rx="5" fill="rgba(255,255,255,0.08)"/>
+  <!-- play icon -->
+  <circle cx="160" cy="142" r="24" fill="rgba(122,176,255,0.14)" stroke="rgba(122,176,255,0.5)"/>
+  <polygon points="153,129 153,155 176,142" fill="#d8e6ff"/>
 
-    <!-- bridge deck -->
-    <path d="M90 344 C180 338, 250 334, 350 334 C450 334, 520 338, 610 344" 
-          fill="none" stroke="url(#bridgeGlow)" stroke-width="10" stroke-linecap="round" filter="url(#softGlow)"/>
+  <!-- text bars -->
+  <rect x="320" y="98" width="112" height="12" rx="6" fill="rgba(255,255,255,0.16)"/>
+  <rect x="320" y="122" width="146" height="10" rx="5" fill="rgba(255,255,255,0.09)"/>
+  <rect x="320" y="142" width="98" height="10" rx="5" fill="rgba(255,255,255,0.09)"/>
 
-    <!-- bridge towers -->
-    <rect x="188" y="232" width="18" height="124" rx="8" fill="url(#bridgeGlow)"/>
-    <rect x="492" y="218" width="18" height="138" rx="8" fill="url(#bridgeGlow)"/>
+  <!-- bridge deck -->
+  <path d="M92 350 C175 344, 248 339, 350 339 C452 339, 525 344, 608 350"
+        fill="none" stroke="url(#bridgeGlow)" stroke-width="12" stroke-linecap="round" filter="url(#softGlow)"/>
 
-    <!-- suspension cables -->
-    <path d="M197 232 C230 188, 280 156, 350 148 C420 156, 470 184, 501 218"
-          fill="none" stroke="rgba(184,210,255,0.8)" stroke-width="5"/>
-    <line x1="222" y1="208" x2="220" y2="338" stroke="rgba(184,210,255,0.45)" stroke-width="3"/>
-    <line x1="256" y1="184" x2="258" y2="336" stroke="rgba(184,210,255,0.4)" stroke-width="3"/>
-    <line x1="298" y1="167" x2="300" y2="334" stroke="rgba(184,210,255,0.35)" stroke-width="3"/>
-    <line x1="350" y1="160" x2="350" y2="333" stroke="rgba(184,210,255,0.32)" stroke-width="3"/>
-    <line x1="402" y1="167" x2="400" y2="334" stroke="rgba(184,210,255,0.35)" stroke-width="3"/>
-    <line x1="444" y1="184" x2="442" y2="336" stroke="rgba(184,210,255,0.4)" stroke-width="3"/>
-    <line x1="478" y1="205" x2="480" y2="338" stroke="rgba(184,210,255,0.45)" stroke-width="3"/>
+  <!-- rounded bridge towers -->
+  <rect x="190" y="220" width="20" height="140" rx="10" fill="url(#bridgeGlow)"/>
+  <rect x="490" y="208" width="20" height="152" rx="10" fill="url(#bridgeGlow)"/>
 
-    <!-- floating signal dots -->
-    <circle cx="566" cy="116" r="8" fill="#7ab0ff"/>
-    <circle cx="592" cy="140" r="5" fill="#b8d2ff"/>
-    <circle cx="104" cy="274" r="6" fill="#7ab0ff"/>
-    <circle cx="548" cy="196" r="4" fill="#b8d2ff"/>
+  <!-- main suspension line -->
+  <path d="M200 226 C232 182, 282 150, 350 142 C418 150, 468 180, 500 214"
+        fill="none" stroke="rgba(216,230,255,0.85)" stroke-width="6" stroke-linecap="round"/>
 
-    <!-- soft signal arcs -->
-    <path d="M528 106 C560 92, 590 94, 620 118" fill="none" stroke="rgba(122,176,255,0.35)" stroke-width="4" stroke-linecap="round"/>
-    <path d="M96 262 C126 248, 154 250, 178 272" fill="none" stroke="rgba(184,210,255,0.28)" stroke-width="4" stroke-linecap="round"/>
-  </svg>
+  <!-- suspension cables -->
+  <line x1="226" y1="204" x2="224" y2="344" stroke="rgba(216,230,255,0.42)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="258" y1="184" x2="260" y2="342" stroke="rgba(216,230,255,0.38)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="300" y1="166" x2="300" y2="340" stroke="rgba(216,230,255,0.34)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="350" y1="158" x2="350" y2="339" stroke="rgba(216,230,255,0.32)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="400" y1="166" x2="400" y2="340" stroke="rgba(216,230,255,0.34)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="442" y1="184" x2="440" y2="342" stroke="rgba(216,230,255,0.38)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="474" y1="204" x2="476" y2="344" stroke="rgba(216,230,255,0.42)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- signal accents -->
+  <circle cx="562" cy="120" r="8" fill="#7ab0ff"/>
+  <circle cx="588" cy="144" r="5" fill="#d8e6ff"/>
+  <circle cx="106" cy="272" r="6" fill="#7ab0ff"/>
+  <circle cx="548" cy="198" r="4" fill="#d8e6ff"/>
+
+  <!-- subtle signal arcs -->
+  <path d="M526 110 C554 98, 582 100, 610 122" fill="none" stroke="rgba(122,176,255,0.30)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M98 262 C126 250, 151 252, 174 272" fill="none" stroke="rgba(216,230,255,0.24)" stroke-width="4" stroke-linecap="round"/>
+</svg>
 </div>
     </section>
 
     <section class="section" id="work">
-      <div class="section-title">Selected Work</div>
-      <div class="video-shell">
-        <div class="video">
-          <iframe
-            src="https://www.youtube.com/embed/tqP7TeZIwls"
-            title="SignalBridge Media Reel"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-    </section>
+  <div class="section-title">Selected Work</div>
+  <div class="video-shell compact-video-shell">
+    <div class="video compact-video">
+      <iframe
+        src="https://www.youtube.com/embed/tqP7TeZIwls"
+        title="SignalBridge Media Reel"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
 
     <section class="section" id="services">
       <div class="section-title">Services</div>

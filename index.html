@@ -304,6 +304,9 @@ body::before {
       .about-grid {
         grid-template-columns: 1fr;
       }
+      .reel-grid {
+  grid-template-columns: 1fr;
+}
 
       .nav {
         display: none;
@@ -345,6 +348,35 @@ body::before {
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.10);
   box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+}
+    .reel-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.reel-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.reel-copy h3 {
+  margin: 0 0 14px;
+  font-size: 1.4rem;
+  line-height: 1.15;
+}
+
+.reel-copy p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.reel-copy p:last-child {
+  margin-bottom: 0;
 }
   </style>
 </head>
@@ -453,13 +485,29 @@ body::before {
 
     <section class="section" id="work">
   <div class="section-title">Selected Work</div>
-  <div class="video-shell compact-video-shell">
-    <div class="video compact-video">
-      <iframe
-        src="https://www.youtube.com/embed/tqP7TeZIwls"
-        title="SignalBridge Media Reel"
-        allowfullscreen>
-      </iframe>
+  <div class="reel-grid">
+    <div class="video-shell compact-video-shell">
+      <div class="video compact-video">
+        <iframe
+          src="https://www.youtube.com/embed/tqP7TeZIwls"
+          title="SignalBridge Media Reel"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="card reel-copy">
+      <h3>Broadcast credibility. High-energy editing.</h3>
+      <p>
+        If you're in New Orleans, there’s a good chance you’ve already seen some of
+        Robert Jacobson’s work airing on WDSU. This reel also highlights a wider range
+        of past projects, from broadcast and branded content to fast-paced, visually
+        engaging edits built to hold attention.
+      </p>
+      <p>
+        SignalBridge Media is built on the same editorial foundation: strong pacing,
+        clean structure, and video that feels polished, watchable, and strategically useful.
+      </p>
     </div>
   </div>
 </section>

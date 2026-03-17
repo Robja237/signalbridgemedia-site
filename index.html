@@ -96,7 +96,7 @@
     .hero {
       padding: 88px 0 52px;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.28fr 0.72fr;
       gap: 28px;
       align-items: center;
     }
@@ -298,6 +298,19 @@
         padding-top: 64px;
       }
     }
+    .hero-art-card {
+  padding: 14px;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-art {
+  width: 100%;
+  height: auto;
+  display: block;
+}
   </style>
 </head>
 <body>
@@ -331,13 +344,72 @@
         </div>
       </div>
 
-      <div class="hero-card">
-        <h3>Built for professional visibility</h3>
-        <p>
-          Thought leadership clips, client-facing video, and polished editing for firms
-          that need to look credible, current, and easy to trust.
-        </p>
-      </div>
+      <div class="hero-card hero-art-card">
+  <svg class="hero-art" viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg" aria-label="Abstract bridge and media illustration">
+    <defs>
+      <linearGradient id="bridgeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#b8d2ff" stop-opacity="0.95"/>
+        <stop offset="100%" stop-color="#7ab0ff" stop-opacity="0.9"/>
+      </linearGradient>
+      <linearGradient id="panelGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.14)"/>
+        <stop offset="100%" stop-color="rgba(255,255,255,0.03)"/>
+      </linearGradient>
+      <filter id="softGlow">
+        <feGaussianBlur stdDeviation="10" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- background -->
+    <rect x="0" y="0" width="700" height="500" rx="26" fill="rgba(255,255,255,0.02)"/>
+
+    <!-- abstract media panels -->
+    <rect x="78" y="78" width="180" height="112" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.09)"/>
+    <rect x="292" y="58" width="224" height="138" rx="20" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="470" y="228" width="140" height="94" rx="16" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="122" y="236" width="196" height="124" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.07)"/>
+
+    <!-- play/media details -->
+    <circle cx="154" cy="122" r="22" fill="rgba(122,176,255,0.14)" stroke="rgba(122,176,255,0.55)"/>
+    <polygon points="148,110 148,134 168,122" fill="#b8d2ff"/>
+    <rect x="326" y="92" width="110" height="12" rx="6" fill="rgba(255,255,255,0.15)"/>
+    <rect x="326" y="114" width="150" height="10" rx="5" fill="rgba(255,255,255,0.08)"/>
+    <rect x="326" y="133" width="95" height="10" rx="5" fill="rgba(255,255,255,0.08)"/>
+
+    <!-- bridge deck -->
+    <path d="M90 344 C180 338, 250 334, 350 334 C450 334, 520 338, 610 344" 
+          fill="none" stroke="url(#bridgeGlow)" stroke-width="10" stroke-linecap="round" filter="url(#softGlow)"/>
+
+    <!-- bridge towers -->
+    <rect x="188" y="232" width="18" height="124" rx="8" fill="url(#bridgeGlow)"/>
+    <rect x="492" y="218" width="18" height="138" rx="8" fill="url(#bridgeGlow)"/>
+
+    <!-- suspension cables -->
+    <path d="M197 232 C230 188, 280 156, 350 148 C420 156, 470 184, 501 218"
+          fill="none" stroke="rgba(184,210,255,0.8)" stroke-width="5"/>
+    <line x1="222" y1="208" x2="220" y2="338" stroke="rgba(184,210,255,0.45)" stroke-width="3"/>
+    <line x1="256" y1="184" x2="258" y2="336" stroke="rgba(184,210,255,0.4)" stroke-width="3"/>
+    <line x1="298" y1="167" x2="300" y2="334" stroke="rgba(184,210,255,0.35)" stroke-width="3"/>
+    <line x1="350" y1="160" x2="350" y2="333" stroke="rgba(184,210,255,0.32)" stroke-width="3"/>
+    <line x1="402" y1="167" x2="400" y2="334" stroke="rgba(184,210,255,0.35)" stroke-width="3"/>
+    <line x1="444" y1="184" x2="442" y2="336" stroke="rgba(184,210,255,0.4)" stroke-width="3"/>
+    <line x1="478" y1="205" x2="480" y2="338" stroke="rgba(184,210,255,0.45)" stroke-width="3"/>
+
+    <!-- floating signal dots -->
+    <circle cx="566" cy="116" r="8" fill="#7ab0ff"/>
+    <circle cx="592" cy="140" r="5" fill="#b8d2ff"/>
+    <circle cx="104" cy="274" r="6" fill="#7ab0ff"/>
+    <circle cx="548" cy="196" r="4" fill="#b8d2ff"/>
+
+    <!-- soft signal arcs -->
+    <path d="M528 106 C560 92, 590 94, 620 118" fill="none" stroke="rgba(122,176,255,0.35)" stroke-width="4" stroke-linecap="round"/>
+    <path d="M96 262 C126 248, 154 250, 178 272" fill="none" stroke="rgba(184,210,255,0.28)" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+</div>
     </section>
 
     <section class="section" id="work">

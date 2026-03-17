@@ -1,31 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SignalBridge Media</title>
+  <meta name="description" content="SignalBridge Media helps firms and professionals turn expertise into clear, high-trust video content for web and social." />
   <style>
     :root {
-      --bg: #0b1020;
-      --panel: #121a2f;
-      --text: #e8edf7;
-      --muted: #a9b4c9;
-      --accent: #6ea8fe;
+      --bg: #0a0f1c;
+      --bg2: #0f1728;
+      --panel: rgba(255,255,255,0.04);
       --line: rgba(255,255,255,0.08);
-      --max: 1100px;
+      --text: #edf2fb;
+      --muted: #9eabc3;
+      --accent: #7ab0ff;
+      --accent2: #b8d2ff;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 20px 50px rgba(0,0,0,0.28);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(110,168,254,0.10), transparent 30%),
-        linear-gradient(180deg, #0b1020 0%, #0f1528 100%);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(122,176,255,0.14), transparent 24%),
+        radial-gradient(circle at top right, rgba(184,210,255,0.08), transparent 22%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
       line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     .wrap {
@@ -33,103 +49,163 @@
       margin: 0 auto;
     }
 
-    header {
-      padding: 28px 0;
+    .topbar {
       border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+      background: rgba(10,15,28,0.45);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
     }
 
     .brand {
-      font-size: 1.05rem;
-      font-weight: 700;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      font-size: 0.95rem;
+      font-weight: 700;
     }
 
-    .brand span {
+    .brand .sub {
       color: var(--muted);
       font-weight: 500;
-      margin-left: 8px;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav a:hover {
+      color: var(--text);
     }
 
     .hero {
-      padding: 84px 0 56px;
+      padding: 88px 0 52px;
       display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 28px;
+      align-items: center;
     }
 
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(2.4rem, 6vw, 4.6rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      max-width: 900px;
+    .eyebrow {
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.5rem, 5vw, 4.75rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 780px;
     }
 
     .hero p {
-      margin: 0;
-      font-size: 1.1rem;
+      margin: 0 0 24px;
       color: var(--muted);
-      max-width: 720px;
+      font-size: 1.08rem;
+      max-width: 680px;
     }
 
-    .hero-actions {
+    .actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      gap: 14px;
     }
 
     .button {
-      display: inline-block;
-      padding: 13px 18px;
-      border-radius: 10px;
-      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      border-radius: 12px;
       font-weight: 600;
-      transition: 0.2s ease;
-    }
-
-    .button-primary {
-      background: var(--accent);
-      color: #08101f;
-    }
-
-    .button-secondary {
-      border: 1px solid var(--line);
-      color: var(--text);
-      background: rgba(255,255,255,0.02);
+      transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
     }
 
     .button:hover {
       transform: translateY(-1px);
-      opacity: 0.95;
+      opacity: 0.98;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #07111f;
+      box-shadow: var(--shadow);
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: var(--accent2);
+      font-weight: 600;
+    }
+
+    .hero-card p {
+      margin: 0;
+      font-size: 0.98rem;
+      color: var(--muted);
     }
 
     .section {
-      padding: 34px 0 56px;
+      padding: 28px 0 62px;
     }
 
     .section-title {
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
+      margin: 0 0 16px;
       color: var(--muted);
-      margin-bottom: 16px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
     }
 
-    .card {
-      background: rgba(255,255,255,0.03);
+    .video-shell {
+      background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 20px;
-      backdrop-filter: blur(4px);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow);
     }
 
     .video {
-      overflow: hidden;
-      border-radius: 14px;
-      border: 1px solid var(--line);
       aspect-ratio: 16 / 9;
-      background: #0a0f1d;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #050814;
     }
 
     .video iframe {
@@ -138,121 +214,190 @@
       border: 0;
     }
 
-    .grid {
+    .services {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 18px;
     }
 
-    .services {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
     }
 
-    .service h3 {
-      margin: 0 0 8px;
+    .card h3 {
+      margin: 0 0 10px;
       font-size: 1.05rem;
     }
 
-    .service p {
+    .card p {
       margin: 0;
       color: var(--muted);
       font-size: 0.98rem;
     }
 
-    .about p {
-      margin: 0;
-      max-width: 760px;
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .about-copy {
       color: var(--muted);
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .highlight {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .contact-box {
+      display: grid;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .contact-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .contact-role {
+      color: var(--muted);
+    }
+
+    .email-link {
+      color: var(--accent2);
+      font-weight: 600;
+      word-break: break-word;
     }
 
     footer {
-      padding: 28px 0 60px;
       border-top: 1px solid var(--line);
+      padding: 28px 0 52px;
       color: var(--muted);
+      font-size: 0.92rem;
     }
 
-    .contact-line {
-      font-size: 1.05rem;
-      color: var(--text);
-      margin: 8px 0 0;
-    }
+    @media (max-width: 880px) {
+      .hero,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
 
-    .contact-line a {
-      color: var(--text);
-      text-decoration: none;
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 64px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <div class="brand">SignalBridge <span>Media</span></div>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <span>SignalBridge</span>
+        <span class="sub">Media</span>
+      </div>
+      <nav class="nav">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <h1>Turn Professional Expertise Into Clear, High-Trust Video</h1>
-      <p>
-        SignalBridge Media helps firms, advisors, and professionals communicate
-        complex ideas through clean, credible video content for web and social.
-      </p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="mailto:rob@signalbridgemedia.com">Get in Touch</a>
-        <a class="button button-secondary" href="#work">View Reel</a>
+      <div>
+        <div class="eyebrow">Video Strategy & Production</div>
+        <h1>Turn Professional Expertise Into Clear, High-Trust Video</h1>
+        <p>
+          SignalBridge Media helps firms, advisors, and professionals communicate
+          complex ideas through clean, credible video content for web and social.
+        </p>
+        <div class="actions">
+          <a class="button button-primary" href="mailto:rob@signalbridgemedia.com">Get in Touch</a>
+          <a class="button button-secondary" href="#work">View Reel</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Built for professional visibility</h3>
+        <p>
+          Thought leadership clips, client-facing video, and polished editing for firms
+          that need to look credible, current, and easy to trust.
+        </p>
       </div>
     </section>
 
     <section class="section" id="work">
       <div class="section-title">Selected Work</div>
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/tqP7TeZIwls"
-          title="SignalBridge Media Reel"
-          allowfullscreen>
-        </iframe>
+      <div class="video-shell">
+        <div class="video">
+          <iframe
+            src="https://www.youtube.com/embed/tqP7TeZIwls"
+            title="SignalBridge Media Reel"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="services">
       <div class="section-title">Services</div>
-      <div class="grid services">
-        <div class="card service">
+      <div class="services">
+        <div class="card">
           <h3>Short-Form Video</h3>
           <p>TikTok, Instagram, LinkedIn, and YouTube content built for clarity, pace, and retention.</p>
         </div>
-        <div class="card service">
-          <h3>Thought Leadership</h3>
-          <p>Video that helps professionals communicate insight, perspective, and expertise with authority.</p>
+        <div class="card">
+          <h3>Thought Leadership Content</h3>
+          <p>Video that helps professionals communicate expertise, perspective, and insight with authority.</p>
         </div>
-        <div class="card service">
-          <h3>Brand & Client-Facing Content</h3>
-          <p>Polished content for websites, outreach, onboarding, and professional visibility.</p>
+        <div class="card">
+          <h3>Client-Facing Brand Video</h3>
+          <p>Polished content for websites, onboarding, outreach, and stronger first impressions.</p>
         </div>
-        <div class="card service">
+        <div class="card">
           <h3>Editing & Post</h3>
-          <p>Editorial shaping, motion graphics, cleanup, pacing, and finishing for professional delivery.</p>
+          <p>Editorial shaping, cleanup, motion graphics, pacing, and finishing for professional delivery.</p>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="about">
       <div class="section-title">Why SignalBridge</div>
-      <div class="card about">
-        <p>
-          Robert Jacobson brings 20+ years of professional editing experience across
-          broadcast, branded content, and digital media. SignalBridge Media is built
-          for clients who need video that feels modern, credible, and strategically useful.
-        </p>
+      <div class="about-grid">
+        <div class="card">
+          <p class="about-copy">
+            <span class="highlight">Robert Jacobson brings 20+ years of professional editing experience</span>
+            across broadcast, branded content, and digital media. SignalBridge Media is built for clients
+            who need video that feels modern, useful, and credible.
+          </p>
+        </div>
+
+        <div class="card contact-box" id="contact">
+          <div class="contact-name">Robert Jacobson</div>
+          <div class="contact-role">Founder, SignalBridge Media</div>
+          <a class="email-link" href="mailto:rob@signalbridgemedia.com">rob@signalbridgemedia.com</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <div>Robert Jacobson — Founder, SignalBridge Media</div>
-      <div class="contact-line">
-        <a href="mailto:rob@signalbridgemedia.com">rob@signalbridgemedia.com</a>
-      </div>
+      SignalBridge Media — Strategic video for firms and professionals who need to be taken seriously.
     </div>
   </footer>
 </body>

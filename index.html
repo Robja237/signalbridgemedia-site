@@ -1,83 +1,259 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SignalBridge Media</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2f;
+      --text: #e8edf7;
+      --muted: #a9b4c9;
+      --accent: #6ea8fe;
+      --line: rgba(255,255,255,0.08);
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #0f172a;
-      color: #e2e8f0;
-      text-align: center;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-    h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    h2 {
-      font-weight: normal;
-      color: #94a3b8;
-      margin-bottom: 30px;
-    }
-    p {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(110,168,254,0.10), transparent 30%),
+        linear-gradient(180deg, #0b1020 0%, #0f1528 100%);
+      color: var(--text);
       line-height: 1.6;
-      margin-bottom: 20px;
     }
-    .video {
-      margin: 30px 0;
+
+    .wrap {
+      width: min(92%, var(--max));
+      margin: 0 auto;
     }
-    a.button {
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-weight: 500;
+      margin-left: 8px;
+    }
+
+    .hero {
+      padding: 84px 0 56px;
+      display: grid;
+      gap: 28px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .button {
       display: inline-block;
-      padding: 12px 20px;
-      background: #3b82f6;
-      color: white;
+      padding: 13px 18px;
+      border-radius: 10px;
       text-decoration: none;
-      border-radius: 5px;
-      margin-top: 20px;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #08101f;
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .section {
+      padding: 34px 0 56px;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    .video {
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      aspect-ratio: 16 / 9;
+      background: #0a0f1d;
+    }
+
+    .video iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .services {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .service h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .service p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .about p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 28px 0 60px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .contact-line {
+      font-size: 1.05rem;
+      color: var(--text);
+      margin: 8px 0 0;
+    }
+
+    .contact-line a {
+      color: var(--text);
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>SignalBridge Media</h1>
-    <h2>Video Content for Professionals Who Want to Stand Out</h2>
-
-    <p>
-      I help financial firms, professionals, and brands turn ideas into clean,
-      high-performing video content for social media and web.
-    </p>
-
-    <div class="video">
-      <iframe width="100%" height="400"
-        src="https://www.youtube.com/embed/tqP7TeZIwls"
-        frameborder="0" allowfullscreen>
-      </iframe>
+  <header>
+    <div class="wrap">
+      <div class="brand">SignalBridge <span>Media</span></div>
     </div>
+  </header>
 
-    <p>
-      <strong>Services:</strong><br>
-      Short-form social video (TikTok, Instagram, LinkedIn)<br>
-      Client-facing brand videos<br>
-      Thought leadership & educational content<br>
-      Editing, motion graphics, and post-production
-    </p>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Turn Professional Expertise Into Clear, High-Trust Video</h1>
+      <p>
+        SignalBridge Media helps firms, advisors, and professionals communicate
+        complex ideas through clean, credible video content for web and social.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="mailto:rob@signalbridgemedia.com">Get in Touch</a>
+        <a class="button button-secondary" href="#work">View Reel</a>
+      </div>
+    </section>
 
-    <p>
-      <strong>20+ years of professional editing experience across broadcast,
-      branded content, and digital media.</strong>
-    </p>
+    <section class="section" id="work">
+      <div class="section-title">Selected Work</div>
+      <div class="video">
+        <iframe
+          src="https://www.youtube.com/embed/tqP7TeZIwls"
+          title="SignalBridge Media Reel"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
 
-    <a class="button" href="mailto:rob@signalbridgemedia.com">
-      Contact Me
-    </a> 
-  </div>
+    <section class="section">
+      <div class="section-title">Services</div>
+      <div class="grid services">
+        <div class="card service">
+          <h3>Short-Form Video</h3>
+          <p>TikTok, Instagram, LinkedIn, and YouTube content built for clarity, pace, and retention.</p>
+        </div>
+        <div class="card service">
+          <h3>Thought Leadership</h3>
+          <p>Video that helps professionals communicate insight, perspective, and expertise with authority.</p>
+        </div>
+        <div class="card service">
+          <h3>Brand & Client-Facing Content</h3>
+          <p>Polished content for websites, outreach, onboarding, and professional visibility.</p>
+        </div>
+        <div class="card service">
+          <h3>Editing & Post</h3>
+          <p>Editorial shaping, motion graphics, cleanup, pacing, and finishing for professional delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Why SignalBridge</div>
+      <div class="card about">
+        <p>
+          Robert Jacobson brings 20+ years of professional editing experience across
+          broadcast, branded content, and digital media. SignalBridge Media is built
+          for clients who need video that feels modern, credible, and strategically useful.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>Robert Jacobson — Founder, SignalBridge Media</div>
+      <div class="contact-line">
+        <a href="mailto:rob@signalbridgemedia.com">rob@signalbridgemedia.com</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

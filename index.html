@@ -354,6 +354,12 @@ body::before {
   grid-template-columns: 0.95fr 1.25fr;
   gap: 28px;
   align-items: center;
+      @media (max-width: 768px) {
+  .reel-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
 }
 
 .reel-copy {

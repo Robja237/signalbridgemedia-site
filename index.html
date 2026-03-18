@@ -300,6 +300,17 @@ body::before {
     }
 
     @media (max-width: 880px) {
+      .reel-grid {
+  grid-template-columns: 1fr !important;
+  gap: 20px !important;
+}
+
+.reel-copy,
+.video-shell,
+.compact-video-shell {
+  width: 100% !important;
+  max-width: 100% !important;
+}
       .hero,
       .about-grid {
         grid-template-columns: 1fr;
@@ -352,29 +363,8 @@ body::before {
     .reel-grid {
   display: grid;
   grid-template-columns: 0.95fr 1.25fr;
-      @media (max-width: 880px) {
-  .reel-grid {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 20px !important;
-}
-
-.reel-copy,
-.video-shell,
-.compact-video-shell {
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-.reel-copy {
-  order: 1;
-}
-
-.video-shell,
-.compact-video-shell {
-  order: 2;
-}
-}
+  gap: 28px;
+  align-items: center;
 }
 
 .reel-copy {

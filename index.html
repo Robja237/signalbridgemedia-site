@@ -1,577 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SignalBridge Media | Off-Road & Showroom Content Infrastructure</title>
-  <meta name="description" content="SignalBridge Media helps off-road vehicle dealerships, rental operators, and marine showrooms convert paid traffic into buyers with broadcast-grade digital inventory assets." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignalBridge | Showroom Visual Production</title>
   <style>
     :root {
-      --bg: #0a0f1c;
-      --bg2: #0f1728;
-      --panel: rgba(255,255,255,0.04);
-      --line: rgba(255,255,255,0.08);
-      --text: #edf2fb;
-      --muted: #9eabc3;
-      --accent: #7ab0ff;
-      --accent2: #b8d2ff;
-      --max: 1120px;
-      --radius: 18px;
-      --shadow: 0 20px 50px rgba(0,0,0,0.28);
+      --bg: #070a12;
+      --card-bg: #0f172a;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent2: #f97316;
+      --line: #1e293b;
+      --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
       color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(122,176,255,0.14), transparent 24%),
-        radial-gradient(circle at top right, rgba(184,210,255,0.08), transparent 22%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.6;
-      position: relative;
+      padding: 0;
+      margin: 0;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.12;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 36px 36px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 85%);
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 85%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .wrap {
-      width: min(92%, var(--max));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(8px);
-      background: rgba(10,15,28,0.45);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .topbar-inner {
+    header {
+      padding: 20px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .brand {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-
-    .brand .sub {
-      color: var(--muted);
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      font-size: 0.78rem;
-    }
-
-    .nav {
-      display: flex;
-      gap: 20px;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .nav a:hover {
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
       color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
 
     .hero {
-      padding: 88px 0 52px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: center;
+      text-align: center;
+      padding: 40px 0;
     }
 
-    .eyebrow {
-      color: var(--accent2);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.78rem;
-      margin-bottom: 14px;
-      font-weight: 600;
-    }
-
-    h1 {
-      margin: 0 0 18px;
-      font-size: clamp(2.3rem, 4.5vw, 4.25rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      max-width: 780px;
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
     }
 
     .hero p {
-      margin: 0 0 24px;
+      font-size: 1.1rem;
       color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 680px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 18px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
-      opacity: 0.98;
-    }
-
-    .button-primary {
-      background: var(--accent);
-      color: #07111f;
-      box-shadow: var(--shadow);
-    }
-
-    .button-secondary {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
-      color: var(--text);
-    }
-
-    .hero-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card h3 {
-      margin: 0 0 12px;
-      font-size: 1rem;
-      color: var(--accent2);
-      font-weight: 600;
-    }
-
-    .hero-card p {
-      margin: 0;
-      font-size: 0.98rem;
-      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 30px auto;
     }
 
     .section {
-      padding: 28px 0 62px;
+      margin: 60px 0;
     }
 
     .section-title {
-      margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
+      font-size: 0.85rem;
       font-weight: 700;
-    }
-
-    .video-shell {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .video {
-      aspect-ratio: 16 / 9;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: #050814;
-    }
-
-    .video iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
     .card {
-      background: var(--panel);
+      background: var(--card-bg);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
+      border-radius: 16px;
+      padding: 32px;
       box-shadow: var(--shadow);
     }
 
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.05rem;
+    .video-shell {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
     }
 
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
+    .cta-button {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
     }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .about-copy {
-      color: var(--muted);
-      font-size: 1rem;
-      margin: 0;
-    }
-
-    .highlight {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .contact-box {
-      display: grid;
-      gap: 8px;
-      align-items: start;
-    }
-
-    .contact-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .contact-role {
-      color: var(--muted);
-    }
-
-    .email-link {
-      color: var(--accent2);
-      font-weight: 600;
-      word-break: break-word;
+    .cta-button:hover {
+      opacity: 0.9;
     }
 
     footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 0.85rem;
       border-top: 1px solid var(--line);
-      padding: 28px 0 52px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    @media (max-width: 880px) {
-      .hero,
-      .about-grid,
-      .reel-grid {
-        grid-template-columns: 1fr !important;
-      }
-
-      .hero {
-        padding-top: 64px;
-        gap: 20px;
-      }
-
-      .nav {
-        display: none;
-      }
-
-      .reel-grid {
-        gap: 20px !important;
-      }
-
-      .reel-copy,
-      .video-shell,
-      .compact-video-shell,
-      .hero-logo {
-        width: 100% !important;
-        max-width: 100% !important;
-      }
-
-      .hero-art-card {
-        padding: 0;
-        margin-top: 8px;
-      }
-
-      .hero-logo {
-        transform: none !important;
-        margin: 0 auto;
-        border-radius: 16px;
-      }
-
-      .about-grid {
-        display: grid !important;
-        gap: 18px;
-      }
-    }
-
-    .hero-art-card {
-      padding: 6px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 22px;
-      transform: translateY(26px);
-    }
-
-    .hero-logo {
-      width: 100%;
-      max-width: 1000px;
-      height: auto;
-      display: block;
-      border-radius: 18px;
-      margin: 0 auto;
-    }
-<section class="section" id="comparison">
-  <div class="section-title">Visual Transformation Engine</div>
-  <div class="card" style="padding: 24px;">
-    <h3 style="margin-top:0; font-size: 1.4rem;">The Hybrid Workflow in Action</h3>
-    <p style="color: var(--muted); margin-bottom: 20px;">
-      Watch how we transform a static concrete lot plate into a high-converting, broadcast-ready environment in under 24 hours.
-    </p>
-
-    <div class="video-shell compact-video-shell" style="max-width: 900px; margin: 0 auto;">
-      <div class="video compact-video">
-        
-
-      </div>
-    </div>
-
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; flex-wrap: wrap; gap: 10px;">
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;">
-        RAW LOT PLATE &rarr; LOUISIANA BAYOU ENVIRONMENT
-      </div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase;">
-        DELIVERED IN &lt; 24 HOURS
-      </div>
-    </div>
-  </div>
-</section>
-
-<video 
-  width="100%" 
-  height="100%" 
-  autoplay 
-  loop 
-  muted 
-  playsinline 
-  controls
-  style="object-fit: cover; border-radius: 14px; display: block; background: #050814;">
-  <source src="transformation-demo.mp4" type="video/mp4">
-  <source src="./transformation-demo.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
-</video>
-    
-    #work {
-      scroll-margin-top: 90px;
-    }
-
-    .compact-video-shell {
-      width: 100%;
-      margin: 0;
-      padding: 10px;
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-    }
-
-    .compact-video {
-      aspect-ratio: 16 / 9;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
-    }
-
-    .reel-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.25fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .reel-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 100%;
-    }
-
-    .reel-copy h3 {
-      margin: 0 0 14px;
-      font-size: 1.4rem;
-      line-height: 1.15;
-    }
-
-    .reel-copy p {
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    .reel-copy p:last-child {
-      margin-bottom: 0;
+      margin-top: 80px;
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <div class="brand">
-        <span>SignalBridge</span>
-        <span class="sub">Media</span>
-      </div>
-      <nav class="nav">
-        <a href="#work">Reel & Work</a>
-        <a href="#services">Solutions</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
+
+  <header>
+    <div class="logo">Signal<span>Bridge</span></div>
+    <div><a href="#contact" class="cta-button" style="padding: 8px 16px; font-size: 0.85rem;">Get Started</a></div>
   </header>
 
-  <main class="wrap">
+  <main>
     <section class="hero">
-      <div>
-        <div class="eyebrow">Visual Inventory Enhancement</div>
-        <h1>Turn Static Inventory Into <span style="color:#4da3ff;">Broadcast Sales Assets.</span></h1>
-        <p>
-          We take actual live plate photography of your off-road vehicles, ATVs, and marine inventory and place them into dynamic, cinematic environments—delivering national-grade broadcast commercials in under 24 hours.
-        </p>
-        <div class="actions">
-          <a class="button button-primary" href="mailto:rob@signalbridgemedia.com?subject=3-Unit%20Pilot%20Demo%20Inquiry">Request 3-Unit Pilot Demo</a>
-          <a class="button button-secondary" href="#work">Watch Reel</a>
-        </div>
-      </div>
-
-      <div class="hero-card hero-art-card">
-        <img
-          class="hero-logo"
-          src="a_logo_design_for_signal_bridge_media_is_set_aga.png"
-          alt="Signal Bridge Media logo">
-      </div>
+      <h1>Turn Raw Inventory Photos Into High-Converting Showroom Media</h1>
+      <p>We transform static lot photos into cinematic, region-authentic outdoor video assets in under 24 hours.</p>
     </section>
 
-    <hr style="border: none; height: 1px; background: rgba(255,255,255,0.08); margin: 40px 0;">
+    <section class="section" id="comparison">
+      <div class="section-title">Visual Transformation Engine</div>
+      <div class="card">
+        <h2 style="margin-top:0; font-size: 1.5rem; margin-bottom: 10px;">The Hybrid Workflow in Action</h2>
+        <p style="color: var(--muted); margin-bottom: 24px;">
+          Watch how we take raw, overcast floor assets and elevate them into golden-hour, high-impact video campaigns tailored to regional buyers.
+        </p>
 
-    <section class="section" id="work">
-      <div class="section-title">Showroom Infrastructure</div>
-      <div class="reel-grid">
-        
-        <div class="card reel-copy">
-          <h3>Broadcast Credibility. High-Octane Pacing.</h3>
-          <p>
-            You spend thousands on Google Ads to drive local buyers to your digital showroom, but flat photos taken on a concrete lot or fluorescent garage fail to close the sale.
-          </p>
-          <p>
-            <strong>The Hybrid Workflow:</strong> We combine live-captured footage of your actual in-stock units with realistic, dynamic environments. Sell the muddy trail, open water, or luxury setting—without the vehicle ever leaving your lot.
-          </p>
-          <div style="margin-top:10px; font-size:0.70rem; letter-spacing:0.2em; color:var(--muted); font-weight:700; text-transform:uppercase;">
-            FOUNDER CREDENTIALS: SENIOR EDITOR WDSU // 1+ YR AUSTIN AUTO BROADCAST COMMERCIALS
-          </div>
+        <div class="video-shell">
+          <video 
+            width="100%" 
+            height="100%" 
+            autoplay 
+            loop 
+            muted 
+            playsinline 
+            controls
+            style="object-fit: cover; width: 100%; height: 100%; display: block;">
+            <source src="transformation-demo.mp4" type="video/mp4">
+            <source src="./transformation-demo.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
         </div>
 
-        <div class="video-shell compact-video-shell">
-          <div class="video compact-video">
-            <iframe
-              src="https://www.youtube.com/embed/tqP7TeZIwls"
-              title="SignalBridge Media Reel"
-              allowfullscreen>
-            </iframe>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;">
+            RAW LOT PLATE &rarr; LOUISIANA BAYOU ENVIRONMENT
+          </div>
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase;">
+            DELIVERED IN &lt; 24 HOURS
           </div>
         </div>
       </div>
     </section>
 
     <section class="section" id="services">
-      <div class="section-title">Targeted Solutions</div>
-      <div class="services">
-        <div class="card">
-          <h3>Off-Road & ATV Dealerships</h3>
-          <p>Transform plain parking lot photos of Side-by-Sides and ATVs into high-octane videos set on rugged, muddy mountain trails.</p>
-        </div>
-        <div class="card">
-          <h3>Vehicle Rental Operators</h3>
-          <p>Stop selling plain vehicle specs. Sell the adventure with cinematic action videos that drive immediate online booking reservations.</p>
-        </div>
-        <div class="card">
-          <h3>Marine & Coastal Showrooms</h3>
-          <p>Position bay boats and center consoles against sun-dappled delta sunsets and glassy open waters without expensive location shoots.</p>
-        </div>
-        <div class="card">
-          <h3>High-Line & Used Auto</h3>
-          <p>Place trucks, muscle cars, and luxury SUVs into sleek urban nightscapes and high-end architectural backdrops within 24 hours.</p>
-        </div>
+      <div class="section-title">Core Capability</div>
+      <div class="card">
+        <h3 style="font-size: 1.3rem; margin-bottom: 12px;">Built for Marine, Off-Road & High-End Automotive</h3>
+        <p style="color: var(--muted);">
+          Stop letting $150k center consoles and top-tier side-by-sides sit on flat concrete lots in your ad campaigns. SignalBridge delivers broadcast-ready visuals without sending a full video crew to your location.
+        </p>
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="section-title">Why SignalBridge</div>
-      <div class="about-grid">
-        <div class="card">
-          <p class="about-copy">
-            <span class="highlight">Robert Jacobson brings 20+ years of professional broadcast editing experience</span>, including a dedicated year producing broadcast television commercials for dealerships in Austin, TX, and current work as Senior Editor at WDSU. SignalBridge Media bridges the gap between raw inventory and high-converting commercial video.
-          </p>
-        </div>
-
-        <div class="card contact-box" id="contact">
-          <div class="contact-name">Robert Jacobson</div>
-          <div class="contact-role">Founder, SignalBridge Media</div>
-          <a class="email-link" href="mailto:rob@signalbridgemedia.com?subject=3-Unit%20Pilot%20Demo%20Inquiry">rob@signalbridgemedia.com</a>
-        </div>
+    <section class="section" id="contact" style="text-align: center;">
+      <div class="card">
+        <h2 style="font-size: 1.8rem; margin-bottom: 12px;">Ready to Upgrade Your Inventory Media?</h2>
+        <p style="color: var(--muted); margin-bottom: 24px;">Let us run a free proof-of-concept transformation using your current inventory photos.</p>
+        <a href="mailto:contact@signalbridge.com" class="cta-button">Request a Sample Transformation</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div style="max-width:1100px; margin:0 auto; padding: 0 24px; text-align:center;">
-      <p>SignalBridge Media — High-Impact Video Infrastructure for Showrooms & Off-Road Fleets</p>
-      <p style="opacity:0.6; font-size:14px; margin-top:12px;">
-        © 2026 Signal Bridge Media
-      </p>
-    </div>
+    &copy; 2026 SignalBridge. All rights reserved.
   </footer>
+
 </body>
 </html>

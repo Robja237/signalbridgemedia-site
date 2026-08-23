@@ -365,6 +365,88 @@
       border-radius: 18px;
       margin: 0 auto;
     }
+<section class="section" id="comparison">
+  <div class="section-title">Visual Transformation Engine</div>
+  <div class="card" style="padding: 24px;">
+    <h3 style="margin-top:0; font-size: 1.4rem;">The Hybrid Workflow in Action</h3>
+    <p style="color: var(--muted); margin-bottom: 20px;">
+      Drag the slider to see how we transform a static concrete lot plate into a high-converting, broadcast-ready environment.
+    </p>
+
+    <div class="img-comp-container">
+      <div class="img-comp-img img-comp-overlay" id="comp-overlay">
+        <img src="after-sample.jpg" alt="Enhanced Cinematic Environment">
+        <span class="badge badge-after">SIGNALBRIDGE ENHANCED</span>
+      </div>
+      <div class="img-comp-img">
+        <img src="before-sample.jpg" alt="Raw Lot Photo">
+        <span class="badge badge-before">RAW LOT PLATE</span>
+      </div>
+      <input type="range" min="0" max="100" value="50" class="slider" id="comp-slider" oninput="moveSlider(this.value)">
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Lightweight Slider Styling */
+  .img-comp-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .img-comp-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  .img-comp-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .img-comp-overlay {
+    width: 50%;
+    z-index: 2;
+    overflow: hidden;
+    border-right: 2px solid var(--accent);
+  }
+  .slider {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 3;
+    cursor: ew-resize;
+  }
+  .badge {
+    position: absolute;
+    bottom: 14px;
+    padding: 6px 12px;
+    font-size: 0.70rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    border-radius: 6px;
+    background: rgba(10, 15, 28, 0.85);
+    border: 1px solid var(--line);
+    backdrop-filter: blur(4px);
+  }
+  .badge-before { left: 14px; color: var(--muted); }
+  .badge-after { right: 14px; color: var(--accent2); }
+</style>
+
+<script>
+  function moveSlider(val) {
+    document.getElementById('comp-overlay').style.width = val + '%';
+  }
+</script>
 
     #work {
       scroll-margin-top: 90px;

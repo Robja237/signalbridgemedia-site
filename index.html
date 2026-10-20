@@ -26,35 +26,30 @@
       padding: 0;
     }
 
-    html {
+    html, body {
       background-color: var(--bg);
       color: var(--text);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
       scroll-behavior: smooth;
+      min-height: 100%;
     }
 
-    body {
-      position: relative;
-      min-height: 100vh;
-      min-height: 100dvh;
-      overflow-x: hidden;
-    }
-
-    /* Fixed Seamless Site Backdrop (Covers 100% of Mobile Screen) */
-    .site-bg-fixed {
+    /* Hardware-Accelerated Mobile-Safe Parallax Backdrop Layer */
+    .parallax-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
-      height: 100vh;
-      height: 100dvh;
+      height: 130vh; /* Extra height room for upward/downward parallax travel */
       background-image: linear-gradient(180deg, rgba(7, 10, 18, 0.65) 0%, rgba(7, 10, 18, 0.8) 100%), 
                         url('site-bg.jpg');
       background-repeat: repeat;
       background-size: 250px 250px;
       z-index: -1;
       pointer-events: none;
+      will-change: transform;
+      transform: translateY(0px);
     }
 
     header {
@@ -99,7 +94,7 @@
       padding: 40px 20px;
     }
 
-    /* Hero Section with Box-Locked Studio Background */
+    /* Hero Section with Box-Locked Background */
     .hero {
       text-align: center;
       padding: 85px 20px;
@@ -367,8 +362,8 @@
 </head>
 <body>
 
-  <!-- Fixed Seamless Background Element -->
-  <div class="site-bg-fixed"></div>
+  <!-- Parallax Background Element -->
+  <div class="parallax-bg" id="parallaxBg"></div>
 
   <header>
     <div class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></div>
@@ -494,6 +489,28 @@
   <footer>
     &copy; 2026 SignalBridge Media. All rights reserved.
   </footer>
+
+  <!-- High-Performance Universal Mobile Parallax Script -->
+  <script>
+    (function() {
+      const bg = document.getElementById('parallaxBg');
+      let ticking = false;
+
+      function updateParallax() {
+        const scrolled = window.pageYOffset || document.documentElement.scrollTop;
+        // Background travels at 30% of scroll speed for smooth depth
+        bg.style.transform = 'translateY(' + (-scrolled * 0.3) + 'px)';
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+  </script>
 
 </body>
 </html>

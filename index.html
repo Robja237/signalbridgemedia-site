@@ -34,7 +34,7 @@
       scroll-behavior: smooth;
     }
 
-    /* Base Body: Native Studio Backdrop for Desktop & Mobile */
+    /* MOBILE DEFAULT: Rock-solid scrolling tile background */
     body {
       min-height: 100vh;
       background-color: var(--bg);
@@ -45,18 +45,34 @@
       position: relative;
     }
 
-    /* DESKTOP ENGINE: Hardware-Accelerated Parallax Attachment on iMac */
+    /* DESKTOP PARALLAX ENGINE: Clip-Path Sticky Canvas */
     @media (min-width: 1024px) {
       body {
-        background-attachment: fixed;
-        transform: translateZ(0); /* Forces GPU compositing mode on Mac Safari/Chrome */
+        background-image: none; /* Turn off body image to let parallax engine take over */
       }
-    }
 
-    /* MOBILE ENGINE: Clean Scroll-Locked Tile Background on Phones */
-    @media (max-width: 1023px) {
-      body {
-        background-attachment: scroll;
+      .parallax-viewport {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        clip-path: inset(0 0 0 0);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .parallax-sticky-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: linear-gradient(180deg, rgba(7, 10, 18, 0.65) 0%, rgba(7, 10, 18, 0.85) 100%), 
+                          url('site-bg.jpg');
+        background-repeat: repeat;
+        background-size: 250px 250px;
+        will-change: transform;
       }
     }
 
@@ -372,6 +388,11 @@
 </head>
 <body>
 
+  <!-- Desktop Parallax Engine Wrapper -->
+  <div class="parallax-viewport">
+    <div class="parallax-sticky-bg" id="parallaxCanvas"></div>
+  </div>
+
   <header>
     <div class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></div>
     <div><a href="#contact" class="cta-button" style="padding: 8px 16px; font-size: 0.8rem;">Free Sample</a></div>
@@ -496,6 +517,33 @@
   <footer>
     &copy; 2026 SignalBridge Media. All rights reserved.
   </footer>
+
+  <!-- Desktop Parallax Controller -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.innerWidth >= 1024) {
+        var bg = document.getElementById('parallaxCanvas');
+        if (!bg) return;
+
+        var ticking = false;
+        function updateDesktopParallax() {
+          var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+          // Background moves upward at a subtle offset (35% speed) all the way down to footer
+          bg.style.backgroundPositionY = (-scrollY * 0.35) + 'px';
+          ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+          if (!ticking) {
+            window.requestAnimationFrame(updateDesktopParallax);
+            ticking = true;
+          }
+        }, { passive: true });
+
+        updateDesktopParallax();
+      }
+    });
+  </script>
 
 </body>
 </html>

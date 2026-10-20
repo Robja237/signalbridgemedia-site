@@ -34,29 +34,15 @@
       scroll-behavior: smooth;
     }
 
-    /* Core Backdrop Lock for All Devices */
     body {
       min-height: 100vh;
       background-color: var(--bg);
       background-image: linear-gradient(180deg, rgba(7, 10, 18, 0.65) 0%, rgba(7, 10, 18, 0.85) 100%), 
                         url('site-bg.jpg');
       background-repeat: repeat;
+      background-position: center top;
       background-size: 250px 250px;
       position: relative;
-    }
-
-    /* Desktop Engine: Smooth fixed attachment */
-    @media (min-width: 1024px) {
-      body {
-        background-attachment: fixed;
-      }
-    }
-
-    /* Mobile Engine: Reliable scroll attachment */
-    @media (max-width: 1023px) {
-      body {
-        background-attachment: scroll;
-      }
     }
 
     header {
@@ -70,7 +56,6 @@
       backdrop-filter: blur(8px);
     }
 
-    /* Slick Tech Logo Styling: SignalBridgeMedia */
     .logo {
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
@@ -103,7 +88,6 @@
       z-index: 1;
     }
 
-    /* Hero Section with Ambient Tech Depth */
     .hero {
       text-align: center;
       padding: 85px 20px;
@@ -150,7 +134,7 @@
     .hero p {
       font-size: 1.15rem;
       color: var(--muted);
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto 30px auto;
     }
 
@@ -169,7 +153,6 @@
       text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
 
-    /* Cards with Subtle Hover Elevation */
     .card {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(7, 10, 18, 0.92) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
@@ -186,7 +169,6 @@
       box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(56, 189, 248, 0.15);
     }
 
-    /* Cyberpunk HUD Tech Video Player Shell */
     .video-shell {
       position: relative;
       width: 100%;
@@ -198,7 +180,6 @@
       box-shadow: 0 0 35px rgba(0, 0, 0, 0.9), 0 0 25px rgba(56, 189, 248, 0.3);
     }
 
-    /* Target Reticles in Corners */
     .reticle-top-left, .reticle-bottom-right {
       position: absolute;
       width: 26px;
@@ -221,7 +202,6 @@
       filter: drop-shadow(0 0 8px var(--accent));
     }
 
-    /* Scanlines & Animated Beam Overlay */
     .video-scanlines {
       position: absolute;
       top: 0;
@@ -251,7 +231,6 @@
       100% { top: 115%; }
     }
 
-    /* Scrolling HUD Telemetry Ticker */
     .hud-ticker-wrap {
       position: absolute;
       bottom: 0;
@@ -333,7 +312,6 @@
       margin-top: 20px;
     }
 
-    /* Feature Cards with Subtle Elevation */
     .feature-card {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(7, 10, 18, 0.9) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
@@ -393,24 +371,24 @@
 
   <header>
     <div class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></div>
-    <div><a href="#contact" class="cta-button" style="padding: 8px 16px; font-size: 0.8rem;">Free Sample</a></div>
+    <div><a href="#contact" class="cta-button" style="padding: 8px 16px; font-size: 0.8rem;">Test Drive Us</a></div>
   </header>
 
   <main>
     <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-badge">Built for Louisiana Powersports & Marine</div>
-      <h1>Turn Flat Lot Photos Into High-Converting Showroom Media</h1>
-      <p>Stop letting $80k+ inventory sit on grey concrete in your ad feeds. SignalBridge Media converts raw lot photos into cinematic outdoor video assets in under 24 hours.</p>
+      <div class="hero-badge">High-Velocity Visual Ordnance for Powersports & Marine</div>
+      <h1>Kill the Lot Decay. Turn Static Metal Into Motion Revenue.</h1>
+      <p>Flat inventory photos on wet pavement get swiped past in 0.3 seconds. SignalBridge Media transforms raw lot photos into cinematic outdoor motion campaigns in under 24 hours—slashing floorplan interest without moving a single unit off your asphalt.</p>
     </section>
 
     <!-- Visual Transformation Engine Section -->
     <section class="section" id="comparison">
-      <div class="section-title">Visual Transformation Engine</div>
+      <div class="section-title">The Visual Ordnance Pipeline</div>
       <div class="card">
-        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; margin-top:0; font-size: 1.4rem; margin-bottom: 10px; color: var(--text);">Live Proof: Overcast Lot to Golden Hour Action</h2>
+        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; margin-top:0; font-size: 1.4rem; margin-bottom: 10px; color: var(--text);">Overcast Asphalt &rarr; Golden Hour Bayou Action</h2>
         <p style="color: var(--muted); margin-bottom: 24px;">
-          Watch how we take static lot photography and elevate it into region-authentic motion campaigns tailored to local buyers.
+          Watch how static inventory transforms into region-authentic, high-impact motion assets designed to hijack social feeds and lock down phone leads.
         </p>
 
         <div class="video-shell">
@@ -426,18 +404,18 @@
               <span class="hud-ticker-item">// SYS.ONLINE</span>
               <span class="hud-ticker-item">// 4K ULTRA HD RENDER</span>
               <span class="hud-ticker-item">// 24-HR TURNAROUND</span>
-              <span class="hud-ticker-item">// FB & IG ADS READY</span>
+              <span class="hud-ticker-item">// META & TIKTOK READY</span>
               <span class="hud-ticker-item">// VDP LISTING OPTIMIZED</span>
-              <span class="hud-ticker-item">// REGION-AUTHENTIC ENVIRONMENT</span>
-              <span class="hud-ticker-item">// LATENCY: 12ms</span>
+              <span class="hud-ticker-item">// REGION-AUTHENTIC TERRAIN</span>
+              <span class="hud-ticker-item">// ZERO LOT DISRUPTION</span>
               <!-- Repeated Track for Continuous Loop -->
               <span class="hud-ticker-item">// SYS.ONLINE</span>
               <span class="hud-ticker-item">// 4K ULTRA HD RENDER</span>
               <span class="hud-ticker-item">// 24-HR TURNAROUND</span>
-              <span class="hud-ticker-item">// FB & IG ADS READY</span>
+              <span class="hud-ticker-item">// META & TIKTOK READY</span>
               <span class="hud-ticker-item">// VDP LISTING OPTIMIZED</span>
-              <span class="hud-ticker-item">// REGION-AUTHENTIC ENVIRONMENT</span>
-              <span class="hud-ticker-item">// LATENCY: 12ms</span>
+              <span class="hud-ticker-item">// REGION-AUTHENTIC TERRAIN</span>
+              <span class="hud-ticker-item">// ZERO LOT DISRUPTION</span>
             </div>
           </div>
 
@@ -468,23 +446,23 @@
 
     <!-- Turnkey Workflow Section (Friction Reducers) -->
     <section class="section" id="workflow">
-      <div class="section-title">Zero Lot Disruption</div>
-      <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--text);">How It Works for Dealership GMs</h2>
+      <div class="section-title">Zero Friction Engine</div>
+      <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--text);">Engineered for Dealership Velocity</h2>
       <div class="grid-3">
         <div class="feature-card">
           <div class="feature-num">01</div>
-          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Send Raw Photos</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">Snap a phone photo on your lot or send us a link to your current inventory page. No camera crews or prep work needed.</p>
+          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Zero-Prep Drop</h3>
+          <p style="color: var(--muted); font-size: 0.95rem;">Send a raw URL or phone snap. No film crews, no lot shuffling, zero sales team downtime.</p>
         </div>
         <div class="feature-card">
           <div class="feature-num">02</div>
-          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Pipeline</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">We match your unit with region-authentic environments, custom lighting, and motion graphics built to stop scrolling buyers.</p>
+          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Velocity Render</h3>
+          <p style="color: var(--muted); font-size: 0.95rem;">We nuke grey asphalt, inject studio lighting, regional terrain, and dynamic spec telemetry.</p>
         </div>
         <div class="feature-card">
           <div class="feature-num">03</div>
-          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Publish & Sell Faster</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">Receive broadcast-ready 4K video clips and high-res static hero renders formatted for Facebook, Instagram, and VDP listings.</p>
+          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Dominate the Feed</h3>
+          <p style="color: var(--muted); font-size: 0.95rem;">Fire off broadcast-grade 4K motion assets across Meta, Instagram, and VDPs before holding costs tick up.</p>
         </div>
       </div>
     </section>
@@ -493,9 +471,9 @@
     <section class="section" id="services">
       <div class="section-title">Core Capability</div>
       <div class="card">
-        <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 12px; color: var(--text);">Built for Marine, Off-Road & High-End Automotive</h3>
+        <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 12px; color: var(--text);">Built for Marine, Powersports & High-Margin Inventory</h3>
         <p style="color: var(--muted);">
-          High-margin center consoles, top-tier side-by-sides, and luxury pre-owned units deserve premium media. SignalBridge Media gives independent dealers elite studio marketing power at a fraction of full agency costs.
+          High-margin center consoles, top-tier side-by-sides, and premium pre-owned inventory carry steep monthly carrying costs. SignalBridge Media gives independent dealers elite studio marketing power at a fraction of full agency retainers—driving higher lead velocity and protecting your margin.
         </p>
       </div>
     </section>
@@ -503,11 +481,11 @@
     <!-- Zero-Risk Lead Magnet Section -->
     <section class="section" id="contact" style="text-align: center;">
       <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.5); box-shadow: 0 0 35px rgba(56, 189, 248, 0.2);">
-        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 12px; color: var(--text);">Test SignalBridge Media on Your Current Inventory</h2>
-        <p style="color: var(--muted); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
-          Send us 1 raw photo from a hard-to-sell unit currently sitting on your lot. We will return a broadcast-ready sample video transformation within 24 hours—100% free.
+        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 12px; color: var(--text);">Test Drive SignalBridge Media on Your Hardest-to-Sell Unit</h2>
+        <p style="color: var(--muted); margin-bottom: 24px; max-width: 620px; margin-left: auto; margin-right: auto;">
+          Send us 1 raw photo from an aged unit currently incurring floorplan interest on your lot. We will deliver a broadcast-ready 4K motion transformation within 24 hours—100% free, zero obligation.
         </p>
-        <a href="mailto:contact@signalbridge.com?subject=Free%20Sample%20Transformation%20Request" class="cta-button">Claim Your Free Sample Transformation</a>
+        <a href="mailto:contact@signalbridge.com?subject=Free%20Inventory%20Transformation%20Request" class="cta-button">Claim Free Transformation</a>
       </div>
     </section>
   </main>

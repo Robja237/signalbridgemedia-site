@@ -16,6 +16,7 @@
       --muted: #cbd5e1;      /* Crisp Silver Subtext */
       --accent: #38bdf8;     /* Electric Studio Cyan LED Glow */
       --accent2: #f97316;    /* Amber LED Accent */
+      --red-glow: #dc2626;   /* Tactical Crimson Red Glow */
       --line: rgba(56, 189, 248, 0.25); /* Cyan Tinted Joint Line */
       --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.85);
     }
@@ -137,32 +138,46 @@
       box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
     }
 
-    /* Restructured High-Impact Gradient & Glowing Headline */
+    /* Tactical Extreme-Sports Headline Architecture */
     .hero-title {
       font-family: 'Orbitron', sans-serif;
       margin-bottom: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
 
     .hero-title-top {
       font-size: clamp(2.4rem, 6vw, 3.8rem);
       font-weight: 900;
-      letter-spacing: 0.05em;
+      font-style: italic;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: linear-gradient(180deg, #fbbf24 0%, #f97316 60%, #ea580c 100%);
+      transform: skewX(-6deg);
+      
+      /* Dark Titanium-to-Crimson Metallic Gradient with HUD Composite Mesh Texture */
+      background: repeating-linear-gradient(
+                    45deg, 
+                    rgba(255, 255, 255, 0.08), 
+                    rgba(255, 255, 255, 0.08) 2px, 
+                    transparent 2px, 
+                    transparent 4px
+                  ), 
+                  linear-gradient(180deg, #f8fafc 0%, #ea580c 55%, #991b1b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      -webkit-text-stroke: 1.5px rgba(56, 189, 248, 0.85);
-      filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.8)) drop-shadow(0 0 35px rgba(56, 189, 248, 0.4));
+      
+      /* Dark Crimson Red Outline with Heavy Tactical Backlight */
+      -webkit-text-stroke: 1.8px rgba(185, 28, 28, 0.95);
+      filter: drop-shadow(0 0 15px rgba(220, 38, 38, 0.85)) drop-shadow(0 0 30px rgba(185, 28, 28, 0.4));
       line-height: 1.1;
     }
 
     .hero-title-sub {
       font-size: clamp(0.95rem, 2.2vw, 1.25rem);
       font-weight: 700;
+      font-style: italic;
       color: #ffffff;
       letter-spacing: 0.04em;
       text-transform: uppercase;

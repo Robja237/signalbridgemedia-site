@@ -7,13 +7,13 @@
   <style>
     :root {
       --bg: #070a12;
-      --card-bg: #0f172a;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent2: #f97316;
-      --line: #1e293b;
-      --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+      --card-bg: rgba(15, 23, 42, 0.88);
+      --text: #f1f5f9;       /* Icy Titanium White */
+      --muted: #94a3b8;      /* Slate Matte Subtext */
+      --accent: #38bdf8;     /* Studio Cyan LED Glow */
+      --accent2: #f97316;    /* Warm Amber Accent */
+      --line: #1e293b;       /* Metallic Joint Line */
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
     }
 
     * {
@@ -23,17 +23,17 @@
     }
 
     body {
-  background-color: var(--bg);
-  background-image: linear-gradient(180deg, rgba(7, 10, 18, 0.85) 0%, rgba(7, 10, 18, 0.92) 100%), 
-                    url('site-bg.jpg');
-  background-repeat: repeat;
-  background-size: 250px 250px;
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  padding: 0;
-  margin: 0;
-}
+      background-color: var(--bg);
+      background-image: linear-gradient(180deg, rgba(7, 10, 18, 0.88) 0%, rgba(7, 10, 18, 0.94) 100%), 
+                        url('site-bg.jpg');
+      background-repeat: repeat;
+      background-size: 250px 250px;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+    }
 
     header {
       padding: 20px 5%;
@@ -55,6 +55,7 @@
 
     .logo span {
       color: var(--accent);
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
 
     main {
@@ -77,7 +78,7 @@
 
     .hero-badge {
       display: inline-block;
-      background: rgba(56, 189, 248, 0.15);
+      background: rgba(56, 189, 248, 0.12);
       color: var(--accent);
       border: 1px solid rgba(56, 189, 248, 0.35);
       padding: 6px 14px;
@@ -87,6 +88,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
     }
 
     .hero h1 {
@@ -95,6 +97,7 @@
       line-height: 1.15;
       margin-bottom: 20px;
       letter-spacing: -0.02em;
+      color: var(--text);
     }
 
     .hero p {
@@ -115,9 +118,10 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-bottom: 12px;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
     }
 
-    /* Standard Cards Matching the Background Studio Theme */
+    /* Standard Cards Matching Studio Floor Backdrop */
     .card {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(7, 10, 18, 0.94) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
@@ -127,13 +131,29 @@
       box-shadow: var(--shadow);
     }
 
+    /* Video Player Shell Styled for Studio Atmosphere */
     .video-shell {
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #000;
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(56, 189, 248, 0.1);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-shell:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+    }
+
+    video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      display: block;
+      accent-color: var(--accent);
     }
 
     .grid-3 {
@@ -143,7 +163,7 @@
       margin-top: 20px;
     }
 
-    /* Feature Cards Matching the Studio Atmosphere */
+    /* Feature Cards Matching Studio Backdrop */
     .feature-card {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(7, 10, 18, 0.92) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
@@ -158,21 +178,25 @@
       font-weight: 800;
       color: var(--accent);
       margin-bottom: 8px;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
     }
 
     .cta-button {
       display: inline-block;
       background: var(--accent);
-      color: #000;
+      color: #070a12;
       font-weight: 700;
       padding: 14px 28px;
       border-radius: 8px;
       text-decoration: none;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
     }
 
     .cta-button:hover {
-      opacity: 0.9;
+      opacity: 0.95;
+      transform: translateY(-1px);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
     }
 
     footer {
@@ -204,7 +228,7 @@
     <section class="section" id="comparison">
       <div class="section-title">Visual Transformation Engine</div>
       <div class="card">
-        <h2 style="margin-top:0; font-size: 1.5rem; margin-bottom: 10px;">Live Proof: Overcast Lot to Golden Hour Action</h2>
+        <h2 style="margin-top:0; font-size: 1.5rem; margin-bottom: 10px; color: var(--text);">Live Proof: Overcast Lot to Golden Hour Action</h2>
         <p style="color: var(--muted); margin-bottom: 24px;">
           Watch how we take static lot photography and elevate it into region-authentic motion campaigns tailored to local buyers.
         </p>
@@ -217,8 +241,7 @@
             loop 
             muted 
             playsinline 
-            controls
-            style="object-fit: cover; width: 100%; height: 100%; display: block;">
+            controls>
             <source src="transformation-demo.mp4" type="video/mp4">
             <source src="./transformation-demo.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
@@ -229,7 +252,7 @@
           <div style="font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;">
             RAW LOT PLATE &rarr; LOUISIANA BAYOU ENVIRONMENT
           </div>
-          <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase;">
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; text-shadow: 0 0 10px rgba(249, 115, 22, 0.3);">
             DELIVERED IN &lt; 24 HOURS
           </div>
         </div>
@@ -239,21 +262,21 @@
     <!-- Turnkey Workflow Section (Friction Reducers) -->
     <section class="section" id="workflow">
       <div class="section-title">Zero Lot Disruption</div>
-      <h2 style="font-size: 1.8rem; margin-bottom: 20px;">How It Works for Dealership GMs</h2>
+      <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text);">How It Works for Dealership GMs</h2>
       <div class="grid-3">
         <div class="feature-card">
           <div class="feature-num">01</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px;">Send Raw Photos</h3>
+          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Send Raw Photos</h3>
           <p style="color: var(--muted); font-size: 0.95rem;">Snap a phone photo on your lot or send us a link to your current inventory page. No camera crews or prep work needed.</p>
         </div>
         <div class="feature-card">
           <div class="feature-num">02</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px;">24-Hour Pipeline</h3>
+          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Pipeline</h3>
           <p style="color: var(--muted); font-size: 0.95rem;">We match your unit with region-authentic environments, custom lighting, and motion graphics built to stop scrolling buyers.</p>
         </div>
         <div class="feature-card">
           <div class="feature-num">03</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px;">Publish & Sell Faster</h3>
+          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Publish & Sell Faster</h3>
           <p style="color: var(--muted); font-size: 0.95rem;">Receive broadcast-ready 4K video clips and high-res static hero renders formatted for Facebook, Instagram, and VDP listings.</p>
         </div>
       </div>
@@ -263,7 +286,7 @@
     <section class="section" id="services">
       <div class="section-title">Core Capability</div>
       <div class="card">
-        <h3 style="font-size: 1.3rem; margin-bottom: 12px;">Built for Marine, Off-Road & High-End Automotive</h3>
+        <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--text);">Built for Marine, Off-Road & High-End Automotive</h3>
         <p style="color: var(--muted);">
           High-margin center consoles, top-tier side-by-sides, and luxury pre-owned units deserve premium media. SignalBridge gives independent dealers elite studio marketing power at a fraction of full agency costs.
         </p>
@@ -272,8 +295,8 @@
 
     <!-- Zero-Risk Lead Magnet Section -->
     <section class="section" id="contact" style="text-align: center;">
-      <div class="card" style="border: 1px solid var(--accent);">
-        <h2 style="font-size: 1.8rem; margin-bottom: 12px;">Test SignalBridge on Your Current Inventory</h2>
+      <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.4); box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);">
+        <h2 style="font-size: 1.8rem; margin-bottom: 12px; color: var(--text);">Test SignalBridge on Your Current Inventory</h2>
         <p style="color: var(--muted); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
           Send us 1 raw photo from a hard-to-sell unit currently sitting on your lot. We will return a broadcast-ready sample video transformation within 24 hours—100% free.
         </p>

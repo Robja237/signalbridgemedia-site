@@ -47,10 +47,11 @@
     }
 
     header {
-      padding: 22px 5%;
+      padding: 18px 4%;
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: space-between;
+      gap: 16px;
       border-bottom: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(7, 10, 18, 0.85) 0%, rgba(7, 10, 18, 0.95) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
@@ -60,8 +61,8 @@
     .logo {
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      font-size: 1.35rem;
-      letter-spacing: 0.08em;
+      font-size: clamp(1.05rem, 3.8vw, 1.35rem);
+      letter-spacing: 0.06em;
       color: #ffffff;
       text-transform: uppercase;
       text-shadow: 0 0 15px rgba(56, 189, 248, 0.6), 0 0 30px rgba(56, 189, 248, 0.2);
@@ -82,7 +83,7 @@
       text-shadow: 0 0 10px rgba(248, 250, 252, 0.4);
     }
 
-    /* Thin Cyan LED Connecting Rail with Breathing Room */
+    /* Thin Cyan LED Connecting Rail */
     .header-neon-rail {
       flex: 1;
       height: 1px;
@@ -91,11 +92,22 @@
         rgba(56, 189, 248, 0.7) 50%, 
         rgba(56, 189, 248, 0.1) 100%);
       box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
-      margin: 0 12px;
+      margin: 0 8px;
+    }
+
+    /* Responsive Header Adjustments for Mobile Viewports */
+    @media (max-width: 640px) {
+      .header-neon-rail {
+        display: none;
+      }
+      header {
+        padding: 14px 12px;
+      }
     }
 
     .header-cta-wrap {
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     main {
@@ -172,7 +184,6 @@
       line-height: 1.1;
     }
 
-    /* Responsive Subheadline Fix */
     .hero-title-sub {
       font-size: clamp(0.9rem, 2.5vw, 1.25rem);
       font-weight: 700;
@@ -258,8 +269,8 @@
     }
 
     .cta-button-header {
-      padding: 10px 20px;
-      font-size: 0.78rem;
+      padding: 8px 14px;
+      font-size: 0.72rem;
       border-bottom: 3px solid #0369a1;
     }
 

@@ -150,7 +150,7 @@
       box-shadow: var(--shadow);
     }
 
-    /* Clean Tech Video Player Shell (No Blue Box Overlay) */
+    /* Cyberpunk / Tron Tech Video Player Shell */
     .video-shell {
       position: relative;
       width: 100%;
@@ -158,20 +158,99 @@
       background: #000;
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      box-shadow: 0 0 35px rgba(0, 0, 0, 0.9), 0 0 25px rgba(56, 189, 248, 0.25);
     }
 
-    /* Screen Tech Gloss Effect */
-    .video-gloss {
+    /* Corner Target Reticles */
+    .video-shell::before, .video-shell::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+      z-index: 4;
+    }
+    .video-shell::before {
+      top: 12px;
+      left: 12px;
+      border-top: 2px solid var(--accent);
+      border-left: 2px solid var(--accent);
+      filter: drop-shadow(0 0 6px var(--accent));
+    }
+    .video-shell::after {
+      bottom: 12px;
+      right: 12px;
+      border-bottom: 2px solid var(--accent);
+      border-right: 2px solid var(--accent);
+      filter: drop-shadow(0 0 6px var(--accent));
+    }
+
+    /* Scanlines & Animated Beam Overlay */
+    .video-scanlines {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       pointer-events: none;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 40%, transparent 100%);
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 4px, 6px 100%;
       z-index: 2;
+    }
+
+    .video-scanline-beam {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 20%;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent 0%, rgba(56, 189, 248, 0.08) 50%, transparent 100%);
+      animation: scanBeam 6s linear infinite;
+      z-index: 3;
+    }
+
+    @keyframes scanBeam {
+      0% { top: -20%; }
+      100% { top: 120%; }
+    }
+
+    /* Cyberpunk Telemetry HUD Bar */
+    .hud-bar {
+      position: absolute;
+      bottom: 12px;
+      left: 16px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      z-index: 4;
+      pointer-events: none;
+      background: rgba(7, 10, 18, 0.7);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    .rec-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent2);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent2);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
     video {
@@ -263,7 +342,9 @@
         </p>
 
         <div class="video-shell">
-          <div class="video-gloss"></div>
+          <div class="video-scanlines"></div>
+          <div class="video-scanline-beam"></div>
+          <div class="hud-bar"><span class="rec-dot"></span> SYS.ONLINE // 4K RENDER // LATENCY: 12ms</div>
           <video 
             width="100%" 
             height="100%" 

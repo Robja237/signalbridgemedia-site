@@ -44,7 +44,7 @@
       scroll-behavior: smooth;
     }
 
-    /* Background Layer Scrolling Slower (Parallax Depth) */
+    /* Slow-Moving Tile Backdrop (Background Parallax Layer) */
     .parallax-bg-layer {
       position: absolute;
       top: 0;
@@ -61,7 +61,7 @@
       will-change: transform;
     }
 
-    /* Foreground Content Group */
+    /* Foreground Content Layer */
     .parallax-content {
       position: relative;
       z-index: 1;
@@ -76,7 +76,6 @@
       border-bottom: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(7, 10, 18, 0.82) 0%, rgba(7, 10, 18, 0.92) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
-      background-attachment: fixed;
       backdrop-filter: blur(8px);
     }
 
@@ -111,13 +110,12 @@
       padding: 40px 20px;
     }
 
-    /* Hero Section with Parallax Depth Atmosphere */
+    /* Hero Section with Box-Locked Image */
     .hero {
       text-align: center;
       padding: 85px 20px;
       background: linear-gradient(180deg, rgba(7, 10, 18, 0.55) 0%, rgba(7, 10, 18, 0.85) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
-      background-attachment: fixed;
       border-radius: 16px;
       border: 1px solid var(--line);
       margin-bottom: 40px;
@@ -172,16 +170,14 @@
       text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
 
-    /* Floating Cards Over Parallax Backdrop */
+    /* Standard Cards with Box-Locked Studio Background */
     .card {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(7, 10, 18, 0.9) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
-      background-attachment: fixed;
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 32px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(4px);
     }
 
     /* Cyberpunk HUD Tech Video Player Shell */
@@ -331,11 +327,10 @@
       margin-top: 20px;
     }
 
-    /* Feature Cards Matching Studio Backdrop */
+    /* Feature Cards with Box-Locked Background */
     .feature-card {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.78) 0%, rgba(7, 10, 18, 0.88) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
-      background-attachment: fixed;
       border: 1px solid var(--line);
       border-radius: 12px;
       padding: 24px;

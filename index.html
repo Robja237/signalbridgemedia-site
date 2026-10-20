@@ -4,16 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SignalBridge | High-Velocity Showroom Media</title>
+  <!-- Google Tech Font Import: Orbitron & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #070a12;
-      --card-bg: rgba(15, 23, 42, 0.88);
-      --text: #f1f5f9;       /* Icy Titanium White */
-      --muted: #94a3b8;      /* Slate Matte Subtext */
-      --accent: #38bdf8;     /* Studio Cyan LED Glow */
-      --accent2: #f97316;    /* Warm Amber Accent */
-      --line: #1e293b;       /* Metallic Joint Line */
-      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+      --card-bg: rgba(15, 23, 42, 0.72);
+      --text: #f8fafc;       /* Icy Titanium White */
+      --muted: #cbd5e1;      /* Crisp Silver Subtext */
+      --accent: #38bdf8;     /* Electric Studio Cyan LED Glow */
+      --accent2: #f97316;    /* Amber LED Accent */
+      --line: rgba(56, 189, 248, 0.25); /* Cyan Tinted Joint Line */
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
     }
 
     * {
@@ -24,38 +28,41 @@
 
     body {
       background-color: var(--bg);
-      background-image: linear-gradient(180deg, rgba(7, 10, 18, 0.88) 0%, rgba(7, 10, 18, 0.94) 100%), 
+      background-image: linear-gradient(180deg, rgba(7, 10, 18, 0.65) 0%, rgba(7, 10, 18, 0.78) 100%), 
                         url('site-bg.jpg');
       background-repeat: repeat;
       background-size: 250px 250px;
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
       padding: 0;
       margin: 0;
     }
 
     header {
-      padding: 20px 5%;
+      padding: 22px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(7, 10, 18, 0.9) 0%, rgba(7, 10, 18, 0.95) 100%), 
+      background: linear-gradient(180deg, rgba(7, 10, 18, 0.8) 0%, rgba(7, 10, 18, 0.9) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
     }
 
+    /* Slick Tech Logo Styling */
     .logo {
-      font-weight: 800;
-      font-size: 1.2rem;
-      letter-spacing: 0.05em;
-      color: var(--text);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      color: #ffffff;
       text-transform: uppercase;
+      text-shadow: 0 0 15px rgba(56, 189, 248, 0.6), 0 0 30px rgba(56, 189, 248, 0.2);
     }
 
     .logo span {
-      color: var(--accent);
-      text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+      color: var(--accent2);
+      text-shadow: 0 0 18px rgba(249, 115, 22, 0.7), 0 0 35px rgba(249, 115, 22, 0.3);
     }
 
     main {
@@ -64,40 +71,42 @@
       padding: 40px 20px;
     }
 
-    /* Hero Section with Dimmed Background Atmosphere */
+    /* Hero Section with Vibrant Background Atmosphere */
     .hero {
       text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(180deg, rgba(7, 10, 18, 0.78) 0%, rgba(7, 10, 18, 0.95) 100%), 
+      padding: 85px 20px;
+      background: linear-gradient(180deg, rgba(7, 10, 18, 0.55) 0%, rgba(7, 10, 18, 0.82) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
       border-radius: 16px;
       border: 1px solid var(--line);
       margin-bottom: 40px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), var(--shadow);
     }
 
     .hero-badge {
       display: inline-block;
-      background: rgba(56, 189, 248, 0.12);
+      background: rgba(56, 189, 248, 0.18);
       color: var(--accent);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      padding: 6px 14px;
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      padding: 6px 16px;
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 20px;
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      font-weight: 800;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 900;
       line-height: 1.15;
       margin-bottom: 20px;
-      letter-spacing: -0.02em;
-      color: var(--text);
+      letter-spacing: 0.02em;
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     }
 
     .hero p {
@@ -112,18 +121,19 @@
     }
 
     .section-title {
+      font-family: 'Orbitron', sans-serif;
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--accent);
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       margin-bottom: 12px;
-      text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
 
-    /* Standard Cards Matching Studio Floor Backdrop */
+    /* Brighter Section Cards */
     .card {
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(7, 10, 18, 0.94) 100%), 
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(7, 10, 18, 0.85) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
       border: 1px solid var(--line);
       border-radius: 16px;
@@ -138,14 +148,14 @@
       background: #000;
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(56, 189, 248, 0.2);
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .video-shell:hover {
       border-color: var(--accent);
-      box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.35);
     }
 
     video {
@@ -165,7 +175,7 @@
 
     /* Feature Cards Matching Studio Backdrop */
     .feature-card {
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(7, 10, 18, 0.92) 100%), 
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(7, 10, 18, 0.82) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
       border: 1px solid var(--line);
       border-radius: 12px;
@@ -174,140 +184,21 @@
     }
 
     .feature-num {
+      font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--accent);
       margin-bottom: 8px;
-      text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
 
     .cta-button {
       display: inline-block;
       background: var(--accent);
       color: #070a12;
-      font-weight: 700;
+      font-weight: 800;
       padding: 14px 28px;
       border-radius: 8px;
       text-decoration: none;
       transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-    }
-
-    .cta-button:hover {
-      opacity: 0.95;
-      transform: translateY(-1px);
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--muted);
-      font-size: 0.85rem;
-      border-top: 1px solid var(--line);
-      margin-top: 80px;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="logo">Signal<span>Bridge</span></div>
-    <div><a href="#contact" class="cta-button" style="padding: 8px 16px; font-size: 0.85rem;">Free Sample</a></div>
-  </header>
-
-  <main>
-    <!-- Hero Section with Studio Background Atmosphere -->
-    <section class="hero">
-      <div class="hero-badge">Built for Louisiana Powersports & Marine</div>
-      <h1>Turn Flat Lot Photos Into High-Converting Showroom Media</h1>
-      <p>Stop letting $80k+ inventory sit on grey concrete in your ad feeds. SignalBridge converts raw lot photos into cinematic outdoor video assets in under 24 hours.</p>
-    </section>
-
-    <!-- Visual Transformation Engine Section -->
-    <section class="section" id="comparison">
-      <div class="section-title">Visual Transformation Engine</div>
-      <div class="card">
-        <h2 style="margin-top:0; font-size: 1.5rem; margin-bottom: 10px; color: var(--text);">Live Proof: Overcast Lot to Golden Hour Action</h2>
-        <p style="color: var(--muted); margin-bottom: 24px;">
-          Watch how we take static lot photography and elevate it into region-authentic motion campaigns tailored to local buyers.
-        </p>
-
-        <div class="video-shell">
-          <video 
-            width="100%" 
-            height="100%" 
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            controls>
-            <source src="transformation-demo.mp4" type="video/mp4">
-            <source src="./transformation-demo.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-          </video>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
-          <div style="font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;">
-            RAW LOT PLATE &rarr; LOUISIANA BAYOU ENVIRONMENT
-          </div>
-          <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; text-shadow: 0 0 10px rgba(249, 115, 22, 0.3);">
-            DELIVERED IN &lt; 24 HOURS
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Turnkey Workflow Section (Friction Reducers) -->
-    <section class="section" id="workflow">
-      <div class="section-title">Zero Lot Disruption</div>
-      <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--text);">How It Works for Dealership GMs</h2>
-      <div class="grid-3">
-        <div class="feature-card">
-          <div class="feature-num">01</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Send Raw Photos</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">Snap a phone photo on your lot or send us a link to your current inventory page. No camera crews or prep work needed.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-num">02</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Pipeline</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">We match your unit with region-authentic environments, custom lighting, and motion graphics built to stop scrolling buyers.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-num">03</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Publish & Sell Faster</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">Receive broadcast-ready 4K video clips and high-res static hero renders formatted for Facebook, Instagram, and VDP listings.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Core Capability Section -->
-    <section class="section" id="services">
-      <div class="section-title">Core Capability</div>
-      <div class="card">
-        <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--text);">Built for Marine, Off-Road & High-End Automotive</h3>
-        <p style="color: var(--muted);">
-          High-margin center consoles, top-tier side-by-sides, and luxury pre-owned units deserve premium media. SignalBridge gives independent dealers elite studio marketing power at a fraction of full agency costs.
-        </p>
-      </div>
-    </section>
-
-    <!-- Zero-Risk Lead Magnet Section -->
-    <section class="section" id="contact" style="text-align: center;">
-      <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.4); box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);">
-        <h2 style="font-size: 1.8rem; margin-bottom: 12px; color: var(--text);">Test SignalBridge on Your Current Inventory</h2>
-        <p style="color: var(--muted); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
-          Send us 1 raw photo from a hard-to-sell unit currently sitting on your lot. We will return a broadcast-ready sample video transformation within 24 hours—100% free.
-        </p>
-        <a href="mailto:contact@signalbridge.com?subject=Free%20Sample%20Transformation%20Request" class="cta-button">Claim Your Free Sample Transformation</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2026 SignalBridge. All rights reserved.
-  </footer>
-
-</body>
-</html>
+      box-shadow

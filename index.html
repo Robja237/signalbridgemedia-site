@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SignalBridge | High-Velocity Showroom Media</title>
-  <!-- Google Tech Font Import: Orbitron & Inter -->
+  <title>SignalBridge Media | High-Velocity Showroom Visuals</title>
+  <!-- Google Tech Font Import: Orbitron (300, 700, 900) & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #070a12;
@@ -49,20 +49,29 @@
                   url('hero-bg.jpg') center/cover no-repeat;
     }
 
-    /* Slick Tech Logo Styling */
+    /* Slick Tech Logo Styling: SignalBridgeMedia */
     .logo {
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      font-size: 1.4rem;
-      letter-spacing: 0.12em;
+      font-size: 1.35rem;
+      letter-spacing: 0.08em;
       color: #ffffff;
       text-transform: uppercase;
       text-shadow: 0 0 15px rgba(56, 189, 248, 0.6), 0 0 30px rgba(56, 189, 248, 0.2);
+      display: flex;
+      align-items: center;
     }
 
     .logo span {
       color: var(--accent2);
       text-shadow: 0 0 18px rgba(249, 115, 22, 0.7), 0 0 35px rgba(249, 115, 22, 0.3);
+    }
+
+    .logo .logo-media {
+      font-weight: 300;
+      color: #f8fafc;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 10px rgba(248, 250, 252, 0.4);
     }
 
     main {
@@ -131,7 +140,7 @@
       text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
 
-    /* Brighter Section Cards */
+    /* Cards Matching Studio Floor Backdrop */
     .card {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(7, 10, 18, 0.85) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
@@ -141,21 +150,28 @@
       box-shadow: var(--shadow);
     }
 
-    /* Video Player Shell Styled for Studio Atmosphere */
+    /* Clean Tech Video Player Shell (No Blue Box Overlay) */
     .video-shell {
+      position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #000;
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(56, 189, 248, 0.2);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
     }
 
-    .video-shell:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 35px rgba(56, 189, 248, 0.35);
+    /* Screen Tech Gloss Effect */
+    .video-gloss {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 40%, transparent 100%);
+      z-index: 2;
     }
 
     video {
@@ -196,12 +212,14 @@
       display: inline-block;
       background: var(--accent);
       color: #070a12;
-      font-weight: 800;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
       padding: 14px 28px;
       border-radius: 8px;
       text-decoration: none;
       transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: 0 0 22px rgba(56, 189, 248, 0.4);
+      letter-spacing: 0.05em;
     }
 
     .cta-button:hover {
@@ -223,28 +241,29 @@
 <body>
 
   <header>
-    <div class="logo">Signal<span>Bridge</span></div>
-    <div><a href="#contact" class="cta-button" style="padding: 8px 16px; font-size: 0.85rem;">Free Sample</a></div>
+    <div class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></div>
+    <div><a href="#contact" class="cta-button" style="padding: 8px 16px; font-size: 0.8rem;">Free Sample</a></div>
   </header>
 
   <main>
-    <!-- Hero Section with Studio Background Atmosphere -->
+    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-badge">Built for Louisiana Powersports & Marine</div>
       <h1>Turn Flat Lot Photos Into High-Converting Showroom Media</h1>
-      <p>Stop letting $80k+ inventory sit on grey concrete in your ad feeds. SignalBridge converts raw lot photos into cinematic outdoor video assets in under 24 hours.</p>
+      <p>Stop letting $80k+ inventory sit on grey concrete in your ad feeds. SignalBridge Media converts raw lot photos into cinematic outdoor video assets in under 24 hours.</p>
     </section>
 
     <!-- Visual Transformation Engine Section -->
     <section class="section" id="comparison">
       <div class="section-title">Visual Transformation Engine</div>
       <div class="card">
-        <h2 style="font-family: 'Orbitron', sans-serif; margin-top:0; font-size: 1.4rem; margin-bottom: 10px; color: var(--text);">Live Proof: Overcast Lot to Golden Hour Action</h2>
+        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; margin-top:0; font-size: 1.4rem; margin-bottom: 10px; color: var(--text);">Live Proof: Overcast Lot to Golden Hour Action</h2>
         <p style="color: var(--muted); margin-bottom: 24px;">
           Watch how we take static lot photography and elevate it into region-authentic motion campaigns tailored to local buyers.
         </p>
 
         <div class="video-shell">
+          <div class="video-gloss"></div>
           <video 
             width="100%" 
             height="100%" 
@@ -272,53 +291,4 @@
 
     <!-- Turnkey Workflow Section (Friction Reducers) -->
     <section class="section" id="workflow">
-      <div class="section-title">Zero Lot Disruption</div>
-      <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.6rem; margin-bottom: 20px; color: var(--text);">How It Works for Dealership GMs</h2>
-      <div class="grid-3">
-        <div class="feature-card">
-          <div class="feature-num">01</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Send Raw Photos</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">Snap a phone photo on your lot or send us a link to your current inventory page. No camera crews or prep work needed.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-num">02</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Pipeline</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">We match your unit with region-authentic environments, custom lighting, and motion graphics built to stop scrolling buyers.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-num">03</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Publish & Sell Faster</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">Receive broadcast-ready 4K video clips and high-res static hero renders formatted for Facebook, Instagram, and VDP listings.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Core Capability Section -->
-    <section class="section" id="services">
-      <div class="section-title">Core Capability</div>
-      <div class="card">
-        <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: var(--text);">Built for Marine, Off-Road & High-End Automotive</h3>
-        <p style="color: var(--muted);">
-          High-margin center consoles, top-tier side-by-sides, and luxury pre-owned units deserve premium media. SignalBridge gives independent dealers elite studio marketing power at a fraction of full agency costs.
-        </p>
-      </div>
-    </section>
-
-    <!-- Zero-Risk Lead Magnet Section -->
-    <section class="section" id="contact" style="text-align: center;">
-      <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.5); box-shadow: 0 0 35px rgba(56, 189, 248, 0.2);">
-        <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.6rem; margin-bottom: 12px; color: var(--text);">Test SignalBridge on Your Current Inventory</h2>
-        <p style="color: var(--muted); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
-          Send us 1 raw photo from a hard-to-sell unit currently sitting on your lot. We will return a broadcast-ready sample video transformation within 24 hours—100% free.
-        </p>
-        <a href="mailto:contact@signalbridge.com?subject=Free%20Sample%20Transformation%20Request" class="cta-button">Claim Your Free Sample Transformation</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2026 SignalBridge. All rights reserved.
-  </footer>
-
-</body>
-</html>
+      <div class="section

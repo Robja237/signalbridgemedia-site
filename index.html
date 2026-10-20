@@ -137,15 +137,31 @@
       box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
     }
 
-    .hero h1 {
+    /* Restructured Headline Typography */
+    .hero-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 3.2rem);
-      font-weight: 900;
-      line-height: 1.15;
       margin-bottom: 24px;
-      letter-spacing: 0.02em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-title-top {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 900;
+      color: var(--accent2);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-shadow: 0 0 25px rgba(249, 115, 22, 0.6), 0 0 50px rgba(249, 115, 22, 0.2);
+    }
+
+    .hero-title-sub {
+      font-size: clamp(1.2rem, 3.2vw, 1.8rem);
+      font-weight: 700;
       color: #ffffff;
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.02em;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     }
 
     .hero-subdeck {
@@ -432,7 +448,11 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-badge">High-Velocity Visual Ordnance for Powersports & Marine</div>
-      <h1>Kill the Lot Decay. Turn Static Metal Into Motion Revenue.</h1>
+      
+      <div class="hero-title">
+        <span class="hero-title-top">KILL THE LOT DECAY</span>
+        <span class="hero-title-sub">Turn Static Inventory Photos Into High-Velocity Motion Revenue</span>
+      </div>
       
       <div class="hero-subdeck">
         <p><strong>Turn flat wet-pavement lot photos into high-octane motion campaigns</strong> that hijack ad feeds, shatter scroll fatigue, and compel buyers to stop scrolling.</p>

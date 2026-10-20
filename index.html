@@ -34,7 +34,7 @@
       scroll-behavior: smooth;
     }
 
-    /* Base Body: Static Scroll-Locked Tile Background for Mobile */
+    /* Base Body: Native Studio Backdrop for Desktop & Mobile */
     body {
       min-height: 100vh;
       background-color: var(--bg);
@@ -45,32 +45,18 @@
       position: relative;
     }
 
-    /* DESKTOP ENGINE: Parallax Depth Layer for iMacs / Laptops */
+    /* DESKTOP ENGINE: Hardware-Accelerated Parallax Attachment on iMac */
     @media (min-width: 1024px) {
       body {
-        background-image: none; /* Hide static body image on desktop */
-      }
-
-      .parallax-desktop {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-image: linear-gradient(180deg, rgba(7, 10, 18, 0.65) 0%, rgba(7, 10, 18, 0.85) 100%), 
-                          url('site-bg.jpg');
-        background-repeat: repeat;
-        background-size: 250px 250px;
         background-attachment: fixed;
-        z-index: -1;
-        pointer-events: none;
+        transform: translateZ(0); /* Forces GPU compositing mode on Mac Safari/Chrome */
       }
     }
 
-    /* MOBILE ENGINE: Completely Remove Floating Layer for Phones */
+    /* MOBILE ENGINE: Clean Scroll-Locked Tile Background on Phones */
     @media (max-width: 1023px) {
-      .parallax-desktop {
-        display: none !important;
+      body {
+        background-attachment: scroll;
       }
     }
 
@@ -385,9 +371,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Desktop-Only Floating Parallax Engine Layer -->
-  <div class="parallax-desktop"></div>
 
   <header>
     <div class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></div>

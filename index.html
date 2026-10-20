@@ -18,7 +18,6 @@
       --accent2: #f97316;    /* Amber LED Accent */
       --line: rgba(56, 189, 248, 0.25); /* Cyan Tinted Joint Line */
       --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.85);
-      --parallax-offset: 0px;
     }
 
     * {
@@ -33,30 +32,19 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
       scroll-behavior: smooth;
+      min-height: 100%;
     }
 
+    /* Native GPU Background Layer on Body */
     body {
       min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
       background-color: var(--bg);
-    }
-
-    /* Fixed Full-Height Backdrop with GPU Translation Offset */
-    .parallax-backdrop {
-      position: fixed;
-      top: -30vh;
-      left: 0;
-      width: 100vw;
-      height: 160vh;
       background-image: linear-gradient(180deg, rgba(7, 10, 18, 0.65) 0%, rgba(7, 10, 18, 0.85) 100%), 
                         url('site-bg.jpg');
       background-repeat: repeat;
       background-size: 250px 250px;
-      z-index: -1;
-      pointer-events: none;
-      transform: translate3d(0, var(--parallax-offset), 0);
-      will-change: transform;
+      background-attachment: fixed; /* Native smooth background lock on desktop */
+      position: relative;
     }
 
     header {
@@ -367,12 +355,16 @@
       border-top: 1px solid var(--line);
       margin-top: 80px;
     }
+
+    /* Mobile WebKit Fallback: Safari disables fixed backgrounds on iOS to save GPU memory */
+    @supports (-webkit-touch-callout: none) {
+      body {
+        background-attachment: scroll;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Backdrop Container -->
-  <div class="parallax-backdrop" id="parallaxBackdrop"></div>
 
   <header>
     <div class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></div>
@@ -498,30 +490,6 @@
   <footer>
     &copy; 2026 SignalBridge Media. All rights reserved.
   </footer>
-
-  <!-- Universal 60fps Scroll Driver -->
-  <script>
-    (function() {
-      var root = document.documentElement;
-      var ticking = false;
-
-      function updateParallax() {
-        var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-        // Background shifts upward at 22% scroll rate for deeper parallax depth extending to footer
-        root.style.setProperty('--parallax-offset', (-scrollY * 0.22) + 'px');
-        ticking = false;
-      }
-
-      window.addEventListener('scroll', function() {
-        if (!ticking) {
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      }, { passive: true });
-
-      updateParallax();
-    })();
-  </script>
 
 </body>
 </html>

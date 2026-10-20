@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SignalBridge Media | High-Velocity Showroom Visuals</title>
   <!-- Google Tech Font Import: Orbitron (300, 700, 900) & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +11,7 @@
   <style>
     :root {
       --bg: #070a12;
-      --card-bg: rgba(15, 23, 42, 0.82);
+      --card-bg: rgba(15, 23, 42, 0.78);
       --text: #f8fafc;       /* Icy Titanium White */
       --muted: #cbd5e1;      /* Crisp Silver Subtext */
       --accent: #38bdf8;     /* Electric Studio Cyan LED Glow */
@@ -26,22 +26,53 @@
       padding: 0;
     }
 
-    /* Universal Failsafe Studio Tile Background */
-    html {
+    /* 3D Perspective Parallax Wrapper Setup */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
       background-color: var(--bg);
       color: var(--text);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       line-height: 1.6;
-      scroll-behavior: smooth;
     }
 
-    body {
+    .parallax-viewport {
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      perspective: 2px;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .parallax-group {
+      position: relative;
       min-height: 100vh;
-      background-color: var(--bg);
+      transform-style: preserve-3d;
+    }
+
+    /* Slow-Moving Parallax Background Layer (Full Height Coverage) */
+    .parallax-bg-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      min-height: 100%;
       background-image: linear-gradient(180deg, rgba(7, 10, 18, 0.65) 0%, rgba(7, 10, 18, 0.82) 100%), 
                         url('site-bg.jpg');
       background-repeat: repeat;
       background-size: 250px 250px;
+      transform: translateZ(-1px) scale(1.5);
+      z-index: -1;
+    }
+
+    /* Foreground Content Layer */
+    .parallax-content {
+      position: relative;
+      z-index: 1;
     }
 
     header {
@@ -52,7 +83,6 @@
       border-bottom: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(7, 10, 18, 0.85) 0%, rgba(7, 10, 18, 0.95) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
-      backdrop-filter: blur(8px);
     }
 
     /* Slick Tech Logo Styling: SignalBridgeMedia */
@@ -86,7 +116,7 @@
       padding: 40px 20px;
     }
 
-    /* Hero Section with Locked Studio Background */
+    /* Hero Section with Box-Locked Background */
     .hero {
       text-align: center;
       padding: 85px 20px;
@@ -146,7 +176,7 @@
       text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     }
 
-    /* Standard Cards with Studio Backdrop */
+    /* Standard Cards with Locked Studio Background */
     .card {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(7, 10, 18, 0.92) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
@@ -354,130 +384,143 @@
 </head>
 <body>
 
-  <header>
-    <div class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></div>
-    <div><a href="#contact" class="cta-button" style="padding: 8px 16px; font-size: 0.8rem;">Free Sample</a></div>
-  </header>
+  <!-- Parallax 3D Viewport Wrapper -->
+  <div class="parallax-viewport">
+    <div class="parallax-group">
+      
+      <!-- Slow-Moving Background Tile Layer -->
+      <div class="parallax-bg-layer"></div>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-badge">Built for Louisiana Powersports & Marine</div>
-      <h1>Turn Flat Lot Photos Into High-Converting Showroom Media</h1>
-      <p>Stop letting $80k+ inventory sit on grey concrete in your ad feeds. SignalBridge Media converts raw lot photos into cinematic outdoor video assets in under 24 hours.</p>
-    </section>
+      <!-- Foreground Page Content Layer -->
+      <div class="parallax-content">
+        <header>
+          <div class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></div>
+          <div><a href="#contact" class="cta-button" style="padding: 8px 16px; font-size: 0.8rem;">Free Sample</a></div>
+        </header>
 
-    <!-- Visual Transformation Engine Section -->
-    <section class="section" id="comparison">
-      <div class="section-title">Visual Transformation Engine</div>
-      <div class="card">
-        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; margin-top:0; font-size: 1.4rem; margin-bottom: 10px; color: var(--text);">Live Proof: Overcast Lot to Golden Hour Action</h2>
-        <p style="color: var(--muted); margin-bottom: 24px;">
-          Watch how we take static lot photography and elevate it into region-authentic motion campaigns tailored to local buyers.
-        </p>
+        <main>
+          <!-- Hero Section -->
+          <section class="hero">
+            <div class="hero-badge">Built for Louisiana Powersports & Marine</div>
+            <h1>Turn Flat Lot Photos Into High-Converting Showroom Media</h1>
+            <p>Stop letting $80k+ inventory sit on grey concrete in your ad feeds. SignalBridge Media converts raw lot photos into cinematic outdoor video assets in under 24 hours.</p>
+          </section>
 
-        <div class="video-shell">
-          <div class="reticle-top-left"></div>
-          <div class="reticle-bottom-right"></div>
-          <div class="video-scanlines"></div>
-          <div class="video-scanline-beam"></div>
-          
-          <!-- Live Telemetry Ticker Overlay -->
-          <div class="hud-ticker-wrap">
-            <div class="hud-status-badge"><span class="rec-dot"></span> LIVE HUD</div>
-            <div class="hud-ticker-track">
-              <span class="hud-ticker-item">// SYS.ONLINE</span>
-              <span class="hud-ticker-item">// 4K ULTRA HD RENDER</span>
-              <span class="hud-ticker-item">// 24-HR TURNAROUND</span>
-              <span class="hud-ticker-item">// FB & IG ADS READY</span>
-              <span class="hud-ticker-item">// VDP LISTING OPTIMIZED</span>
-              <span class="hud-ticker-item">// REGION-AUTHENTIC ENVIRONMENT</span>
-              <span class="hud-ticker-item">// LATENCY: 12ms</span>
-              <!-- Repeated Track for Continuous Loop -->
-              <span class="hud-ticker-item">// SYS.ONLINE</span>
-              <span class="hud-ticker-item">// 4K ULTRA HD RENDER</span>
-              <span class="hud-ticker-item">// 24-HR TURNAROUND</span>
-              <span class="hud-ticker-item">// FB & IG ADS READY</span>
-              <span class="hud-ticker-item">// VDP LISTING OPTIMIZED</span>
-              <span class="hud-ticker-item">// REGION-AUTHENTIC ENVIRONMENT</span>
-              <span class="hud-ticker-item">// LATENCY: 12ms</span>
+          <!-- Visual Transformation Engine Section -->
+          <section class="section" id="comparison">
+            <div class="section-title">Visual Transformation Engine</div>
+            <div class="card">
+              <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; margin-top:0; font-size: 1.4rem; margin-bottom: 10px; color: var(--text);">Live Proof: Overcast Lot to Golden Hour Action</h2>
+              <p style="color: var(--muted); margin-bottom: 24px;">
+                Watch how we take static lot photography and elevate it into region-authentic motion campaigns tailored to local buyers.
+              </p>
+
+              <div class="video-shell">
+                <div class="reticle-top-left"></div>
+                <div class="reticle-bottom-right"></div>
+                <div class="video-scanlines"></div>
+                <div class="video-scanline-beam"></div>
+                
+                <!-- Live Telemetry Ticker Overlay -->
+                <div class="hud-ticker-wrap">
+                  <div class="hud-status-badge"><span class="rec-dot"></span> LIVE HUD</div>
+                  <div class="hud-ticker-track">
+                    <span class="hud-ticker-item">// SYS.ONLINE</span>
+                    <span class="hud-ticker-item">// 4K ULTRA HD RENDER</span>
+                    <span class="hud-ticker-item">// 24-HR TURNAROUND</span>
+                    <span class="hud-ticker-item">// FB & IG ADS READY</span>
+                    <span class="hud-ticker-item">// VDP LISTING OPTIMIZED</span>
+                    <span class="hud-ticker-item">// REGION-AUTHENTIC ENVIRONMENT</span>
+                    <span class="hud-ticker-item">// LATENCY: 12ms</span>
+                    <!-- Repeated Track for Continuous Loop -->
+                    <span class="hud-ticker-item">// SYS.ONLINE</span>
+                    <span class="hud-ticker-item">// 4K ULTRA HD RENDER</span>
+                    <span class="hud-ticker-item">// 24-HR TURNAROUND</span>
+                    <span class="hud-ticker-item">// FB & IG ADS READY</span>
+                    <span class="hud-ticker-item">// VDP LISTING OPTIMIZED</span>
+                    <span class="hud-ticker-item">// REGION-AUTHENTIC ENVIRONMENT</span>
+                    <span class="hud-ticker-item">// LATENCY: 12ms</span>
+                  </div>
+                </div>
+
+                <video 
+                  width="100%" 
+                  height="100%" 
+                  autoplay 
+                  loop 
+                  muted 
+                  playsinline 
+                  controls>
+                  <source src="transformation-demo.mp4" type="video/mp4">
+                  <source src="./transformation-demo.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
+                <div style="font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;">
+                  RAW LOT PLATE &rarr; LOUISIANA BAYOU ENVIRONMENT
+                </div>
+                <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; text-shadow: 0 0 12px rgba(249, 115, 22, 0.4);">
+                  DELIVERED IN &lt; 24 HOURS
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
 
-          <video 
-            width="100%" 
-            height="100%" 
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            controls>
-            <source src="transformation-demo.mp4" type="video/mp4">
-            <source src="./transformation-demo.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-          </video>
-        </div>
+          <!-- Turnkey Workflow Section (Friction Reducers) -->
+          <section class="section" id="workflow">
+            <div class="section-title">Zero Lot Disruption</div>
+            <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--text);">How It Works for Dealership GMs</h2>
+            <div class="grid-3">
+              <div class="feature-card">
+                <div class="feature-num">01</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Send Raw Photos</h3>
+                <p style="color: var(--muted); font-size: 0.95rem;">Snap a phone photo on your lot or send us a link to your current inventory page. No camera crews or prep work needed.</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-num">02</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Pipeline</h3>
+                <p style="color: var(--muted); font-size: 0.95rem;">We match your unit with region-authentic environments, custom lighting, and motion graphics built to stop scrolling buyers.</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-num">03</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Publish & Sell Faster</h3>
+                <p style="color: var(--muted); font-size: 0.95rem;">Receive broadcast-ready 4K video clips and high-res static hero renders formatted for Facebook, Instagram, and VDP listings.</p>
+              </div>
+            </div>
+          </section>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
-          <div style="font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;">
-            RAW LOT PLATE &rarr; LOUISIANA BAYOU ENVIRONMENT
-          </div>
-          <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; text-shadow: 0 0 12px rgba(249, 115, 22, 0.4);">
-            DELIVERED IN &lt; 24 HOURS
-          </div>
-        </div>
+          <!-- Core Capability Section -->
+          <section class="section" id="services">
+            <div class="section-title">Core Capability</div>
+            <div class="card">
+              <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 12px; color: var(--text);">Built for Marine, Off-Road & High-End Automotive</h3>
+              <p style="color: var(--muted);">
+                High-margin center consoles, top-tier side-by-sides, and luxury pre-owned units deserve premium media. SignalBridge Media gives independent dealers elite studio marketing power at a fraction of full agency costs.
+              </p>
+            </div>
+          </section>
+
+          <!-- Zero-Risk Lead Magnet Section -->
+          <section class="section" id="contact" style="text-align: center;">
+            <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.5); box-shadow: 0 0 35px rgba(56, 189, 248, 0.2);">
+              <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 12px; color: var(--text);">Test SignalBridge Media on Your Current Inventory</h2>
+              <p style="color: var(--muted); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Send us 1 raw photo from a hard-to-sell unit currently sitting on your lot. We will return a broadcast-ready sample video transformation within 24 hours—100% free.
+              </p>
+              <a href="mailto:contact@signalbridge.com?subject=Free%20Sample%20Transformation%20Request" class="cta-button">Claim Your Free Sample Transformation</a>
+            </div>
+          </section>
+        </main>
+
+        <footer>
+          &copy; 2026 SignalBridge Media. All rights reserved.
+        </footer>
       </div>
-    </section>
 
-    <!-- Turnkey Workflow Section (Friction Reducers) -->
-    <section class="section" id="workflow">
-      <div class="section-title">Zero Lot Disruption</div>
-      <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--text);">How It Works for Dealership GMs</h2>
-      <div class="grid-3">
-        <div class="feature-card">
-          <div class="feature-num">01</div>
-          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Send Raw Photos</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">Snap a phone photo on your lot or send us a link to your current inventory page. No camera crews or prep work needed.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-num">02</div>
-          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Pipeline</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">We match your unit with region-authentic environments, custom lighting, and motion graphics built to stop scrolling buyers.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-num">03</div>
-          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Publish & Sell Faster</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">Receive broadcast-ready 4K video clips and high-res static hero renders formatted for Facebook, Instagram, and VDP listings.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Core Capability Section -->
-    <section class="section" id="services">
-      <div class="section-title">Core Capability</div>
-      <div class="card">
-        <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 12px; color: var(--text);">Built for Marine, Off-Road & High-End Automotive</h3>
-        <p style="color: var(--muted);">
-          High-margin center consoles, top-tier side-by-sides, and luxury pre-owned units deserve premium media. SignalBridge Media gives independent dealers elite studio marketing power at a fraction of full agency costs.
-        </p>
-      </div>
-    </section>
-
-    <!-- Zero-Risk Lead Magnet Section -->
-    <section class="section" id="contact" style="text-align: center;">
-      <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.5); box-shadow: 0 0 35px rgba(56, 189, 248, 0.2);">
-        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 12px; color: var(--text);">Test SignalBridge Media on Your Current Inventory</h2>
-        <p style="color: var(--muted); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
-          Send us 1 raw photo from a hard-to-sell unit currently sitting on your lot. We will return a broadcast-ready sample video transformation within 24 hours—100% free.
-        </p>
-        <a href="mailto:contact@signalbridge.com?subject=Free%20Sample%20Transformation%20Request" class="cta-button">Claim Your Free Sample Transformation</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2026 SignalBridge Media. All rights reserved.
-  </footer>
+    </div>
+  </div>
 
 </body>
 </html>

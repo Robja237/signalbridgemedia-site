@@ -156,7 +156,6 @@
       text-transform: uppercase;
       transform: skewX(-6deg);
       
-      /* Dark Titanium-to-Crimson Metallic Gradient with HUD Composite Mesh Texture */
       background: repeating-linear-gradient(
                     45deg, 
                     rgba(255, 255, 255, 0.08), 
@@ -168,7 +167,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       
-      /* Dark Crimson Red Outline with Heavy Tactical Backlight */
       -webkit-text-stroke: 1.8px rgba(185, 28, 28, 0.95);
       filter: drop-shadow(0 0 15px rgba(220, 38, 38, 0.85)) drop-shadow(0 0 30px rgba(185, 28, 28, 0.4));
       line-height: 1.1;
@@ -275,6 +273,20 @@
       text-transform: uppercase;
       margin-bottom: 12px;
       text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .section-title-scroll {
+      font-size: 0.7rem;
+      color: var(--accent2);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 8px rgba(249, 115, 22, 0.5);
+      animation: pulse 1.8s infinite;
     }
 
     .card {
@@ -501,7 +513,10 @@
 
     <!-- Visual Transformation Engine Section -->
     <section class="section" id="comparison">
-      <div class="section-title">The Visual Ordnance Pipeline</div>
+      <div class="section-title">
+        <span>The Visual Ordnance Pipeline</span>
+        <span class="section-title-scroll">// SCROLL DOWN TO VIEW PIPELINE IN ACTION &darr;</span>
+      </div>
       <div class="card">
         <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; margin-top:0; font-size: 1.4rem; margin-bottom: 10px; color: var(--text);">Overcast Asphalt &rarr; Golden Hour Bayou Action</h2>
         <p style="color: var(--muted); margin-bottom: 24px;">

@@ -37,6 +37,8 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7, 10, 18, 0.9) 0%, rgba(7, 10, 18, 0.95) 100%), 
+                  url('hero-bg.jpg') center/cover no-repeat;
     }
 
     .logo {
@@ -57,7 +59,7 @@
       padding: 40px 20px;
     }
 
-    /* Hero Section with Dimmed & Ambient Blurred Background */
+    /* Hero Section with Dimmed Background Atmosphere */
     .hero {
       text-align: center;
       padding: 80px 20px;
@@ -111,8 +113,10 @@
       margin-bottom: 12px;
     }
 
+    /* Standard Cards Matching the Background Studio Theme */
     .card {
-      background: var(--card-bg);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(7, 10, 18, 0.94) 100%), 
+                  url('hero-bg.jpg') center/cover no-repeat;
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 32px;
@@ -135,11 +139,14 @@
       margin-top: 20px;
     }
 
+    /* Feature Cards Matching the Studio Atmosphere */
     .feature-card {
-      background: rgba(15, 23, 42, 0.6);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(7, 10, 18, 0.92) 100%), 
+                  url('hero-bg.jpg') center/cover no-repeat;
       border: 1px solid var(--line);
       border-radius: 12px;
       padding: 24px;
+      box-shadow: var(--shadow);
     }
 
     .feature-num {
@@ -182,7 +189,7 @@
   </header>
 
   <main>
-    <!-- Hero Section with Background Atmosphere -->
+    <!-- Hero Section with Studio Background Atmosphere -->
     <section class="hero">
       <div class="hero-badge">Built for Louisiana Powersports & Marine</div>
       <h1>Turn Flat Lot Photos Into High-Converting Showroom Media</h1>

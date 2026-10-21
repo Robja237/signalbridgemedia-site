@@ -55,6 +55,9 @@
       background: linear-gradient(180deg, rgba(7, 10, 18, 0.85) 0%, rgba(7, 10, 18, 0.95) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
       backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo {
@@ -68,6 +71,8 @@
       display: flex;
       align-items: center;
       white-space: nowrap;
+      cursor: pointer;
+      text-decoration: none;
     }
 
     .logo span {
@@ -82,7 +87,6 @@
       text-shadow: 0 0 10px rgba(248, 250, 252, 0.4);
     }
 
-    /* Thin Cyan LED Connecting Rail */
     .header-neon-rail {
       flex: 1;
       height: 1px;
@@ -94,9 +98,43 @@
       margin: 0 8px;
     }
 
-    .header-cta-wrap {
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       white-space: nowrap;
       flex-shrink: 0;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: var(--text);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+      color: #ffffff;
+    }
+
+    /* Multi-View Sub-Page Architecture */
+    .page-view {
+      display: none;
+    }
+
+    .page-view.active {
+      display: block;
     }
 
     main {
@@ -116,12 +154,6 @@
       border: 1px solid var(--line);
       margin-bottom: 30px;
       box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), var(--shadow);
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .hero:hover {
-      border-color: rgba(56, 189, 248, 0.45);
-      box-shadow: 0 0 40px rgba(56, 189, 248, 0.25), var(--shadow);
     }
 
     .hero-badge {
@@ -139,7 +171,6 @@
       box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
     }
 
-    /* Left / Right Staggered Precise Spacing Architecture */
     .hero-title {
       font-family: 'Orbitron', sans-serif;
       margin-bottom: 18px;
@@ -194,7 +225,6 @@
       word-wrap: break-word;
     }
 
-    /* Left-Justified, Compact Subdeck Bullets */
     .hero-subdeck {
       max-width: 680px;
       margin: 0 auto 20px auto;
@@ -229,7 +259,6 @@
       font-weight: 700;
     }
 
-    /* Tactile Cyberpunk Button Architecture */
     .cta-button {
       display: inline-flex;
       align-items: center;
@@ -259,19 +288,12 @@
       border-bottom: 3px solid #0284c7;
     }
 
-    .cta-button:active {
-      transform: translateY(2px);
-      border-bottom: 2px solid #0369a1;
-      box-shadow: 0 2px 10px rgba(56, 189, 248, 0.4);
-    }
-
     .cta-button-header {
       padding: 6px 12px;
       font-size: 0.68rem;
       border-bottom: 2px solid #0369a1;
     }
 
-    /* Top Hero Mobile Scroll Indicator */
     .hero-scroll-notice {
       display: block;
       margin-top: 14px;
@@ -285,16 +307,16 @@
       animation: pulse 1.8s infinite;
     }
 
-    /* Pricing Section Architecture */
-    .pricing-grid {
+    /* Sub-Page Plans Grid Architecture */
+    .plans-subpage-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
       margin-top: 24px;
     }
 
-    .pricing-card {
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(7, 10, 18, 0.95) 100%);
+    .plan-card-box {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(7, 10, 18, 0.96) 100%);
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 32px 24px;
@@ -302,21 +324,22 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
+      cursor: pointer;
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .pricing-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(56, 189, 248, 0.5);
-      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(56, 189, 248, 0.2);
+    .plan-card-box:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.3);
     }
 
-    .pricing-card.featured {
+    .plan-card-box.featured {
       border: 2px solid var(--accent);
       box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
     }
 
-    .pricing-badge {
+    .plan-badge-tag {
       position: absolute;
       top: -14px;
       right: 20px;
@@ -332,36 +355,37 @@
       box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
     }
 
-    .pricing-header h3 {
+    .plan-title-head {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 900;
       color: #ffffff;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    .pricing-price {
+    .plan-cost {
       font-family: 'Orbitron', sans-serif;
       font-size: 2.2rem;
       font-weight: 900;
       color: var(--accent);
-      margin: 16px 0 8px 0;
+      margin: 12px 0 6px 0;
       text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
     }
 
-    .pricing-price span {
+    .plan-cost span {
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--muted);
     }
 
-    .pricing-desc {
+    .plan-brief-desc {
       font-size: 0.88rem;
       color: var(--muted);
       margin-bottom: 24px;
+      line-height: 1.45;
     }
 
-    .pricing-features {
+    .plan-bullet-list {
       list-style: none;
       padding: 0;
       margin: 0 0 28px 0;
@@ -370,23 +394,88 @@
       gap: 12px;
     }
 
-    .pricing-features li {
+    .plan-bullet-list li {
       font-size: 0.88rem;
       color: var(--text);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
     }
 
-    .pricing-features li::before {
+    .plan-bullet-list li::before {
       content: "✓";
       color: var(--accent);
       font-weight: 900;
       font-size: 0.9rem;
       text-shadow: 0 0 8px var(--accent);
+      margin-top: 1px;
     }
 
-    /* Responsive Adjustments for Mobile Viewports */
+    .request-form-card {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(7, 10, 18, 0.95) 100%);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 680px;
+      margin: 20px auto 0 auto;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(7, 10, 18, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      transition: color 0.2s ease;
+    }
+
+    .back-btn:hover {
+      color: var(--accent);
+    }
+
     @media (max-width: 640px) {
       .header-neon-rail {
         display: none;
@@ -403,6 +492,9 @@
       }
       .hero-subdeck p {
         font-size: 0.82rem;
+      }
+      .request-form-card {
+        padding: 20px 16px;
       }
     }
 
@@ -434,12 +526,6 @@
       padding: 24px;
       box-shadow: var(--shadow);
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(56, 189, 248, 0.45);
-      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(56, 189, 248, 0.15);
     }
 
     .video-shell {
@@ -595,12 +681,6 @@
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(56, 189, 248, 0.45);
-      box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(56, 189, 248, 0.15);
-    }
-
     .feature-num {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
@@ -623,207 +703,287 @@
 <body>
 
   <header>
-    <div class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></div>
+    <a onclick="showView('home')" class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></a>
     <div class="header-neon-rail"></div>
-    <div class="header-cta-wrap">
-      <a href="#contact" class="cta-button cta-button-header">Initiate Free Run</a>
+    <div class="header-nav">
+      <button onclick="showView('plans')" class="nav-btn">Plans</button>
+      <button onclick="openRequestForm('Free Sample Run')" class="cta-button cta-button-header">Initiate Free Run</button>
     </div>
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-badge">High-Velocity Visual Ordnance for Powersports & Marine</div>
-      
-      <div class="hero-title">
-        <div class="hero-title-line-1">NO FILM CREWS</div>
-        <div class="hero-title-line-2">NO LOT SHUFFLING.</div>
-        <span class="hero-title-sub">Send Us a Few Inventory Photos & Let Us Run Your Dealership’s Social Video Engine</span>
-      </div>
-      
-      <div class="hero-subdeck">
-        <p><strong>Turn flat wet-pavement lot photos into high-octane motion campaigns</strong> that hijack ad feeds, shatter scroll fatigue, and compel buyers to stop scrolling.</p>
-        <p><strong>Stay relentless online.</strong> Keep your social channels continuously loaded with fresh, broadcast-ready video drops on complete autopilot—without moving a single unit off your lot.</p>
-      </div>
+    <!-- ==================== VIEW 1: MAIN HOME PAGE ==================== -->
+    <div id="view-home" class="page-view active">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-badge">High-Velocity Visual Ordnance for Powersports & Marine</div>
+        
+        <div class="hero-title">
+          <div class="hero-title-line-1">NO FILM CREWS</div>
+          <div class="hero-title-line-2">NO LOT SHUFFLING.</div>
+          <span class="hero-title-sub">Send Us a Few Inventory Photos & Let Us Run Your Dealership’s Social Video Engine</span>
+        </div>
+        
+        <div class="hero-subdeck">
+          <p><strong>Turn flat wet-pavement lot photos into high-octane motion campaigns</strong> that hijack ad feeds, shatter scroll fatigue, and compel buyers to stop scrolling.</p>
+          <p><strong>Rescue aged metal fast.</strong> Stop paying monthly floorplan interest on stubborn inventory—turn simple smartphone shots into high-converting video drops in under 24 hours.</p>
+        </div>
 
-      <a href="#contact" class="cta-button">Press Here to Initiate Free Run &rarr;</a>
-      
-      <span class="hero-scroll-notice">// SCROLL DOWN TO VIEW PIPELINE & VIDEO &darr;</span>
-    </section>
+        <button onclick="showView('plans')" class="cta-button">View Service Plans &rarr;</button>
+        
+        <span class="hero-scroll-notice">// SCROLL DOWN TO VIEW PIPELINE & VIDEO &darr;</span>
+      </section>
 
-    <!-- Visual Transformation Engine Section -->
-    <section class="section" id="comparison">
-      <div class="section-title">
-        <span>The Visual Ordnance Pipeline</span>
-      </div>
-      <div class="card">
-        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; margin-top:0; font-size: 1.4rem; margin-bottom: 10px; color: var(--text);">Overcast Asphalt &rarr; Golden Hour Bayou Action</h2>
-        <p style="color: var(--muted); margin-bottom: 24px;">
-          Watch how static inventory transforms into region-authentic, high-impact motion assets designed to hijack social feeds and lock down phone leads.
-        </p>
+      <!-- Visual Transformation Engine Section -->
+      <section class="section" id="comparison">
+        <div class="section-title">
+          <span>The Visual Ordnance Pipeline</span>
+        </div>
+        <div class="card">
+          <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; margin-top:0; font-size: 1.4rem; margin-bottom: 10px; color: var(--text);">Overcast Asphalt &rarr; Golden Hour Bayou Action</h2>
+          <p style="color: var(--muted); margin-bottom: 24px;">
+            Watch how static inventory transforms into region-authentic, high-impact motion assets designed to hijack social feeds and lock down phone leads.
+          </p>
 
-        <div class="video-shell">
-          <div class="reticle-top-left"></div>
-          <div class="reticle-bottom-right"></div>
-          <div class="video-scanlines"></div>
-          <div class="video-scanline-beam"></div>
-          
-          <!-- Live Telemetry Ticker Overlay -->
-          <div class="hud-ticker-wrap">
-            <div class="hud-status-badge"><span class="rec-dot"></span> LIVE HUD</div>
-            <div class="hud-ticker-track">
-              <span class="hud-ticker-item">// SYS.ONLINE</span>
-              <span class="hud-ticker-item">// 4K ULTRA HD RENDER</span>
-              <span class="hud-ticker-item">// 24-HR TURNAROUND</span>
-              <span class="hud-ticker-item">// META & TIKTOK READY</span>
-              <span class="hud-ticker-item">// VDP LISTING OPTIMIZED</span>
-              <span class="hud-ticker-item">// REGION-AUTHENTIC TERRAIN</span>
-              <span class="hud-ticker-item">// ZERO LOT DISRUPTION</span>
-              <!-- Repeated Track for Continuous Loop -->
-              <span class="hud-ticker-item">// SYS.ONLINE</span>
-              <span class="hud-ticker-item">// 4K ULTRA HD RENDER</span>
-              <span class="hud-ticker-item">// 24-HR TURNAROUND</span>
-              <span class="hud-ticker-item">// META & TIKTOK READY</span>
-              <span class="hud-ticker-item">// VDP LISTING OPTIMIZED</span>
-              <span class="hud-ticker-item">// REGION-AUTHENTIC TERRAIN</span>
-              <span class="hud-ticker-item">// ZERO LOT DISRUPTION</span>
+          <div class="video-shell">
+            <div class="reticle-top-left"></div>
+            <div class="reticle-bottom-right"></div>
+            <div class="video-scanlines"></div>
+            <div class="video-scanline-beam"></div>
+            
+            <div class="hud-ticker-wrap">
+              <div class="hud-status-badge"><span class="rec-dot"></span> LIVE HUD</div>
+              <div class="hud-ticker-track">
+                <span class="hud-ticker-item">// SYS.ONLINE</span>
+                <span class="hud-ticker-item">// 4K ULTRA HD RENDER</span>
+                <span class="hud-ticker-item">// 24-HR TURNAROUND</span>
+                <span class="hud-ticker-item">// META & TIKTOK READY</span>
+                <span class="hud-ticker-item">// VDP LISTING OPTIMIZED</span>
+                <span class="hud-ticker-item">// REGION-AUTHENTIC TERRAIN</span>
+                <span class="hud-ticker-item">// ZERO LOT DISRUPTION</span>
+                <span class="hud-ticker-item">// SYS.ONLINE</span>
+                <span class="hud-ticker-item">// 4K ULTRA HD RENDER</span>
+                <span class="hud-ticker-item">// 24-HR TURNAROUND</span>
+                <span class="hud-ticker-item">// META & TIKTOK READY</span>
+                <span class="hud-ticker-item">// VDP LISTING OPTIMIZED</span>
+                <span class="hud-ticker-item">// REGION-AUTHENTIC TERRAIN</span>
+                <span class="hud-ticker-item">// ZERO LOT DISRUPTION</span>
+              </div>
+            </div>
+
+            <video width="100%" height="100%" autoplay loop muted playsinline controls>
+              <source src="transformation-demo.mp4" type="video/mp4">
+              <source src="./transformation-demo.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;">
+              RAW LOT PLATE &rarr; LOUISIANA BAYOU ENVIRONMENT
+            </div>
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; text-shadow: 0 0 12px rgba(249, 115, 22, 0.4);">
+              DELIVERED IN &lt; 24 HOURS
             </div>
           </div>
-
-          <video 
-            width="100%" 
-            height="100%" 
-            autoplay 
-            loop 
-            muted 
-            playsinline 
-            controls>
-            <source src="transformation-demo.mp4" type="video/mp4">
-            <source src="./transformation-demo.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-          </video>
         </div>
+      </section>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 10px;">
-          <div style="font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;">
-            RAW LOT PLATE &rarr; LOUISIANA BAYOU ENVIRONMENT
-          </div>
-          <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; text-shadow: 0 0 12px rgba(249, 115, 22, 0.4);">
-            DELIVERED IN &lt; 24 HOURS
+      <!-- Single Unit Inventory Rescue Section -->
+      <section class="section">
+        <div class="section-title">Single Unit Inventory Rescue</div>
+        <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.4);">
+          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.35rem; margin-bottom: 12px; color: var(--text);">Have a Unit Sitting on Your Lot Incurring Floorplan Interest?</h3>
+          <p style="color: var(--muted); margin-bottom: 20px; font-size: 0.95rem; line-height: 1.5;">
+            Don't let aged inventory drain your margin. Send us a few simple smartphone photos of any stubborn vehicle on your lot. We will deliver a complete, broadcast-ready 4K motion campaign package designed to stop the scroll and close the lead—no long-term retainer required.
+          </p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+            <button onclick="openRequestForm('Single Unit Rescue ($199)')" class="cta-button">Rescue 1 Unit Now ($199) &rarr;</button>
+            <button onclick="showView('plans')" class="nav-btn" style="padding: 12px 20px;">Explore All Plans</button>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Turnkey Workflow Section (Friction Reducers) -->
-    <section class="section" id="workflow">
-      <div class="section-title">Zero Friction Engine</div>
-      <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--text);">Engineered for Dealership Velocity</h2>
-      <div class="grid-3">
-        <div class="feature-card">
-          <div class="feature-num">01</div>
-          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Zero-Prep Drop</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">Send a raw URL or phone snap. No film crews, no lot shuffling, zero sales team downtime.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-num">02</div>
-          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Velocity Render</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">We nuke grey asphalt, inject studio lighting, regional terrain, and dynamic spec telemetry.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-num">03</div>
-          <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Dominate the Feed</h3>
-          <p style="color: var(--muted); font-size: 0.95rem;">Fire off broadcast-grade 4K motion assets across Meta, Instagram, and VDPs before holding costs tick up.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Core Capability Section -->
-    <section class="section" id="services">
-      <div class="section-title">Core Capability</div>
-      <div class="card">
-        <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 12px; color: var(--text);">Built for Marine, Powersports & High-Margin Inventory</h3>
-        <p style="color: var(--muted);">
-          High-margin center consoles, top-tier side-by-sides, and premium pre-owned inventory carry steep monthly carrying costs. SignalBridge Media gives independent dealers elite studio marketing power at a fraction of full agency retainers—driving higher lead velocity and protecting your margin.
-        </p>
-      </div>
-    </section>
-
-    <!-- Tactical Pricing Tiers Section -->
-    <section class="section" id="pricing">
-      <div class="section-title">Investment & Service Packages</div>
-      <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 10px; color: var(--text);">Turn Floorplan Expense Into Velocity</h2>
-      <p style="color: var(--muted); margin-bottom: 24px;">No long-term locks. Scale or pause as your lot inventory rotates.</p>
-
-      <div class="pricing-grid">
-        <!-- Tier 1: Single Unit Strike -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h3>Single Unit Strike</h3>
-            <div class="pricing-price">$199 <span>/ unit</span></div>
-            <div class="pricing-desc">Rescue a single aged unit incurring floorplan interest.</div>
+      <!-- Turnkey Workflow Section -->
+      <section class="section" id="workflow">
+        <div class="section-title">Zero Friction Engine</div>
+        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--text);">Engineered for Dealership Velocity</h2>
+        <div class="grid-3">
+          <div class="feature-card">
+            <div class="feature-num">01</div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Zero-Prep Drop</h3>
+            <p style="color: var(--muted); font-size: 0.95rem;">Send a raw URL or phone snap. No film crews, no lot shuffling, zero sales team downtime.</p>
           </div>
-          <ul class="pricing-features">
-            <li>1x 4K Cinematic Motion Asset</li>
-            <li>3x Social Formats (Reels, TikTok, Feed)</li>
-            <li>24-Hour Velocity Delivery SLA</li>
-            <li>Zero Lot Shuffling Required</li>
-          </ul>
-          <a href="#contact" class="cta-button" style="width: 100%; text-align: center;">Target 1 Aged Unit</a>
+          <div class="feature-card">
+            <div class="feature-num">02</div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Velocity Render</h3>
+            <p style="color: var(--muted); font-size: 0.95rem;">We nuke grey asphalt, inject studio lighting, regional terrain, and dynamic spec telemetry.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-num">03</div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Dominate the Feed</h3>
+            <p style="color: var(--muted); font-size: 0.95rem;">Fire off broadcast-grade 4K motion assets across Meta, Instagram, and VDPs before holding costs tick up.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Zero-Risk Lead Magnet Section -->
+      <section class="section" style="text-align: center;">
+        <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.5); box-shadow: 0 0 35px rgba(56, 189, 248, 0.2);">
+          <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 12px; color: var(--text);">Test Drive SignalBridge Media on Your Hardest-to-Sell Unit</h2>
+          <p style="color: var(--muted); margin-bottom: 24px; max-width: 620px; margin-left: auto; margin-right: auto;">
+            Send us 1 raw photo from an aged unit currently incurring floorplan interest on your lot. We will deliver a broadcast-ready 4K motion transformation within 24 hours—100% free, zero obligation.
+          </p>
+          <button onclick="openRequestForm('Free Sample Run')" class="cta-button">Initiate Free Test Run &rarr;</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== VIEW 2: SUB-PAGE - SERVICE PLANS ==================== -->
+    <div id="view-plans" class="page-view">
+      <button onclick="showView('home')" class="back-btn">&larr; Back to Main Overview</button>
+      <div class="section-title">Service Packages & Plans</div>
+      <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.8rem; margin-bottom: 10px; color: var(--text);">Select Your Inventory Velocity Engine</h2>
+      <p style="color: var(--muted); margin-bottom: 30px; max-width: 650px;">Click any package box below to send an onboarding request directly to our rendering team. No long-term contracts required.</p>
+
+      <div class="plans-subpage-grid">
+        <!-- Box 1: Single Unit Rescue -->
+        <div class="plan-card-box" onclick="openRequestForm('Single Unit Rescue ($199)')">
+          <div>
+            <div class="plan-title-head">Single Unit Rescue</div>
+            <div class="plan-cost">$199 <span>/ unit</span></div>
+            <div class="plan-brief-desc">Targeted strike package to immediately ignite buyer interest on an aged unit incurring floorplan interest.</div>
+            <ul class="plan-bullet-list">
+              <li>1x 4K Cinematic Motion Asset</li>
+              <li>Multi-Format Export (9:16 Vertical + 16:9)</li>
+              <li>24-Hour Velocity Delivery SLA</li>
+              <li>Zero Lot Shuffling Required</li>
+            </ul>
+          </div>
+          <button class="cta-button" style="width: 100%; text-align: center;">Select Single Rescue &rarr;</button>
         </div>
 
-        <!-- Tier 2: Core Inventory Velocity (Featured) -->
-        <div class="pricing-card featured">
-          <div class="pricing-badge">MOST POPULAR</div>
-          <div class="pricing-header">
-            <h3>Core Lot Autopilot</h3>
-            <div class="pricing-price">$1,495 <span>/ month</span></div>
-            <div class="pricing-desc">10 Motion Assets/mo (~$149/unit). Ideal for high-margin units.</div>
+        <!-- Box 2: Core Lot Autopilot (Featured) -->
+        <div class="plan-card-box featured" onclick="openRequestForm('Core Lot Autopilot ($1,495/mo)')">
+          <div class="plan-badge-tag">MOST POPULAR</div>
+          <div>
+            <div class="plan-title-head">Core Lot Autopilot</div>
+            <div class="plan-cost">$1,495 <span>/ month</span></div>
+            <div class="plan-brief-desc">10 Motion Drops/mo (~$149/unit). Continuous social video engine for your core high-margin inventory.</div>
+            <ul class="plan-bullet-list">
+              <li>10x 4K Cinematic Motion Drops / Mo</li>
+              <li>Full Campaign Export (Reels, TikTok, Feed)</li>
+              <li>Region-Authentic Terrain Matching</li>
+              <li>Priority 24-Hr Rendering Queue</li>
+              <li>Monthly Lead & Engagement Telemetry</li>
+            </ul>
           </div>
-          <ul class="pricing-features">
-            <li>10x 4K Cinematic Motion Drops / Mo</li>
-            <li>Full Social Campaign Export (Reels/Ads/VDP)</li>
-            <li>Region-Authentic Terrain Matching</li>
-            <li>Priority 24-Hr Rendering Queue</li>
-            <li>Monthly Lead & Engagement Telemetry</li>
-          </ul>
-          <a href="#contact" class="cta-button" style="width: 100%; text-align: center;">Engage 10-Unit Retainer</a>
+          <button class="cta-button" style="width: 100%; text-align: center;">Select Core Autopilot &rarr;</button>
         </div>
 
-        <!-- Tier 3: Showroom Domination -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h3>Showroom Domination</h3>
-            <div class="pricing-price">$2,995 <span>/ month</span></div>
-            <div class="pricing-desc">25 Motion Assets/mo (~$119/unit). Complete social feed takeover.</div>
+        <!-- Box 3: Showroom Domination -->
+        <div class="plan-card-box" onclick="openRequestForm('Showroom Domination ($2,995/mo)')">
+          <div>
+            <div class="plan-title-head">Showroom Domination</div>
+            <div class="plan-cost">$2,995 <span>/ month</span></div>
+            <div class="plan-brief-desc">25 Motion Drops/mo (~$119/unit). Complete social feed domination for high-volume dealer groups.</div>
+            <ul class="plan-bullet-list">
+              <li>25x 4K Motion Drops Across All Channels</li>
+              <li>White-Glove Direct VDP Asset Injection</li>
+              <li>Custom Dealer Watermarking & Telemetry HUD</li>
+              <li>Dedicated Account Rendering Engineer</li>
+              <li>Multi-Location / Enterprise Support</li>
+            </ul>
           </div>
-          <ul class="pricing-features">
-            <li>25x 4K Motion Drops Across All Channels</li>
-            <li>White-Glove Direct VDP Asset Injection</li>
-            <li>Custom Dealer Watermarking & Telemetry HUD</li>
-            <li>Dedicated Account Rendering Engineer</li>
-            <li>Multi-Location / Enterprise Support</li>
-          </ul>
-          <a href="#contact" class="cta-button" style="width: 100%; text-align: center;">Claim Full Lot Dominance</a>
+          <button class="cta-button" style="width: 100%; text-align: center;">Select Domination &rarr;</button>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Zero-Risk Lead Magnet Section -->
-    <section class="section" id="contact" style="text-align: center;">
-      <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.5); box-shadow: 0 0 35px rgba(56, 189, 248, 0.2);">
-        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 12px; color: var(--text);">Test Drive SignalBridge Media on Your Hardest-to-Sell Unit</h2>
-        <p style="color: var(--muted); margin-bottom: 24px; max-width: 620px; margin-left: auto; margin-right: auto;">
-          Send us 1 raw photo from an aged unit currently incurring floorplan interest on your lot. We will deliver a broadcast-ready 4K motion transformation within 24 hours—100% free, zero obligation.
-        </p>
-        <a href="mailto:contact@signalbridge.com?subject=Free%20Inventory%20Transformation%20Request" class="cta-button">Press Here to Initiate Free Run &rarr;</a>
+    <!-- ==================== VIEW 3: SUB-PAGE - REQUEST FORM ==================== -->
+    <div id="view-request" class="page-view">
+      <button onclick="showView('plans')" class="back-btn">&larr; Back to Plans</button>
+      <div class="section-title">Initiate Plan Request</div>
+      <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.8rem; margin-bottom: 8px; color: var(--text);" id="selected-plan-title">Package Request</h2>
+      <p style="color: var(--muted); margin-bottom: 24px;">Enter your dealership details below to send your request directly to our inbox.</p>
+
+      <div class="request-form-card">
+        <form id="dealership-request-form" onsubmit="submitFormToEmail(event)">
+          <input type="hidden" id="selected-package-input" name="selected_package" value="General Request">
+
+          <div class="form-group">
+            <label for="gm-name">Your Full Name / Title</label>
+            <input type="text" id="gm-name" class="form-control" placeholder="e.g. John Miller, General Manager" required>
+          </div>
+
+          <div class="form-group">
+            <label for="dealership-name">Dealership Name & Location</label>
+            <input type="text" id="dealership-name" class="form-control" placeholder="e.g. Gulf Coast Powersports - Houma, LA" required>
+          </div>
+
+          <div class="form-group">
+            <label for="gm-email">Direct Work Email</label>
+            <input type="email" id="gm-email" class="form-control" placeholder="john@gulfcoastpowersports.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="gm-phone">Direct Phone / Cell</label>
+            <input type="tel" id="gm-phone" class="form-control" placeholder="(555) 019-2831" required>
+          </div>
+
+          <div class="form-group">
+            <label for="unit-url">Unit Listing URL or Stock # (Optional)</label>
+            <input type="text" id="unit-url" class="form-control" placeholder="e.g. https://yourdealer.com/inventory/unit-1234">
+          </div>
+
+          <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px;">Transmit Request to Render Team &rarr;</button>
+        </form>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer>
     &copy; 2026 SignalBridge Media. All rights reserved.
   </footer>
+
+  <script>
+    function showView(viewId) {
+      document.querySelectorAll('.page-view').forEach(view => {
+        view.classList.remove('active');
+      });
+      document.getElementById('view-' + viewId).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function openRequestForm(packageName) {
+      document.getElementById('selected-plan-title').innerText = packageName;
+      document.getElementById('selected-package-input').value = packageName;
+      showView('request');
+    }
+
+    function submitFormToEmail(e) {
+      e.preventDefault();
+      const pkg = document.getElementById('selected-package-input').value;
+      const name = document.getElementById('gm-name').value;
+      const dealer = document.getElementById('dealership-name').value;
+      const email = document.getElementById('gm-email').value;
+      const phone = document.getElementById('gm-phone').value;
+      const unit = document.getElementById('unit-url').value;
+
+      const subject = encodeURIComponent("New Plan Request: " + pkg + " - " + dealer);
+      const body = encodeURIComponent(
+        "SIGNALBRIDGE MEDIA PACKAGE REQUEST\n\n" +
+        "Selected Package: " + pkg + "\n" +
+        "Name / Title: " + name + "\n" +
+        "Dealership: " + dealer + "\n" +
+        "Email: " + email + "\n" +
+        "Phone: " + phone + "\n" +
+        "Target Unit URL/Stock #: " + (unit || "N/A") + "\n"
+      );
+
+      window.location.href = "mailto:contact@signalbridge.com?subject=" + subject + "&body=" + body;
+    }
+  </script>
 
 </body>
 </html>

@@ -109,7 +109,7 @@
 
     .hero {
       text-align: center;
-      padding: 32px 16px 24px 16px;
+      padding: 32px 20px 24px 20px;
       background: linear-gradient(180deg, rgba(7, 10, 18, 0.55) 0%, rgba(7, 10, 18, 0.85) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
       border-radius: 16px;
@@ -135,21 +135,25 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
     }
 
-    /* Clean, High-Impact Option 3 Headline Architecture */
+    /* Left / Right Staggered Headline Architecture */
     .hero-title {
       font-family: 'Orbitron', sans-serif;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 6px;
+      gap: 4px;
+      width: 100%;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .hero-title-top {
+    .hero-title-line-1 {
+      text-align: left;
       font-size: clamp(1.8rem, 5.2vw, 3.4rem);
       font-weight: 900;
       font-style: italic;
@@ -161,12 +165,22 @@
       line-height: 1.1;
     }
 
-    .hero-title-top span {
+    .hero-title-line-2 {
+      text-align: right;
+      font-size: clamp(1.8rem, 5.2vw, 3.4rem);
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transform: skewX(-6deg);
       color: var(--accent2);
       text-shadow: 0 0 25px rgba(249, 115, 22, 0.6);
+      line-height: 1.1;
     }
 
     .hero-title-sub {
+      text-align: center;
+      margin-top: 10px;
       font-size: clamp(0.85rem, 2.3vw, 1.2rem);
       font-weight: 700;
       color: var(--muted);
@@ -518,7 +532,8 @@
       <div class="hero-badge">High-Velocity Visual Ordnance for Powersports & Marine</div>
       
       <div class="hero-title">
-        <span class="hero-title-top">NO FILM CREWS. <span>NO LOT SHUFFLING.</span></span>
+        <div class="hero-title-line-1">NO FILM CREWS</div>
+        <div class="hero-title-line-2">NO LOT SHUFFLING.</div>
         <span class="hero-title-sub">Send Us a Few Inventory Photos & Let Us Run Your Dealership’s Social Video Engine</span>
       </div>
       

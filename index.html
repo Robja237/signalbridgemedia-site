@@ -139,13 +139,13 @@
       box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
     }
 
-    /* Left / Right Staggered Headline Architecture with Single-Line Lock */
+    /* Left / Right Staggered Precise Spacing Architecture */
     .hero-title {
       font-family: 'Orbitron', sans-serif;
       margin-bottom: 18px;
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 2px;
       width: 100%;
       max-width: 780px;
       margin-left: auto;
@@ -154,37 +154,37 @@
 
     .hero-title-line-1 {
       text-align: left;
-      font-size: clamp(1.5rem, 4.8vw, 3.4rem);
+      font-size: clamp(1.4rem, 4.5vw, 3.4rem);
       font-weight: 900;
       font-style: italic;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       transform: skewX(-6deg);
       color: #ffffff;
       text-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
-      line-height: 0.95;
+      line-height: 1.05;
       white-space: nowrap;
     }
 
     .hero-title-line-2 {
       text-align: right;
-      font-size: clamp(1.5rem, 4.8vw, 3.4rem);
+      font-size: clamp(1.4rem, 4.5vw, 3.4rem);
       font-weight: 900;
       font-style: italic;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       transform: skewX(-6deg);
       color: var(--accent2);
       text-shadow: 0 0 25px rgba(249, 115, 22, 0.6);
-      line-height: 0.95;
-      margin-top: -6px;
+      line-height: 1.05;
+      margin-top: 0;
       white-space: nowrap;
     }
 
     .hero-title-sub {
       text-align: center;
       margin-top: 14px;
-      font-size: clamp(0.82rem, 2.2vw, 1.2rem);
+      font-size: clamp(0.85rem, 2.3vw, 1.2rem);
       font-weight: 700;
       color: var(--muted);
       letter-spacing: 0.03em;

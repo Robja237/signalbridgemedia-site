@@ -139,7 +139,7 @@
       box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
     }
 
-    /* Left / Right Staggered Ultra-Tight Headline Architecture */
+    /* Left / Right Staggered Headline Architecture with Single-Line Lock */
     .hero-title {
       font-family: 'Orbitron', sans-serif;
       margin-bottom: 18px;
@@ -154,35 +154,37 @@
 
     .hero-title-line-1 {
       text-align: left;
-      font-size: clamp(1.8rem, 5.2vw, 3.4rem);
+      font-size: clamp(1.5rem, 4.8vw, 3.4rem);
       font-weight: 900;
       font-style: italic;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       transform: skewX(-6deg);
       color: #ffffff;
       text-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
       line-height: 0.95;
+      white-space: nowrap;
     }
 
     .hero-title-line-2 {
       text-align: right;
-      font-size: clamp(1.8rem, 5.2vw, 3.4rem);
+      font-size: clamp(1.5rem, 4.8vw, 3.4rem);
       font-weight: 900;
       font-style: italic;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       transform: skewX(-6deg);
       color: var(--accent2);
       text-shadow: 0 0 25px rgba(249, 115, 22, 0.6);
       line-height: 0.95;
       margin-top: -6px;
+      white-space: nowrap;
     }
 
     .hero-title-sub {
       text-align: center;
       margin-top: 14px;
-      font-size: clamp(0.85rem, 2.3vw, 1.2rem);
+      font-size: clamp(0.82rem, 2.2vw, 1.2rem);
       font-weight: 700;
       color: var(--muted);
       letter-spacing: 0.03em;
@@ -281,6 +283,107 @@
       text-transform: uppercase;
       text-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
       animation: pulse 1.8s infinite;
+    }
+
+    /* Pricing Section Architecture */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .pricing-card {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(7, 10, 18, 0.95) 100%);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(56, 189, 248, 0.2);
+    }
+
+    .pricing-card.featured {
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -14px;
+      right: 20px;
+      background: var(--accent2);
+      color: #070a12;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 0.68rem;
+      padding: 4px 12px;
+      border-radius: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 0 12px rgba(249, 115, 22, 0.6);
+    }
+
+    .pricing-header h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .pricing-price {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--accent);
+      margin: 16px 0 8px 0;
+      text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    }
+
+    .pricing-price span {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .pricing-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pricing-features li {
+      font-size: 0.88rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pricing-features li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 900;
+      font-size: 0.9rem;
+      text-shadow: 0 0 8px var(--accent);
     }
 
     /* Responsive Adjustments for Mobile Viewports */
@@ -643,6 +746,66 @@
         <p style="color: var(--muted);">
           High-margin center consoles, top-tier side-by-sides, and premium pre-owned inventory carry steep monthly carrying costs. SignalBridge Media gives independent dealers elite studio marketing power at a fraction of full agency retainers—driving higher lead velocity and protecting your margin.
         </p>
+      </div>
+    </section>
+
+    <!-- Tactical Pricing Tiers Section -->
+    <section class="section" id="pricing">
+      <div class="section-title">Investment & Service Packages</div>
+      <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 10px; color: var(--text);">Turn Floorplan Expense Into Velocity</h2>
+      <p style="color: var(--muted); margin-bottom: 24px;">No long-term locks. Scale or pause as your lot inventory rotates.</p>
+
+      <div class="pricing-grid">
+        <!-- Tier 1: Single Unit Strike -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Single Unit Strike</h3>
+            <div class="pricing-price">$199 <span>/ unit</span></div>
+            <div class="pricing-desc">Rescue a single aged unit incurring floorplan interest.</div>
+          </div>
+          <ul class="pricing-features">
+            <li>1x 4K Cinematic Motion Asset</li>
+            <li>3x Social Formats (Reels, TikTok, Feed)</li>
+            <li>24-Hour Velocity Delivery SLA</li>
+            <li>Zero Lot Shuffling Required</li>
+          </ul>
+          <a href="#contact" class="cta-button" style="width: 100%; text-align: center;">Target 1 Aged Unit</a>
+        </div>
+
+        <!-- Tier 2: Core Inventory Velocity (Featured) -->
+        <div class="pricing-card featured">
+          <div class="pricing-badge">MOST POPULAR</div>
+          <div class="pricing-header">
+            <h3>Core Lot Autopilot</h3>
+            <div class="pricing-price">$1,495 <span>/ month</span></div>
+            <div class="pricing-desc">10 Motion Assets/mo (~$149/unit). Ideal for high-margin units.</div>
+          </div>
+          <ul class="pricing-features">
+            <li>10x 4K Cinematic Motion Drops / Mo</li>
+            <li>Full Social Campaign Export (Reels/Ads/VDP)</li>
+            <li>Region-Authentic Terrain Matching</li>
+            <li>Priority 24-Hr Rendering Queue</li>
+            <li>Monthly Lead & Engagement Telemetry</li>
+          </ul>
+          <a href="#contact" class="cta-button" style="width: 100%; text-align: center;">Engage 10-Unit Retainer</a>
+        </div>
+
+        <!-- Tier 3: Showroom Domination -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3>Showroom Domination</h3>
+            <div class="pricing-price">$2,995 <span>/ month</span></div>
+            <div class="pricing-desc">25 Motion Assets/mo (~$119/unit). Complete social feed takeover.</div>
+          </div>
+          <ul class="pricing-features">
+            <li>25x 4K Motion Drops Across All Channels</li>
+            <li>White-Glove Direct VDP Asset Injection</li>
+            <li>Custom Dealer Watermarking & Telemetry HUD</li>
+            <li>Dedicated Account Rendering Engineer</li>
+            <li>Multi-Location / Enterprise Support</li>
+          </ul>
+          <a href="#contact" class="cta-button" style="width: 100%; text-align: center;">Claim Full Lot Dominance</a>
+        </div>
       </div>
     </section>
 

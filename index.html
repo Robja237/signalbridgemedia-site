@@ -153,6 +153,12 @@
       border: 1px solid var(--line);
       margin-bottom: 30px;
       box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), var(--shadow);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.3), var(--shadow);
     }
 
     .hero-badge {
@@ -516,6 +522,7 @@
       gap: 8px;
     }
 
+    /* Restored Card Hover Elevation & Highlight Styling */
     .card {
       background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(7, 10, 18, 0.92) 100%), 
                   url('hero-bg.jpg') center/cover no-repeat;
@@ -524,6 +531,12 @@
       padding: 24px;
       box-shadow: var(--shadow);
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.3);
     }
 
     .video-shell {
@@ -679,6 +692,12 @@
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.3);
+    }
+
     .feature-num {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
@@ -705,7 +724,7 @@
     <div class="header-neon-rail"></div>
     <div class="header-nav">
       <button onclick="showView('plans')" class="nav-btn">Plans</button>
-      <button onclick="openRequestForm('Single Unit Rescue ($199)')" class="cta-button cta-button-header">Rescue A Unit ($199)</button>
+      <button onclick="openRequestForm('Single Unit Rescue for $199')" class="cta-button cta-button-header">Rescue A Unit for $199</button>
     </div>
   </header>
 
@@ -727,7 +746,7 @@
           <p><strong>Rescue aged metal fast.</strong> Stop paying monthly floorplan interest on stubborn inventory—turn simple smartphone shots into high-converting video drops in under 24 hours.</p>
         </div>
 
-        <button onclick="openRequestForm('Single Unit Rescue ($199)')" class="cta-button">Rescue Single Unit ($199) &rarr;</button>
+        <button onclick="openRequestForm('Single Unit Rescue for $199')" class="cta-button">Rescue Single Unit for $199 &rarr;</button>
         
         <span class="hero-scroll-notice">// SCROLL DOWN TO VIEW PIPELINE & VIDEO &darr;</span>
       </section>
@@ -798,7 +817,7 @@
           </p>
 
           <div style="display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: center;">
-            <button onclick="openRequestForm('Single Unit Rescue ($199)')" class="cta-button">Rescue 1 Unit Now ($199) &rarr;</button>
+            <button onclick="openRequestForm('Single Unit Rescue for $199')" class="cta-button">Rescue 1 Unit Now for $199 &rarr;</button>
             <button onclick="showView('plans')" class="nav-btn" style="padding: 12px 20px;">Explore All Plans</button>
           </div>
         </div>
@@ -834,7 +853,7 @@
           <p style="color: var(--muted); margin-bottom: 24px; max-width: 620px; margin-left: auto; margin-right: auto;">
             Send us 1 raw photo or listing link for an aged unit sitting on your lot. We'll deliver a full broadcast-ready 4K motion campaign within 24 hours.
           </p>
-          <button onclick="openRequestForm('Single Unit Rescue ($199)')" class="cta-button">Rescue 1 Unit Now ($199) &rarr;</button>
+          <button onclick="openRequestForm('Single Unit Rescue for $199')" class="cta-button">Rescue 1 Unit Now for $199 &rarr;</button>
         </div>
       </section>
     </div>
@@ -848,7 +867,7 @@
 
       <div class="plans-subpage-grid">
         <!-- Box 1: Single Unit Rescue -->
-        <div class="plan-card-box" onclick="openRequestForm('Single Unit Rescue ($199)')">
+        <div class="plan-card-box" onclick="openRequestForm('Single Unit Rescue for $199')">
           <div>
             <div class="plan-title-head">Single Unit Rescue</div>
             <div class="plan-cost">$199 <span>/ unit</span></div>
@@ -864,7 +883,7 @@
         </div>
 
         <!-- Box 2: Core Lot Autopilot (Featured) -->
-        <div class="plan-card-box featured" onclick="openRequestForm('Core Lot Autopilot ($1,495/mo)')">
+        <div class="plan-card-box featured" onclick="openRequestForm('Core Lot Autopilot for $1,495/mo')">
           <div class="plan-badge-tag">MOST POPULAR</div>
           <div>
             <div class="plan-title-head">Core Lot Autopilot</div>
@@ -882,7 +901,7 @@
         </div>
 
         <!-- Box 3: Showroom Domination -->
-        <div class="plan-card-box" onclick="openRequestForm('Showroom Domination ($2,995/mo)')">
+        <div class="plan-card-box" onclick="openRequestForm('Showroom Domination for $2,995/mo')">
           <div>
             <div class="plan-title-head">Showroom Domination</div>
             <div class="plan-cost">$2,995 <span>/ month</span></div>
@@ -909,7 +928,7 @@
 
       <div class="request-form-card">
         <form id="dealership-request-form" onsubmit="submitFormToEmail(event)">
-          <input type="hidden" id="selected-package-input" name="selected_package" value="Single Unit Rescue ($199)">
+          <input type="hidden" id="selected-package-input" name="selected_package" value="Single Unit Rescue for $199">
 
           <div class="form-group">
             <label for="gm-name">Your Full Name / Title</label>
@@ -947,12 +966,17 @@
   </footer>
 
   <script>
-    function showView(viewId) {
+    // Browser History API Integration for Native Back Button Behavior
+    function showView(viewId, isBackNavigation) {
       document.querySelectorAll('.page-view').forEach(view => {
         view.classList.remove('active');
       });
       document.getElementById('view-' + viewId).classList.add('active');
       window.scrollTo(0, 0);
+
+      if (!isBackNavigation) {
+        history.pushState({ view: viewId }, '', '#' + viewId);
+      }
     }
 
     function openRequestForm(packageName) {
@@ -960,6 +984,18 @@
       document.getElementById('selected-package-input').value = packageName;
       showView('request');
     }
+
+    // Listen for browser Back/Forward buttons
+    window.addEventListener('popstate', function(event) {
+      if (event.state && event.state.view) {
+        showView(event.state.view, true);
+      } else {
+        showView('home', true);
+      }
+    });
+
+    // Initialize root state
+    history.replaceState({ view: 'home' }, '', '#home');
 
     function submitFormToEmail(e) {
       e.preventDefault();

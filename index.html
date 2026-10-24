@@ -197,12 +197,13 @@
       font-family: 'Orbitron', sans-serif;
       margin-bottom: 24px;
       font-style: italic;
-      transform: skewX(-6deg);
+      transform: skewX(-5deg);
       display: inline-block;
       width: 100%;
-      max-width: 880px;
+      max-width: 820px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.18;
     }
 
     .hero-title-line-1 {
@@ -213,7 +214,7 @@
       letter-spacing: 1px;
       text-transform: uppercase;
       color: #ffffff;
-      line-height: 1.2;
+      line-height: 1.18;
       margin-bottom: 6px;
     }
 
@@ -223,7 +224,7 @@
       font-size: clamp(1.5rem, 4.2vw, 2.8rem);
       font-weight: 900;
       text-transform: uppercase;
-      line-height: 1.2;
+      line-height: 1.18;
     }
 
     .glow-orange {
@@ -236,37 +237,33 @@
       text-align: center;
       margin-top: 16px;
       font-family: 'Inter', sans-serif;
-      font-size: clamp(0.9rem, 2.2vw, 1.15rem);
+      font-size: 1.05rem;
       font-weight: 600;
-      color: var(--muted);
+      color: #94a3b8;
       letter-spacing: 0.01em;
       text-transform: none;
-      line-height: 1.6;
-      max-width: 760px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 28px;
+      line-height: 1.55;
+      max-width: 650px;
+      margin: 0 auto 24px auto;
+      text-wrap: balance;
     }
 
     .hero-pills {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 24px;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 22px;
     }
 
     .hero-pill {
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(255, 106, 0, 0.35);
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 106, 0, 0.25);
       border-radius: 9999px;
-      padding: 8px 18px;
-      font-size: 0.85rem;
+      padding: 6px 16px;
+      font-size: 0.82rem;
+      color: #f1f5f9;
       font-weight: 600;
-      color: #f8fafc;
-      font-style: italic;
-      box-shadow: 0 0 15px rgba(255, 106, 0, 0.15);
     }
 
     .cta-button {
@@ -756,13 +753,14 @@
     <div id="view-home" class="page-view active">
       <!-- Hero Section -->
       <section class="hero">
+        <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: #ff8833; background: rgba(255, 106, 0, 0.1); border: 1px solid rgba(255, 106, 0, 0.3); border-radius: 9999px; padding: 5px 16px; margin-bottom: 16px; font-weight: 700;">AI LIFESTYLE VIDEO // POWERSPORTS & MARINE</div>
         <h1 class="hero-title">
           <span class="hero-title-line-1">TURN STAGNANT INVENTORY</span>
-          <span class="hero-title-line-2"><span class="glow-orange">INTO HIGH-IMPACT ACTION VIDEO</span></span>
+          <span class="hero-title-line-2"><span style="color: #ff6a00; text-shadow: 0 0 25px rgba(255,106,0,0.6);">INTO HIGH-IMPACT ACTION VIDEO</span></span>
         </h1>
         
-        <p class="hero-title-sub" style="margin-bottom: 28px; line-height: 1.6; max-width: 760px; margin-left: auto; margin-right: auto;">
-          We convert your static stock listings into broadcast-grade on-water and trail videos—and run your media feeds for you so your inventory stays in front of local buyers 24/7.
+        <p class="hero-title-sub" style="max-width: 650px; margin: 0 auto 24px auto; line-height: 1.55; font-size: 1.05rem; text-wrap: balance; color: #94a3b8;">
+          We convert your static stock listings into broadcast-grade on-water and trail videos—and run your media feeds so your inventory stays in front of active buyers around the clock.
         </p>
 
         <button onclick="openRequestForm('Feature Single Unit for $199')" class="cta-button">FEATURE SINGLE UNIT FOR $199 &rarr;</button>

@@ -968,10 +968,10 @@
           <button class="cta-button" style="width: 100%; text-align: center;">Select Core Autopilot &rarr;</button>
         </div>
 
-        <!-- Box 3: Showroom Domination -->
-        <div class="plan-card-box" onclick="openRequestForm('Showroom Domination for $2,995/mo')">
+        <!-- Box 3: Full Showroom Velocity -->
+        <div class="plan-card-box" onclick="openRequestForm('Full Showroom Velocity for $2,995/mo')">
           <div>
-            <div class="plan-title-head" style="font-size: 1.25rem;">Showroom Domination</div>
+            <div class="plan-title-head" style="font-size: 1.25rem;">Full Showroom Velocity</div>
             <div class="plan-cost">$2,995 <span>/ month</span></div>
             <div class="plan-brief-desc">25 Lifestyle Videos per month (~$119/unit). Total video coverage for high-volume dealers looking to dominate local social feeds.</div>
             <ul class="plan-bullet-list">
@@ -982,7 +982,7 @@
               <li>Multi-location &amp; enterprise support available</li>
             </ul>
           </div>
-          <button class="cta-button" style="width: 100%; text-align: center;">Select Domination &rarr;</button>
+          <button class="cta-button" style="width: 100%; text-align: center;">Select Full Showroom Velocity &rarr;</button>
         </div>
       </div>
     </div>
@@ -990,9 +990,9 @@
     <!-- ==================== VIEW 3: SUB-PAGE - REQUEST FORM ==================== -->
     <div id="view-request" class="page-view">
       <button onclick="showView('plans')" class="back-btn">&larr; Back to Plans</button>
-      <div class="section-title">Initiate Plan Request</div>
+      <div class="section-title">// FAST-TRACK INTAKE</div>
       <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.8rem; margin-bottom: 8px; color: var(--text);" id="selected-plan-title">Package Request</h2>
-      <p style="color: var(--muted); margin-bottom: 24px;">Enter your dealership details below to send your request directly to our inbox.</p>
+      <p style="color: var(--muted); margin-bottom: 24px;">Submit your dealership details below. Production begins immediately upon receipt, with delivery in under 24 hours.</p>
 
       <div class="request-form-card">
         <form id="dealership-request-form" onsubmit="submitFormToEmail(event)">
@@ -1023,7 +1023,7 @@
             <input type="text" id="unit-url" class="form-control" placeholder="e.g. https://yourdealer.com/inventory/unit-1234">
           </div>
 
-          <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px;">Transmit Request to Render Team &rarr;</button>
+          <button type="submit" id="request-submit-btn" class="cta-button" style="width: 100%; margin-top: 10px;">SUBMIT UNIT FOR PRODUCTION &rarr;</button>
         </form>
       </div>
     </div>
@@ -1080,6 +1080,20 @@
     function openRequestForm(packageName) {
       document.getElementById('selected-plan-title').innerText = packageName;
       document.getElementById('selected-package-input').value = packageName;
+
+      const submitBtn = document.getElementById('request-submit-btn');
+      if (submitBtn) {
+        if (packageName.includes('199')) {
+          submitBtn.innerHTML = 'SUBMIT UNIT FOR PRODUCTION &rarr;';
+        } else if (packageName.includes('1,495') || packageName.includes('1495')) {
+          submitBtn.innerHTML = 'SUBMIT PARTNERSHIP REQUEST &rarr;';
+        } else if (packageName.includes('2,995') || packageName.includes('2995')) {
+          submitBtn.innerHTML = 'START ENTERPRISE ONBOARDING &rarr;';
+        } else {
+          submitBtn.innerHTML = 'SUBMIT UNIT FOR PRODUCTION &rarr;';
+        }
+      }
+
       showView('request');
     }
 

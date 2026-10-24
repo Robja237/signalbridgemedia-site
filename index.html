@@ -240,35 +240,43 @@
       color: var(--muted);
       letter-spacing: 0.01em;
       text-transform: none;
-      line-height: 1.5;
-      max-width: 720px;
+      line-height: 1.6;
+      max-width: 760px;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 28px;
     }
 
     .hero-subdeck {
-      max-width: 680px;
-      margin: 28px auto;
       display: flex;
-      flex-direction: column;
-      gap: 14px;
-      text-align: left;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      margin-bottom: 0;
     }
 
     .hero-subdeck p {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: var(--muted);
-      line-height: 1.55;
-      padding-left: 28px;
+      line-height: 1.5;
+      padding: 8px 16px 8px 28px;
+      border-radius: 9999px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--line);
       position: relative;
+      display: inline-flex;
+      align-items: center;
     }
 
     /* Custom cyan dot/pill badge replaces '//' */
     .hero-subdeck p::before {
       content: "";
       position: absolute;
-      left: 6px;
-      top: 8px;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
       width: 8px;
       height: 8px;
       border-radius: 50%;
@@ -769,16 +777,16 @@
       <!-- Hero Section -->
       <section class="hero">
         <div class="hero-title">
-          <h1 class="hero-title-line-1" style="font-style: normal; text-transform: none; transform: none; font-size: clamp(1.8rem, 5vw, 3.2rem);">Turn Stagnant Inventory Into High-Impact Action Video</h1>
+          <h1 class="hero-title-line-1" style="font-style: normal; text-transform: none; transform: none; font-size: clamp(1.8rem, 5vw, 3.2rem); margin-bottom: 20px; line-height: 1.2; text-wrap: balance;">Turn Stagnant Inventory Into <span style="color: #f97316; text-shadow: 0 0 20px rgba(249, 115, 22, 0.4);">High-Impact Action Video</span></h1>
         </div>
         
-        <p class="hero-title-sub" style="margin-bottom: 28px;">
+        <p class="hero-title-sub" style="margin-bottom: 28px; line-height: 1.6; max-width: 760px; margin-left: auto; margin-right: auto;">
           We convert your static stock listings into broadcast-grade on-water and trail videos—and run your media feeds for you so your inventory stays in front of local buyers 24/7.
         </p>
 
         <button onclick="openRequestForm('Feature Single Unit for $199')" class="cta-button">Feature Single Unit for $199 &rarr;</button>
         
-        <div class="hero-subdeck" style="margin-top: 28px; margin-bottom: 0;">
+        <div class="hero-subdeck" style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 24px;">
           <p><strong>24-Hour Turnaround</strong></p>
           <p><strong>100% Hands-Free Social Posting</strong></p>
           <p><strong>Zero Lot Disruption</strong></p>

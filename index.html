@@ -1055,7 +1055,7 @@
       </div>
 
       <div class="request-form-card" id="request-form-card-container">
-        <form id="dealership-request-form" action="https://formspree.io/f/mwllvkdb" method="POST">
+        <form id="dealership-request-form" action="https://formspree.io/f/mwllvkdb" method="POST" novalidate>
           <input type="hidden" id="selected-package-input" name="selected_plan" value="Feature Single Unit for $199">
 
           <div class="form-group">
@@ -1084,7 +1084,7 @@
           </div>
 
           <button type="submit" id="request-submit-btn" class="cta-button" style="width: 100%; margin-top: 10px;">SUBMIT UNIT FOR PRODUCTION &rarr;</button>
-          <p id="form-error-msg" style="display: none; color: #ef4444; font-size: 0.88rem; margin-top: 12px; text-align: center;"></p>
+          <p id="form-error-msg" style="display: none; color: #f87171; font-size: 0.92rem; line-height: 1.4; margin-top: 12px; text-align: center; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 10px 14px;"></p>
         </form>
       </div>
     </div>
@@ -1176,17 +1176,87 @@
       const form = document.getElementById('dealership-request-form');
       if (!form) return;
 
+      const emailInput = form.querySelector('input[type="email"], input[name="email"]');
+      const phoneInput = form.querySelector('input[type="tel"], input[name="phone"]');
+      const errorBox = document.getElementById('form-error-msg') || form.querySelector('#form-error-msg');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      function checkAndClearErrorBox() {
+        const emailVal = emailInput ? emailInput.value.trim() : '';
+        const phoneVal = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
+
+        const emailOk = !emailInput || emailRegex.test(emailVal);
+        const phoneOk = !phoneInput || (phoneVal.length >= 10 && phoneVal.length <= 11);
+
+        if (emailOk && phoneOk && errorBox) {
+          errorBox.style.display = 'none';
+          errorBox.innerHTML = '';
+        }
+      }
+
+      if (emailInput) {
+        emailInput.addEventListener('input', function() {
+          emailInput.style.borderColor = '';
+          checkAndClearErrorBox();
+        });
+      }
+
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+          phoneInput.style.borderColor = '';
+          checkAndClearErrorBox();
+        });
+      }
+
       form.addEventListener('submit', function(e) {
         e.preventDefault();
 
         const submitBtn = document.getElementById('request-submit-btn');
-        const errorMsg = document.getElementById('form-error-msg');
-        if (errorMsg) {
-          errorMsg.style.display = 'none';
-          errorMsg.innerText = '';
+        const originalBtnHTML = submitBtn ? submitBtn.innerHTML : 'SUBMIT UNIT FOR PRODUCTION &rarr;';
+
+        // Reset previous styling and errors
+        form.querySelectorAll('input').forEach(input => input.style.borderColor = '');
+        if (errorBox) {
+          errorBox.style.display = 'none';
+          errorBox.innerHTML = '';
         }
 
-        const originalBtnHTML = submitBtn ? submitBtn.innerHTML : 'SUBMIT UNIT FOR PRODUCTION &rarr;';
+        const phoneDigits = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
+        let errors = [];
+
+        const isEmailInvalid = emailInput && !emailRegex.test(emailInput.value.trim());
+        const isPhoneInvalid = phoneInput && (phoneDigits.length < 10 || phoneDigits.length > 11);
+
+        if (isEmailInvalid) {
+          emailInput.style.borderColor = '#ef4444';
+        }
+        if (isPhoneInvalid) {
+          phoneInput.style.borderColor = '#ef4444';
+        }
+
+        if (isEmailInvalid && isPhoneInvalid) {
+          errors.push("Please enter a valid work email and a complete 10-digit direct phone number.");
+          emailInput.focus();
+        } else if (isEmailInvalid) {
+          errors.push("Please enter a complete work email address (e.g., name@dealership.com).");
+          emailInput.focus();
+        } else if (isPhoneInvalid) {
+          errors.push("Please enter a complete 10-digit phone number so our production desk can confirm your unit.");
+          phoneInput.focus();
+        }
+
+        if (errors.length > 0) {
+          if (errorBox) {
+            errorBox.innerHTML = errors.join('<br>');
+            errorBox.style.display = 'block';
+          }
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHTML;
+          }
+          return; // Stop execution, do not send network request
+        }
+
         if (submitBtn) {
           submitBtn.innerText = 'TRANSMITTING TO STUDIO...';
           submitBtn.disabled = true;
@@ -1199,7 +1269,7 @@
             'Accept': 'application/json'
           }
         })
-        .then(response => {
+        .then(async response => {
           if (response.ok) {
             const reqHeader = document.getElementById('request-header');
             if (reqHeader) {
@@ -1221,7 +1291,18 @@
               `;
             }
           } else {
-            throw new Error('Formspree submission failed');
+            let customError = '';
+            try {
+              const data = await response.json();
+              if (data && data.errors && data.errors.length > 0) {
+                customError = data.errors.map(err => err.message || err.error).filter(Boolean).join('<br>');
+              } else if (data && data.error) {
+                customError = data.error;
+              }
+            } catch (e) {
+              // Ignore JSON parse error
+            }
+            throw new Error(customError || 'We could not submit your request at this time. Please check your connection or contact our team directly.');
           }
         })
         .catch(err => {
@@ -1229,9 +1310,9 @@
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalBtnHTML;
           }
-          if (errorMsg) {
-            errorMsg.innerText = 'There was an issue transmitting your request. Please try again or reach out directly.';
-            errorMsg.style.display = 'block';
+          if (errorBox) {
+            errorBox.innerHTML = err.message || 'We could not submit your request at this time. Please check your connection or contact our team directly.';
+            errorBox.style.display = 'block';
           }
         });
       });

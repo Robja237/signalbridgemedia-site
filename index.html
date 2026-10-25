@@ -1052,36 +1052,37 @@
       <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.8rem; margin-bottom: 8px; color: var(--text);" id="selected-plan-title">Package Request</h2>
       <p style="color: var(--muted); margin-bottom: 24px;">Submit your dealership details below. Production begins immediately upon receipt, with delivery in under 24 hours.</p>
 
-      <div class="request-form-card">
-        <form id="dealership-request-form" onsubmit="submitFormToEmail(event)">
-          <input type="hidden" id="selected-package-input" name="selected_package" value="Feature Single Unit for $199">
+      <div class="request-form-card" id="request-form-card-container">
+        <form id="dealership-request-form" action="https://formspree.io/f/mwllvkdb" method="POST">
+          <input type="hidden" id="selected-package-input" name="selected_plan" value="Feature Single Unit for $199">
 
           <div class="form-group">
             <label for="gm-name">Your Full Name / Title</label>
-            <input type="text" id="gm-name" class="form-control" placeholder="e.g. John Miller, General Manager" required>
+            <input type="text" id="gm-name" name="full_name" class="form-control" placeholder="e.g. John Miller, General Manager" required>
           </div>
 
           <div class="form-group">
             <label for="dealership-name">Dealership Name & Location</label>
-            <input type="text" id="dealership-name" class="form-control" placeholder="e.g. Gulf Coast Powersports - Houma, LA" required>
+            <input type="text" id="dealership-name" name="dealership" class="form-control" placeholder="e.g. Gulf Coast Powersports - Houma, LA" required>
           </div>
 
           <div class="form-group">
             <label for="gm-email">Direct Work Email</label>
-            <input type="email" id="gm-email" class="form-control" placeholder="john@gulfcoastpowersports.com" required>
+            <input type="email" id="gm-email" name="email" class="form-control" placeholder="john@gulfcoastpowersports.com" required>
           </div>
 
           <div class="form-group">
             <label for="gm-phone">Direct Phone / Cell</label>
-            <input type="tel" id="gm-phone" class="form-control" placeholder="(555) 019-2831" required>
+            <input type="tel" id="gm-phone" name="phone" class="form-control" placeholder="(555) 019-2831" required>
           </div>
 
           <div class="form-group">
             <label for="unit-url">Unit Listing URL or Stock # (Optional)</label>
-            <input type="text" id="unit-url" class="form-control" placeholder="e.g. https://yourdealer.com/inventory/unit-1234">
+            <input type="text" id="unit-url" name="listing_url" class="form-control" placeholder="e.g. https://yourdealer.com/inventory/unit-1234">
           </div>
 
           <button type="submit" id="request-submit-btn" class="cta-button" style="width: 100%; margin-top: 10px;">SUBMIT UNIT FOR PRODUCTION &rarr;</button>
+          <p id="form-error-msg" style="display: none; color: #ef4444; font-size: 0.88rem; margin-top: 12px; text-align: center;"></p>
         </form>
       </div>
     </div>
@@ -1135,9 +1136,18 @@
       }, 50);
     }
 
+    let initialFormHTML = null;
+
     function openRequestForm(packageName) {
+      const container = document.getElementById('request-form-card-container');
+      if (container && initialFormHTML && !document.getElementById('dealership-request-form')) {
+        container.innerHTML = initialFormHTML;
+        attachFormSubmitListener();
+      }
+
       document.getElementById('selected-plan-title').innerText = packageName;
-      document.getElementById('selected-package-input').value = packageName;
+      const pkgInput = document.getElementById('selected-package-input');
+      if (pkgInput) pkgInput.value = packageName;
 
       const submitBtn = document.getElementById('request-submit-btn');
       if (submitBtn) {
@@ -1155,6 +1165,73 @@
       showView('request');
     }
 
+    function attachFormSubmitListener() {
+      const form = document.getElementById('dealership-request-form');
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const submitBtn = document.getElementById('request-submit-btn');
+        const errorMsg = document.getElementById('form-error-msg');
+        if (errorMsg) {
+          errorMsg.style.display = 'none';
+          errorMsg.innerText = '';
+        }
+
+        const originalBtnHTML = submitBtn ? submitBtn.innerHTML : 'SUBMIT UNIT FOR PRODUCTION &rarr;';
+        if (submitBtn) {
+          submitBtn.innerText = 'TRANSMITTING TO STUDIO...';
+          submitBtn.disabled = true;
+        }
+
+        fetch('https://formspree.io/f/mwllvkdb', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            const cardContainer = document.getElementById('request-form-card-container');
+            if (cardContainer) {
+              cardContainer.innerHTML = `
+                <div style="text-align: center; padding: 12px 8px;">
+                  <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.15rem; font-weight: 800; color: #ffffff; margin-bottom: 16px; line-height: 1.3;">
+                    <span style='color: #22c55e;'>✓</span> REQUEST CONFIRMED // PRODUCTION INITIATED
+                  </h3>
+                  <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; max-width: 580px; margin: 0 auto;">
+                    We received your unit details. Our studio team is reviewing the listing assets now. Expect your confirmation email and 4K commercial draft within 24 hours.
+                  </p>
+                </div>
+              `;
+            }
+          } else {
+            throw new Error('Formspree submission failed');
+          }
+        })
+        .catch(err => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHTML;
+          }
+          if (errorMsg) {
+            errorMsg.innerText = 'There was an issue transmitting your request. Please try again or reach out directly.';
+            errorMsg.style.display = 'block';
+          }
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.getElementById('request-form-card-container');
+      if (container) {
+        initialFormHTML = container.innerHTML;
+      }
+      attachFormSubmitListener();
+    });
+
     window.addEventListener('popstate', function(event) {
       if (event.state && event.state.view) {
         showView(event.state.view, true);
@@ -1164,29 +1241,6 @@
     });
 
     history.replaceState({ view: 'home' }, '', '#home');
-
-    function submitFormToEmail(e) {
-      e.preventDefault();
-      const pkg = document.getElementById('selected-package-input').value;
-      const name = document.getElementById('gm-name').value;
-      const dealer = document.getElementById('dealership-name').value;
-      const email = document.getElementById('gm-email').value;
-      const phone = document.getElementById('gm-phone').value;
-      const unit = document.getElementById('unit-url').value;
-
-      const subject = encodeURIComponent("New Plan Request: " + pkg + " - " + dealer);
-      const body = encodeURIComponent(
-        "SIGNALBRIDGE MEDIA PACKAGE REQUEST\n\n" +
-        "Selected Package: " + pkg + "\n" +
-        "Name / Title: " + name + "\n" +
-        "Dealership: " + dealer + "\n" +
-        "Email: " + email + "\n" +
-        "Phone: " + phone + "\n" +
-        "Target Unit URL/Stock #: " + (unit || "N/A") + "\n"
-      );
-
-      window.location.href = "mailto:contact@signalbridge.com?subject=" + subject + "&body=" + body;
-    }
   </script>
 
 </body>

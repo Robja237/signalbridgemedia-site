@@ -560,12 +560,15 @@
     }
 
     .spec-card-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 8px;
-    }
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem); /* Fits the Can-Am onto a single clean line */
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
+  white-space: nowrap; /* Ensures no orphan words dangle */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
     .spec-card-desc {
       font-size: 0.88rem;
@@ -954,23 +957,35 @@
   <main>
     <!-- ==================== VIEW 1: MAIN HOME PAGE ==================== -->
     <div id="view-home" class="page-view active">
+      
       <!-- Hero Section -->
       <section class="hero">
         <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: #ff8833; background: rgba(255, 106, 0, 0.1); border: 1px solid rgba(255, 106, 0, 0.3); border-radius: 9999px; padding: 5px 16px; margin-bottom: 16px; font-weight: 700;">// TURNKEY VIDEO MERCHANDISING</div>
+        
         <h1 class="hero-title">
           <span class="hero-title-line-1">TURN STAGNANT INVENTORY</span>
           <span class="hero-title-line-2"><span class="glow-orange">INTO CINEMATIC ACTION VIDEO</span></span>
         </h1>
         
-        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 1.05rem; color: #cbd5e1; line-height: 1.4; text-align: left; max-width: 620px; margin: 0 auto 24px auto;">
-          <div style="display: flex; align-items: flex-start; gap: 10px;">
-            <span style="color: #ff6a00; font-weight: bold;">▸</span>
-            <span>Transform static lot photos into authentic lifestyle action footage—showing your exact boats and rigs out on local waters and trails.</span>
+        <!-- Symmetrical 3-Pillar Value Grid -->
+        <div style="display: flex; flex-direction: column; gap: 14px; font-size: 1rem; color: #cbd5e1; line-height: 1.5; text-align: left; max-width: 680px; margin: 0 auto 28px auto;">
+          
+          <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <span style="color: #ff6a00; font-weight: 900; font-size: 1.1rem; line-height: 1;">▸</span>
+            <span><strong>Cinematic Motion Assets:</strong> We transform static lot stills into high-energy lifestyle footage—placing your exact boats and rigs out on local waters and trails.</span>
           </div>
-          <div style="display: flex; align-items: flex-start; gap: 10px;">
-            <span style="color: #38bdf8; font-weight: bold;">▸</span>
-            <span>100% turnkey feed management: We produce the video, write the buyer captions, and publish directly to your Instagram and Facebook.</span>
+          
+          <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <span style="color: #38bdf8; font-weight: 900; font-size: 1.1rem; line-height: 1;">▸</span>
+            <span><strong>Zero Friction Pipeline:</strong> No cameras on your lot and zero sales downtime. Simply submit a live listing URL, and we deliver 4K broadcast cuts in under 24 hours.</span>
           </div>
+
+          <!-- Emphasized Third Bullet -->
+          <div style="display: flex; align-items: flex-start; gap: 12px; background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 10px; padding: 12px 14px;">
+            <span style="color: #00e599; font-weight: 900; font-size: 1.2rem; line-height: 1;">▸</span>
+            <span style="font-size: 1.05rem; color: #ffffff;"><strong>Revive Dormant Social Channels:</strong> Complete hands-free distribution. We produce the spot, write high-converting buyer copy, and post directly to your feeds.</span>
+          </div>
+
         </div>
 
         <button onclick="openRequestForm('Feature Single Unit for $199')" class="cta-button">FEATURE SINGLE UNIT FOR $199 &rarr;</button>
@@ -984,7 +999,7 @@
         <br>
         <span onclick="scrollToInventory()" class="hero-scroll-notice">// SCROLL DOWN TO VIEW ACTIVE SPEC SHOWCASE &darr;</span>
       </section>
-
+      
       <!-- ==================== ACTIVE 3-SLOT SPEC SHOWCASE ==================== -->
       <section class="section" id="inventory">
         <div class="section-title">
@@ -1176,16 +1191,32 @@
 
       <!-- Single Unit Inventory Feature Baseline Section -->
       <section class="section">
-        <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.25); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.25); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 32px;">
           <div class="section-title" style="margin: 0 auto 16px auto; display: inline-block;">// ONE-CLICK FEED REVIVAL</div>
-          <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: clamp(1.4rem, 2.8vw, 2.1rem); font-style: italic; line-height: 1.25; margin-bottom: 16px; text-align: center; color: #ffffff;">
+          <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: clamp(1.4rem, 2.8vw, 2.1rem); font-style: italic; line-height: 1.25; margin-bottom: 20px; text-align: center; color: #ffffff;">
             REVIVE YOUR SOCIAL FEEDS<br>
             <span style="color: #ff6a00; text-shadow: 0 0 24px rgba(255, 106, 0, 0.5);">WITH A SINGLE LOT UNIT // $199</span>
           </h2>
           
-          <p style="max-width: 760px; margin: 0 auto 24px auto; text-wrap: balance; line-height: 1.6; font-size: 1.02rem; color: #94a3b8; text-align: center;">
-            Stop letting dead social channels and floorplan costs drag down aged inventory. Send us a listing link or smartphone photo. For $199, we build an authentic lifestyle action clip, craft engaging buyer copy with your store's contact info, and deliver it ready-to-publish (or post it directly for you) within 24 hours. Zero contracts, zero lot disruption.
-          </p>
+          <!-- Symmetrical Feature Points -->
+          <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.98rem; color: #94a3b8; line-height: 1.5; text-align: left; max-width: 680px; margin: 0 auto 28px auto;">
+            
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: #ff6a00; font-weight: 900; font-size: 1.1rem; line-height: 1;">▸</span>
+              <span><strong>Stop Floorplan Hemorrhaging:</strong> Clear out aging showroom inventory by replacing stagnant lot photography with cinematic buyer-ready action reels.</span>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+              <span style="color: #38bdf8; font-weight: 900; font-size: 1.1rem; line-height: 1;">▸</span>
+              <span><strong>Total Hands-Off Delivery:</strong> Send a listing URL or smartphone photo. We handle sound design, motion typography, and local buyer captions.</span>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 12px; background: rgba(255, 106, 0, 0.06); border: 1px solid rgba(255, 106, 0, 0.25); border-radius: 10px; padding: 12px 14px;">
+              <span style="color: #ff6a00; font-weight: 900; font-size: 1.2rem; line-height: 1;">▸</span>
+              <span style="font-size: 1.02rem; color: #ffffff;"><strong>Guaranteed 24-Hour Turn:</strong> Delivered ready-to-post or published directly to your Facebook, Instagram, and TikTok feeds with zero long-term commitments.</span>
+            </div>
+
+          </div>
 
           <div style="display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;">
             <button onclick="openRequestForm('Feature Single Unit for $199')" class="cta-button">TEST A SINGLE UNIT FOR $199 &rarr;</button>
@@ -1193,30 +1224,7 @@
           </div>
         </div>
       </section>
-
-      <!-- Turnkey Workflow Section -->
-      <section class="section" id="workflow">
-        <div class="section-title">Zero Friction Engine</div>
-        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--text);">Engineered for Dealership Velocity</h2>
-        <div class="grid-3">
-          <div class="feature-card">
-            <div class="feature-num">01</div>
-            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Send Your Listing Link</h3>
-            <p style="color: var(--muted); font-size: 0.92rem;">Submit a live inventory URL or a quick smartphone photo of any unit on your lot. No staging, no lot shuffling, and zero sales team downtime.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-num">02</div>
-            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Studio Production</h3>
-            <p style="color: var(--muted); font-size: 0.92rem;">We replace static dealership asphalt with authentic real-world terrain, cinematic motion lighting, and your custom dealership branding.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-num">03</div>
-            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Automated Feed Publishing</h3>
-            <p style="color: var(--muted); font-size: 0.92rem;">We deliver and schedule broadcast-grade video assets directly across your social feeds and inventory pages to accelerate showroom velocity.</p>
-          </div>
-        </div>
-      </section>
-
+      
       <!-- Baseline Action Section -->
       <section class="section" style="text-align: center;">
         <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.3);">

@@ -62,10 +62,10 @@
   }
   </script>
 
-  <!-- Google Tech Font Import: Orbitron (300, 700, 900) & Inter -->
+  <!-- Google Tech Font Import: Orbitron & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;700;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #030712;
@@ -244,7 +244,7 @@
       transform: skewX(-5deg);
       display: inline-block;
       width: 100%;
-      max-width: 960px; /* Expanded from 820px to fill container width */
+      max-width: 960px;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.15;
@@ -253,7 +253,7 @@
     .hero-title-line-1 {
       display: block;
       text-align: center;
-      font-size: clamp(1.9rem, 4vw, 2.85rem); /* Scaled up from 2.3rem */
+      font-size: clamp(1.85rem, 3.8vw, 2.75rem);
       font-weight: 900;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -265,28 +265,11 @@
     .hero-title-line-2 {
       display: block;
       text-align: center;
-      font-size: clamp(1.9rem, 4vw, 2.85rem); /* Scaled up from 2.3rem */
+      font-size: clamp(1.85rem, 3.8vw, 2.75rem);
       font-weight: 900;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       line-height: 1.15;
-    }
-
-    /* Fixed Card Title: Full text visible, zero clipping, balanced height */
-    .spec-card-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.15rem; /* Clean fit for the full Can-Am title */
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      color: #ffffff;
-      margin-bottom: 8px;
-      line-height: 1.35;
-      min-height: 3.2em; /* Locks title block height across all 3 cards */
-      display: flex;
-      align-items: flex-start;
-      white-space: normal;
-      overflow: visible;
-      text-overflow: clip;
     }
 
     .glow-orange {
@@ -391,7 +374,7 @@
     ============================================================== */
     .spec-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
       gap: 24px;
       margin-top: 24px;
       margin-bottom: 40px;
@@ -577,16 +560,21 @@
       margin-bottom: 6px;
     }
 
+    /* Fixed Card Title: Fits Can-Am Maverick X3 fully on one clean line */
     .spec-card-title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(1.05rem, 1.4vw, 1.2rem); /* Fits the Can-Am onto a single clean line */
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 8px;
-  white-space: nowrap; /* Ensures no orphan words dangle */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.35;
+      min-height: 2.7em;
+      display: flex;
+      align-items: center;
+      white-space: normal;
+      overflow: visible;
+    }
 
     .spec-card-desc {
       font-size: 0.88rem;
@@ -614,24 +602,27 @@
       font-weight: 700;
     }
 
+    /* Streamlined Single-Line Card Action Button */
     .claim-action-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
       background: rgba(56, 189, 248, 0.08);
       border: 1px solid rgba(56, 189, 248, 0.3);
       color: var(--accent);
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      padding: 10px 16px;
+      padding: 11px 12px;
       border-radius: 8px;
       cursor: pointer;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       transition: all 0.2s ease;
       text-decoration: none;
+      white-space: nowrap;
+      width: 100%;
     }
 
     .claim-action-btn:hover {
@@ -975,7 +966,6 @@
   <main>
     <!-- ==================== VIEW 1: MAIN HOME PAGE ==================== -->
     <div id="view-home" class="page-view active">
-      
       <!-- Hero Section -->
       <section class="hero">
         <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: #ff8833; background: rgba(255, 106, 0, 0.1); border: 1px solid rgba(255, 106, 0, 0.3); border-radius: 9999px; padding: 5px 16px; margin-bottom: 20px; font-weight: 700;">// TURNKEY VIDEO MERCHANDISING</div>
@@ -998,12 +988,14 @@
             <span><strong style="color: #ffffff;">Zero Friction Pipeline:</strong> No cameras on your lot and zero sales downtime. Simply submit a live listing URL, and we deliver 4K broadcast cuts in under 24 hours.</span>
           </div>
 
-          <!-- Highlighted & Enlarged 3rd Bullet -->
+          <!-- Highlighted & Styled 3rd Bullet -->
           <div style="display: flex; align-items: flex-start; gap: 14px; background: rgba(56, 189, 248, 0.07); border: 1px solid rgba(56, 189, 248, 0.28); border-radius: 12px; padding: 16px 20px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);">
             <span style="color: #00e599; font-weight: 900; font-size: 1.45rem; line-height: 1; flex-shrink: 0; margin-top: 1px;">▸</span>
             <div style="display: flex; flex-direction: column; gap: 4px;">
               <span style="font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 800; color: #00e599; letter-spacing: 0.1em; text-transform: uppercase;">// FULL FEED AUTOMATION</span>
-              <span style="font-size: 1.15rem; color: #ffffff; font-weight: 500; line-height: 1.5;"><strong>Revive Dormant Social Channels:</strong> Complete hands-free distribution. We produce the commercial cut, write high-converting buyer copy, and post directly to your Instagram and Facebook feeds.</span>
+              <span style="font-size: 1.15rem; color: #ffffff; font-weight: 400; line-height: 1.5;">
+                <strong style="font-style: italic; font-weight: 800; color: #38bdf8; text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);">Revive Dormant Social Channels:</strong> Complete hands-free distribution. We produce the commercial cut, write high-converting buyer copy, and post directly to your Instagram and Facebook feeds.
+              </span>
             </div>
           </div>
 
@@ -1020,7 +1012,7 @@
         <br>
         <span onclick="scrollToInventory()" class="hero-scroll-notice">// SCROLL DOWN TO VIEW ACTIVE SPEC SHOWCASE &darr;</span>
       </section>
-      
+
       <!-- ==================== ACTIVE 3-SLOT SPEC SHOWCASE ==================== -->
       <section class="section" id="inventory">
         <div class="section-title">
@@ -1080,7 +1072,7 @@
                 </div>
 
                 <button onclick="claimUnitAsset('2026 Robalo R270 (Stock #12405)')" class="claim-action-btn">
-                  Claim 4K Master & End-Card &rarr;
+                  GET COMPLIMENTARY 4K ASSET &rarr;
                 </button>
               </div>
             </article>
@@ -1126,7 +1118,7 @@
                 </div>
 
                 <button onclick="claimUnitAsset('2027 Can-Am Maverick X3 (Stock #CA3219 LPS)')" class="claim-action-btn">
-                  Claim 4K Master & End-Card &rarr;
+                  GET COMPLIMENTARY 4K ASSET &rarr;
                 </button>
               </div>
             </article>
@@ -1172,7 +1164,7 @@
                 </div>
 
                 <button onclick="claimUnitAsset('2026 Sportsman Masters 247 (Unit ID #69A73)')" class="claim-action-btn">
-                  Claim 4K Master & End-Card &rarr;
+                  GET COMPLIMENTARY 4K ASSET &rarr;
                 </button>
               </div>
             </article>
@@ -1249,7 +1241,30 @@
           </div>
         </div>
       </section>
-      
+
+      <!-- Turnkey Workflow Section -->
+      <section class="section" id="workflow">
+        <div class="section-title">Zero Friction Engine</div>
+        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--text);">Engineered for Dealership Velocity</h2>
+        <div class="grid-3">
+          <div class="feature-card">
+            <div class="feature-num">01</div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Send Your Listing Link</h3>
+            <p style="color: var(--muted); font-size: 0.92rem;">Submit a live inventory URL or a quick smartphone photo of any unit on your lot. No staging, no lot shuffling, and zero sales team downtime.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-num">02</div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">24-Hour Studio Production</h3>
+            <p style="color: var(--muted); font-size: 0.92rem;">We replace static dealership asphalt with authentic real-world terrain, cinematic motion lighting, and your custom dealership branding.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-num">03</div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; color: var(--text);">Automated Feed Publishing</h3>
+            <p style="color: var(--muted); font-size: 0.92rem;">We deliver and schedule broadcast-grade video assets directly across your social feeds and inventory pages to accelerate showroom velocity.</p>
+          </div>
+        </div>
+      </section>
+
       <!-- Baseline Action Section -->
       <section class="section" style="text-align: center;">
         <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.3);">
@@ -1465,8 +1480,8 @@
 
       const submitBtn = document.getElementById('request-submit-btn');
       if (submitBtn) {
-        if (packageName.includes('Claim') || packageName.includes('Master')) {
-          submitBtn.innerHTML = 'CLAIM 4K MASTERS & END-CARD &rarr;';
+        if (packageName.includes('Asset') || packageName.includes('Master')) {
+          submitBtn.innerHTML = 'CLAIM COMPLIMENTARY 4K ASSET &rarr;';
         } else if (packageName.includes('199')) {
           submitBtn.innerHTML = 'SUBMIT UNIT FOR PRODUCTION &rarr;';
         } else if (packageName.includes('1,495') || packageName.includes('1495')) {
@@ -1482,7 +1497,7 @@
     }
 
     function claimUnitAsset(unitName) {
-      openRequestForm('Claim Complimentary 4K Master', unitName);
+      openRequestForm('Claim Complimentary 4K Asset', unitName);
     }
 
     function attachFormSubmitListener() {

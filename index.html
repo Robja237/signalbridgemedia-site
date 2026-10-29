@@ -991,7 +991,7 @@
           <!-- Highlighted & Styled 3rd Bullet -->
           <div style="display: flex; align-items: flex-start; gap: 14px; background: rgba(56, 189, 248, 0.07); border: 1px solid rgba(56, 189, 248, 0.28); border-radius: 12px; padding: 16px 20px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);">
             <span style="color: #00e599; font-weight: 900; font-size: 1.45rem; line-height: 1; flex-shrink: 0; margin-top: 1px;">▸</span>
-            <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="flex-direction: column; gap: 4px; display: flex;">
               <span style="font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 800; color: #00e599; letter-spacing: 0.1em; text-transform: uppercase;">// FULL FEED AUTOMATION</span>
               <span style="font-size: 1.15rem; color: #ffffff; font-weight: 400; line-height: 1.5;">
                 <strong style="font-style: italic; font-weight: 800; color: #38bdf8; text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);">Revive Dormant Social Media Accounts:</strong> Complete hands-free distribution. We produce the commercial cut, write high-converting buyer copy, and post directly to your Instagram, TikTok, Facebook, or any other social media feed.
@@ -1052,8 +1052,8 @@
                   </div>
                 </div>
 
-                <video id="video-robalo" class="showcase-video" preload="metadata" playsinline muted poster="poster-robalo-r270.jpg?v=2">
-                  <source src="spec-robalo-r270.mp4" type="video/mp4">
+                <video id="video-robalo" class="showcase-video" preload="auto" playsinline muted poster="poster-robalo-r270.jpg?v=2">
+                  <source src="spec-robalo-r270.mp4?v=2" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -1098,8 +1098,8 @@
                   </div>
                 </div>
 
-                <video id="video-canam" class="showcase-video" preload="metadata" playsinline muted poster="poster-canam-maverick.jpg?v=2">
-                  <source src="spec-canam-maverick.mp4" type="video/mp4">
+                <video id="video-canam" class="showcase-video" preload="auto" playsinline muted poster="poster-canam-maverick.jpg?v=2">
+                  <source src="spec-canam-maverick.mp4?v=2" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -1144,8 +1144,8 @@
                   </div>
                 </div>
 
-                <video id="video-sportsman" class="showcase-video" preload="metadata" playsinline muted poster="poster-sportsman-247.jpg?v=2">
-                  <source src="spec-sportsman-247.mp4" type="video/mp4">
+                <video id="video-sportsman" class="showcase-video" preload="auto" playsinline muted poster="poster-sportsman-247.jpg?v=2">
+                  <source src="spec-sportsman-247.mp4?v=2" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -1445,11 +1445,20 @@
     }
 
     /* ==============================================================
-       MOBILE-OPTIMIZED AUTOPLAY CAROUSEL SEQUENCE
+       MOBILE-OPTIMIZED AUTOPLAY CAROUSEL SEQUENCE (WITH PRE-BUFFER)
     ============================================================== */
     const sequenceOrder = ['video-robalo', 'video-canam', 'video-sportsman'];
     let currentVideoIdx = 0;
     let sequenceActive = true;
+
+    // Forces browser network thread to buffer upcoming video before current video ends
+    function warmUpNextVideo(currentIndex) {
+      const nextIdx = (currentIndex + 1) % sequenceOrder.length;
+      const nextVid = document.getElementById(sequenceOrder[nextIdx]);
+      if (nextVid && nextVid.readyState < 2) {
+        nextVid.load();
+      }
+    }
 
     function playSequenceVideo(index) {
       if (!sequenceActive) return;
@@ -1458,7 +1467,7 @@
       const targetId = sequenceOrder[currentVideoIdx];
       const targetVideo = document.getElementById(targetId);
 
-      // Pause all other videos and cleanly reset their playback head WITHOUT calling v.load()
+      // Pause non-active videos and reset head to frame 0 cleanly WITHOUT re-purging buffers
       sequenceOrder.forEach((id, i) => {
         if (i !== currentVideoIdx) {
           const v = document.getElementById(id);
@@ -1479,7 +1488,10 @@
 
         const playPromise = targetVideo.play();
         if (playPromise !== undefined) {
-          playPromise.catch(() => {
+          playPromise.then(() => {
+            // While this video plays, immediately fetch bytes for the next video
+            warmUpNextVideo(currentVideoIdx);
+          }).catch(() => {
             const retryOnUser = () => {
               if (sequenceActive) playSequenceVideo(currentVideoIdx);
               window.removeEventListener('click', retryOnUser);
@@ -1497,17 +1509,15 @@
       if (v) {
         v.muted = true;
 
-        // When the clip finishes, rewind cleanly and pass directly to the next slot
         v.addEventListener('ended', function() {
           if (!sequenceActive) return;
           v.pause();
           try {
-            v.currentTime = 0; // Rewinds to frame 0 instantly from cached buffer
+            v.currentTime = 0; // Rewind cleanly to frame 0 from memory
           } catch(e) {}
           playSequenceVideo(idx + 1);
         });
 
-        // Pause the carousel if the user manually taps a video
         v.addEventListener('click', function() {
           sequenceActive = false;
         });

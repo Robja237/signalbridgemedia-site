@@ -601,7 +601,7 @@
       font-weight: 700;
     }
 
-    /* Streamlined Button */
+    /* Streamlined Single-Line Card Action Button */
     .claim-action-btn {
       display: inline-flex;
       align-items: center;
@@ -694,6 +694,7 @@
       height: 100%;
       display: block;
       accent-color: var(--accent);
+      cursor: pointer;
     }
 
     .grid-3 {
@@ -1051,7 +1052,7 @@
                   </div>
                 </div>
 
-                <video id="video-robalo" preload="metadata" playsinline controls poster="poster-robalo-r270.jpg">
+                <video id="video-robalo" class="showcase-video" preload="metadata" playsinline muted poster="poster-robalo-r270.jpg">
                   <source src="spec-robalo-r270.mp4" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
@@ -1097,7 +1098,7 @@
                   </div>
                 </div>
 
-                <video id="video-canam" preload="metadata" playsinline controls poster="poster-canam-maverick.jpg">
+                <video id="video-canam" class="showcase-video" preload="metadata" playsinline muted poster="poster-canam-maverick.jpg">
                   <source src="spec-canam-maverick.mp4" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
@@ -1143,7 +1144,7 @@
                   </div>
                 </div>
 
-                <video id="video-sportsman" preload="metadata" playsinline controls poster="poster-sportsman-247.jpg">
+                <video id="video-sportsman" class="showcase-video" preload="metadata" playsinline muted poster="poster-sportsman-247.jpg">
                   <source src="spec-sportsman-247.mp4" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
@@ -1443,15 +1444,70 @@
       }, 50);
     }
 
-    // Isolate video playback (pause others when one plays)
-    document.querySelectorAll('video').forEach(videoEl => {
-      videoEl.addEventListener('play', function() {
-        document.querySelectorAll('video').forEach(other => {
-          if (other !== videoEl) {
-            other.pause();
+    /* ==============================================================
+       AUTOPLAY CAROUSEL SEQUENCE & SILENT SOUND ENGINE
+    ============================================================== */
+    const sequenceOrder = ['video-robalo', 'video-canam', 'video-sportsman'];
+    let currentVideoIdx = 0;
+    let sequenceActive = true;
+
+    function playSequenceVideo(index) {
+      if (!sequenceActive) return;
+
+      currentVideoIdx = index % sequenceOrder.length;
+      const targetId = sequenceOrder[currentVideoIdx];
+      const targetVideo = document.getElementById(targetId);
+
+      // Stop and reset all other videos so their poster returns
+      sequenceOrder.forEach((id, i) => {
+        if (i !== currentVideoIdx) {
+          const v = document.getElementById(id);
+          if (v) {
+            v.pause();
+            v.currentTime = 0;
+            v.load(); // restores poster frame
           }
-        });
+        }
       });
+
+      if (targetVideo) {
+        targetVideo.muted = true;
+        const playPromise = targetVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // If browser autoplay policies throttle early execution, retry on user engagement
+            const retryOnUser = () => {
+              if (sequenceActive) playSequenceVideo(currentVideoIdx);
+              window.removeEventListener('click', retryOnUser);
+              window.removeEventListener('touchstart', retryOnUser);
+            };
+            window.addEventListener('click', retryOnUser, { once: true });
+            window.addEventListener('touchstart', retryOnUser, { once: true });
+          });
+        }
+      }
+    }
+
+    // Attach sequence listeners to each showcase video
+    sequenceOrder.forEach((id, idx) => {
+      const v = document.getElementById(id);
+      if (v) {
+        v.muted = true;
+
+        // When a video ends, pause, reset time to 0 to restore thumbnail, and trigger the next
+        v.addEventListener('ended', function() {
+          if (!sequenceActive) return;
+          v.pause();
+          v.currentTime = 0;
+          v.load(); // restores poster thumbnail
+          playSequenceVideo(idx + 1);
+        });
+
+        // If the user clicks into a video directly, pause the carousel
+        v.addEventListener('click', function() {
+          sequenceActive = false;
+        });
+      }
     });
 
     let initialFormHTML = null;
@@ -1535,7 +1591,6 @@
         const submitBtn = document.getElementById('request-submit-btn');
         const originalBtnHTML = submitBtn ? submitBtn.innerHTML : 'SUBMIT UNIT FOR PRODUCTION &rarr;';
 
-        // Reset previous styling and errors
         form.querySelectorAll('input').forEach(input => input.style.borderColor = '');
         if (errorBox) {
           errorBox.style.display = 'none';
@@ -1645,6 +1700,9 @@
         initialFormHTML = container.innerHTML;
       }
       attachFormSubmitListener();
+
+      // Kick off sequential autoplay on load
+      playSequenceVideo(0);
     });
 
     window.addEventListener('popstate', function(event) {

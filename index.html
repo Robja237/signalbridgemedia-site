@@ -1445,7 +1445,7 @@
     }
 
     /* ==============================================================
-       AUTOPLAY CAROUSEL SEQUENCE & SILENT SOUND ENGINE
+       MOBILE-OPTIMIZED AUTOPLAY CAROUSEL SEQUENCE
     ============================================================== */
     const sequenceOrder = ['video-robalo', 'video-canam', 'video-sportsman'];
     let currentVideoIdx = 0;
@@ -1458,24 +1458,28 @@
       const targetId = sequenceOrder[currentVideoIdx];
       const targetVideo = document.getElementById(targetId);
 
-      // Stop and reset all other videos so their poster returns
+      // Pause all other videos and cleanly reset their playback head WITHOUT calling v.load()
       sequenceOrder.forEach((id, i) => {
         if (i !== currentVideoIdx) {
           const v = document.getElementById(id);
           if (v) {
             v.pause();
-            v.currentTime = 0;
-            v.load(); // restores poster frame
+            try {
+              v.currentTime = 0;
+            } catch(e) {}
           }
         }
       });
 
       if (targetVideo) {
         targetVideo.muted = true;
+        try {
+          targetVideo.currentTime = 0;
+        } catch(e) {}
+
         const playPromise = targetVideo.play();
         if (playPromise !== undefined) {
           playPromise.catch(() => {
-            // If browser autoplay policies throttle early execution, retry on user engagement
             const retryOnUser = () => {
               if (sequenceActive) playSequenceVideo(currentVideoIdx);
               window.removeEventListener('click', retryOnUser);
@@ -1488,22 +1492,22 @@
       }
     }
 
-    // Attach sequence listeners to each showcase video
     sequenceOrder.forEach((id, idx) => {
       const v = document.getElementById(id);
       if (v) {
         v.muted = true;
 
-        // When a video ends, pause, reset time to 0 to restore thumbnail, and trigger the next
+        // When the clip finishes, rewind cleanly and pass directly to the next slot
         v.addEventListener('ended', function() {
           if (!sequenceActive) return;
           v.pause();
-          v.currentTime = 0;
-          v.load(); // restores poster thumbnail
+          try {
+            v.currentTime = 0; // Rewinds to frame 0 instantly from cached buffer
+          } catch(e) {}
           playSequenceVideo(idx + 1);
         });
 
-        // If the user clicks into a video directly, pause the carousel
+        // Pause the carousel if the user manually taps a video
         v.addEventListener('click', function() {
           sequenceActive = false;
         });
@@ -1675,9 +1679,7 @@
               } else if (data && data.error) {
                 customError = data.error;
               }
-            } catch (e) {
-              // Ignore JSON parse error
-            }
+            } catch (e) {}
             throw new Error(customError || 'We could not submit your request at this time. Please check your connection or contact our team directly.');
           }
         })

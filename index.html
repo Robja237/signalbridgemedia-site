@@ -560,7 +560,6 @@
       margin-bottom: 6px;
     }
 
-    /* Fixed Card Title: Fits Can-Am Maverick X3 fully on one clean line */
     .spec-card-title {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.05rem;
@@ -602,7 +601,7 @@
       font-weight: 700;
     }
 
-    /* Streamlined Single-Line Card Action Button */
+    /* Streamlined Button */
     .claim-action-btn {
       display: inline-flex;
       align-items: center;
@@ -612,13 +611,13 @@
       border: 1px solid rgba(56, 189, 248, 0.3);
       color: var(--accent);
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       font-weight: 800;
-      padding: 11px 12px;
+      padding: 12px 14px;
       border-radius: 8px;
       cursor: pointer;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
       transition: all 0.2s ease;
       text-decoration: none;
       white-space: nowrap;
@@ -994,7 +993,7 @@
             <div style="display: flex; flex-direction: column; gap: 4px;">
               <span style="font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 800; color: #00e599; letter-spacing: 0.1em; text-transform: uppercase;">// FULL FEED AUTOMATION</span>
               <span style="font-size: 1.15rem; color: #ffffff; font-weight: 400; line-height: 1.5;">
-                <strong style="font-style: italic; font-weight: 800; color: #38bdf8; text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);">Revive Dormant Social Media Accounts:</strong> Complete hands-free distribution. We produce the commercial cut, write high-converting buyer copy, and post directly to your Instagram and Facebook feeds.
+                <strong style="font-style: italic; font-weight: 800; color: #38bdf8; text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);">Revive Dormant Social Media Accounts:</strong> Complete hands-free distribution. We produce the commercial cut, write high-converting buyer copy, and post directly to your Instagram, TikTok, Facebook, or any other social media feed.
               </span>
             </div>
           </div>
@@ -1071,8 +1070,8 @@
                   <span class="spec-hi">Ready for Water</span>
                 </div>
 
-                <button onclick="claimUnitAsset('2026 Robalo R270 (Stock #12405)')" class="claim-action-btn">
-                  START NOW WITH A 4K ASSET &rarr;
+                <button onclick="showView('plans')" class="claim-action-btn">
+                  START NOW &rarr;
                 </button>
               </div>
             </article>
@@ -1117,8 +1116,8 @@
                   <span class="spec-hi">Floor Ready</span>
                 </div>
 
-                <button onclick="claimUnitAsset('2027 Can-Am Maverick X3 (Stock #CA3219 LPS)')" class="claim-action-btn">
-                  START NOW WITH A 4K ASSET &rarr;
+                <button onclick="showView('plans')" class="claim-action-btn">
+                  START NOW &rarr;
                 </button>
               </div>
             </article>
@@ -1163,8 +1162,8 @@
                   <span class="spec-hi">Immediate Delivery</span>
                 </div>
 
-                <button onclick="claimUnitAsset('2026 Sportsman Masters 247 (Unit ID #69A73)')" class="claim-action-btn">
-                  START NOW WITH A 4K ASSET &rarr;
+                <button onclick="showView('plans')" class="claim-action-btn">
+                  START NOW &rarr;
                 </button>
               </div>
             </article>
@@ -1492,10 +1491,6 @@
       }
 
       showView('request');
-    }
-
-    function claimUnitAsset(unitName) {
-      openRequestForm('Start With a 4K Asset ($199)', unitName);
     }
 
     function attachFormSubmitListener() {

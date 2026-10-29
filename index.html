@@ -994,14 +994,14 @@
             <div style="display: flex; flex-direction: column; gap: 4px;">
               <span style="font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 800; color: #00e599; letter-spacing: 0.1em; text-transform: uppercase;">// FULL FEED AUTOMATION</span>
               <span style="font-size: 1.15rem; color: #ffffff; font-weight: 400; line-height: 1.5;">
-                <strong style="font-style: italic; font-weight: 800; color: #38bdf8; text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);">Revive Dormant Social Channels:</strong> Complete hands-free distribution. We produce the commercial cut, write high-converting buyer copy, and post directly to your Instagram and Facebook feeds.
+                <strong style="font-style: italic; font-weight: 800; color: #38bdf8; text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);">Revive Dormant Social Media Accounts:</strong> Complete hands-free distribution. We produce the commercial cut, write high-converting buyer copy, and post directly to your Instagram and Facebook feeds.
               </span>
             </div>
           </div>
 
         </div>
 
-        <button onclick="openRequestForm('Feature Single Unit for $199')" class="cta-button">FEATURE SINGLE UNIT FOR $199 &rarr;</button>
+        <button onclick="openRequestForm('Start With a Single Unit for $199')" class="cta-button">START WITH A SINGLE UNIT FOR $199 &rarr;</button>
         
         <div class="hero-pills">
           <div class="hero-pill">24-Hour Turnaround</div>
@@ -1072,7 +1072,7 @@
                 </div>
 
                 <button onclick="claimUnitAsset('2026 Robalo R270 (Stock #12405)')" class="claim-action-btn">
-                  GET COMPLIMENTARY 4K ASSET &rarr;
+                  START NOW WITH A 4K ASSET &rarr;
                 </button>
               </div>
             </article>
@@ -1118,7 +1118,7 @@
                 </div>
 
                 <button onclick="claimUnitAsset('2027 Can-Am Maverick X3 (Stock #CA3219 LPS)')" class="claim-action-btn">
-                  GET COMPLIMENTARY 4K ASSET &rarr;
+                  START NOW WITH A 4K ASSET &rarr;
                 </button>
               </div>
             </article>
@@ -1164,7 +1164,7 @@
                 </div>
 
                 <button onclick="claimUnitAsset('2026 Sportsman Masters 247 (Unit ID #69A73)')" class="claim-action-btn">
-                  GET COMPLIMENTARY 4K ASSET &rarr;
+                  START NOW WITH A 4K ASSET &rarr;
                 </button>
               </div>
             </article>
@@ -1236,7 +1236,7 @@
           </div>
 
           <div style="display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;">
-            <button onclick="openRequestForm('Feature Single Unit for $199')" class="cta-button">TEST A SINGLE UNIT FOR $199 &rarr;</button>
+            <button onclick="openRequestForm('Start With a Single Unit for $199')" class="cta-button">START WITH A SINGLE UNIT FOR $199 &rarr;</button>
             <button onclick="showView('plans')" class="nav-btn" style="padding: 12px 24px; border: 1px solid var(--line); background: rgba(15, 23, 42, 0.8);">Explore Monthly Plans</button>
           </div>
         </div>
@@ -1272,7 +1272,7 @@
           <p style="color: var(--muted); margin-bottom: 24px; max-width: 620px; margin-left: auto; margin-right: auto;">
             Hand off the editing, local copywriting, and scheduling to our studio engine. Send us one unit listing and watch your social channels wake up within 24 hours.
           </p>
-          <button onclick="openRequestForm('Feature Single Unit for $199')" class="cta-button">REVIVE YOUR SOCIAL FEED FOR $199 &rarr;</button>
+          <button onclick="openRequestForm('Start With a Single Unit for $199')" class="cta-button">START WITH A SINGLE UNIT FOR $199 &rarr;</button>
         </div>
       </section>
     </div>
@@ -1286,7 +1286,7 @@
 
       <div class="plans-subpage-grid">
         <!-- Box 1: Single Unit Feature -->
-        <div class="plan-card-box" onclick="openRequestForm('Feature Single Unit for $199')">
+        <div class="plan-card-box" onclick="openRequestForm('Start With a Single Unit for $199')">
           <div>
             <div class="plan-title-head">Single Unit Feature</div>
             <div class="plan-cost">$199 <span>/ unit</span></div>
@@ -1298,7 +1298,7 @@
               <li>Formatted for Meta, Reels, TikTok, and inventory pages</li>
             </ul>
           </div>
-          <button class="cta-button" style="width: 100%; text-align: center;">Feature 1 Unit for $199 &rarr;</button>
+          <button class="cta-button" style="width: 100%; text-align: center;">Start With 1 Unit for $199 &rarr;</button>
         </div>
 
         <!-- Box 2: Core Lot Autopilot (Featured) -->
@@ -1349,7 +1349,7 @@
 
       <div class="request-form-card" id="request-form-card-container">
         <form id="dealership-request-form" action="https://formspree.io/f/mwllvkdb" method="POST" novalidate>
-          <input type="hidden" id="selected-package-input" name="selected_plan" value="Feature Single Unit for $199">
+          <input type="hidden" id="selected-package-input" name="selected_plan" value="Start With a Single Unit for $199">
 
           <div class="form-group">
             <label for="gm-name">Your Full Name / Title</label>
@@ -1480,9 +1480,7 @@
 
       const submitBtn = document.getElementById('request-submit-btn');
       if (submitBtn) {
-        if (packageName.includes('Asset') || packageName.includes('Master')) {
-          submitBtn.innerHTML = 'CLAIM COMPLIMENTARY 4K ASSET &rarr;';
-        } else if (packageName.includes('199')) {
+        if (packageName.includes('Asset') || packageName.includes('199') || packageName.includes('Single Unit')) {
           submitBtn.innerHTML = 'SUBMIT UNIT FOR PRODUCTION &rarr;';
         } else if (packageName.includes('1,495') || packageName.includes('1495')) {
           submitBtn.innerHTML = 'SUBMIT PARTNERSHIP REQUEST &rarr;';
@@ -1497,7 +1495,7 @@
     }
 
     function claimUnitAsset(unitName) {
-      openRequestForm('Claim Complimentary 4K Asset', unitName);
+      openRequestForm('Start With a 4K Asset ($199)', unitName);
     }
 
     function attachFormSubmitListener() {

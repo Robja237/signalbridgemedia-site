@@ -808,7 +808,7 @@
 
           <div class="spec-grid">
 
-            <!-- SLOT 1: BENT MARINE -->
+            <!-- SLOT 1: BENT MARINE (Native Media Queries) -->
             <article class="spec-card" id="slot-robalo">
               <div class="video-shell">
                 <div class="reticle-top-left"></div>
@@ -828,9 +828,9 @@
                   </div>
                 </div>
 
-                <video id="video-robalo" class="showcase-video" autoplay muted playsinline poster="poster-robalo-r270.jpg?v=4" preload="auto"
-                  data-desktop-src="spec-robalo-desktop.mp4?v=4"
-                  data-mobile-src="spec-robalo-mobile.mp4?v=4">
+                <video id="video-robalo" class="showcase-video" autoplay muted playsinline poster="poster-robalo-r270.jpg?v=5" preload="auto">
+                  <source src="spec-robalo-desktop.mp4?v=5" media="(min-width: 769px)" type="video/mp4">
+                  <source src="spec-robalo-mobile.mp4?v=5" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -848,7 +848,7 @@
               </div>
             </article>
 
-            <!-- SLOT 2: NEW ORLEANS POWERSPORTS -->
+            <!-- SLOT 2: NEW ORLEANS POWERSPORTS (Native Media Queries) -->
             <article class="spec-card" id="slot-canam">
               <div class="video-shell">
                 <div class="reticle-top-left"></div>
@@ -868,9 +868,9 @@
                   </div>
                 </div>
 
-                <video id="video-canam" class="showcase-video" muted playsinline poster="poster-canam-maverick.jpg?v=4" preload="none"
-                  data-desktop-src="spec-canam-desktop.mp4?v=4"
-                  data-mobile-src="spec-canam-mobile.mp4?v=4">
+                <video id="video-canam" class="showcase-video" muted playsinline poster="poster-canam-maverick.jpg?v=5" preload="auto">
+                  <source src="spec-canam-desktop.mp4?v=5" media="(min-width: 769px)" type="video/mp4">
+                  <source src="spec-canam-mobile.mp4?v=5" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -888,7 +888,7 @@
               </div>
             </article>
 
-            <!-- SLOT 3: BOAT STUF -->
+            <!-- SLOT 3: BOAT STUF (Native Media Queries) -->
             <article class="spec-card" id="slot-sportsman">
               <div class="video-shell">
                 <div class="reticle-top-left"></div>
@@ -908,9 +908,9 @@
                   </div>
                 </div>
 
-                <video id="video-sportsman" class="showcase-video" muted playsinline poster="poster-sportsman-247.jpg?v=4" preload="none"
-                  data-desktop-src="spec-sportsman-desktop.mp4?v=4"
-                  data-mobile-src="spec-sportsman-mobile.mp4?v=4">
+                <video id="video-sportsman" class="showcase-video" muted playsinline poster="poster-sportsman-247.jpg?v=5" preload="auto">
+                  <source src="spec-sportsman-desktop.mp4?v=5" media="(min-width: 769px)" type="video/mp4">
+                  <source src="spec-sportsman-mobile.mp4?v=5" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -1162,30 +1162,11 @@
     }
 
     /* ==============================================================
-       ADAPTIVE SMART-DEVICE VIDEO CAROUSEL ENGINE
+       NATIVE HARDWARE-SYNCED CAROUSEL RELAY ENGINE
     ============================================================== */
-    const isMobileDevice = window.matchMedia('(max-width: 768px)').matches || ('ontouchstart' in window);
     const sequenceOrder = ['video-robalo', 'video-canam', 'video-sportsman'];
     let currentIdx = 0;
     let sequenceActive = true;
-    const loadedSlots = {};
-
-    function mountAdaptiveSource(videoEl) {
-      if (!videoEl || loadedSlots[videoEl.id]) return;
-
-      const targetSrc = isMobileDevice 
-        ? videoEl.dataset.mobileSrc 
-        : videoEl.dataset.desktopSrc;
-
-      if (targetSrc) {
-        const srcTag = document.createElement('source');
-        srcTag.src = targetSrc;
-        srcTag.type = 'video/mp4';
-        videoEl.appendChild(srcTag);
-        videoEl.load();
-        loadedSlots[videoEl.id] = true;
-      }
-    }
 
     function transitionToNext(nextIndex) {
       if (!sequenceActive) return;
@@ -1194,10 +1175,7 @@
       const targetId = sequenceOrder[currentIdx];
       const targetVideo = document.getElementById(targetId);
 
-      // Mount the correct bitrate file if not yet loaded
-      mountAdaptiveSource(targetVideo);
-
-      // Pause and reset other videos
+      // Stop other slots cleanly
       sequenceOrder.forEach((id, i) => {
         if (i !== currentIdx) {
           const v = document.getElementById(id);
@@ -1210,17 +1188,17 @@
 
       if (targetVideo) {
         targetVideo.muted = true;
-        targetVideo.currentTime = 0;
-        const playPromise = targetVideo.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            const unlockTouch = () => {
+        try { targetVideo.currentTime = 0; } catch(e) {}
+        const p = targetVideo.play();
+        if (p !== undefined) {
+          p.catch(() => {
+            const unlockUser = () => {
               if (sequenceActive) targetVideo.play();
-              window.removeEventListener('touchstart', unlockTouch);
-              window.removeEventListener('scroll', unlockTouch);
+              window.removeEventListener('click', unlockUser);
+              window.removeEventListener('touchstart', unlockUser);
             };
-            window.addEventListener('touchstart', unlockTouch, { once: true, passive: true });
-            window.addEventListener('scroll', unlockTouch, { once: true, passive: true });
+            window.addEventListener('click', unlockUser, { once: true });
+            window.addEventListener('touchstart', unlockUser, { once: true });
           });
         }
       }
@@ -1231,27 +1209,16 @@
       if (v) {
         v.muted = true;
 
-        // Predictive buffer: Preload next clip 2.5s before current ends
-        v.addEventListener('timeupdate', () => {
-          if (v.currentTime > 2.5) {
-            const nextVid = document.getElementById(sequenceOrder[(idx + 1) % sequenceOrder.length]);
-            mountAdaptiveSource(nextVid);
-          }
-        });
-
-        // Trigger baton pass on video completion
         v.addEventListener('ended', () => {
           transitionToNext(idx + 1);
         });
 
-        // Pause loop if user intentionally taps to inspect
         v.addEventListener('click', () => {
           sequenceActive = false;
         });
       }
     });
 
-    // Form logic
     let initialFormHTML = null;
     function openRequestForm(packageName, defaultUnit) {
       const reqHeader = document.getElementById('request-header');
@@ -1321,20 +1288,20 @@
       if (container) initialFormHTML = container.innerHTML;
       attachFormSubmitListener();
 
-      // Mount slot 1 immediately based on detected platform
+      // Ensure Slot 1 kicks off smoothly on desktop & mobile
       const firstVid = document.getElementById('video-robalo');
       if (firstVid) {
-        mountAdaptiveSource(firstVid);
-        const playPromise = firstVid.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            const startTouch = () => {
-              firstVid.play().catch(() => {});
-              window.removeEventListener('touchstart', startTouch);
-              window.removeEventListener('scroll', startTouch);
+        firstVid.muted = true;
+        const p = firstVid.play();
+        if (p !== undefined) {
+          p.catch(() => {
+            const kickstart = () => {
+              firstVid.play();
+              window.removeEventListener('click', kickstart);
+              window.removeEventListener('touchstart', kickstart);
             };
-            window.addEventListener('touchstart', startTouch, { once: true, passive: true });
-            window.addEventListener('scroll', startTouch, { once: true, passive: true });
+            window.addEventListener('click', kickstart, { once: true });
+            window.addEventListener('touchstart', kickstart, { once: true });
           });
         }
       }

@@ -15,6 +15,13 @@
   <meta property="og:description" content="Broadcast-grade 4K action commercials for powersports and marine dealerships. 24-hour turnaround, zero lot disruption. Test a single unit for $199.">
   <meta property="og:image" content="https://signalbridgemedia.com/assets/og-preview.jpg">
 
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://signalbridgemedia.com/">
+  <meta name="twitter:title" content="SignalBridge Media | Dealership Video Merchandising">
+  <meta name="twitter:description" content="Convert stagnant lot units into 4K cinematic action videos in 24 hours. Zero lot downtime.">
+  <meta name="twitter:image" content="https://signalbridgemedia.com/assets/og-preview.jpg">
+
   <!-- Structured Data (JSON-LD Schema) -->
   <script type="application/ld+json">
   {
@@ -801,7 +808,7 @@
 
           <div class="spec-grid">
 
-            <!-- SLOT 1: BENT MARINE (Native Autoplay Trigger) -->
+            <!-- SLOT 1: BENT MARINE -->
             <article class="spec-card" id="slot-robalo">
               <div class="video-shell">
                 <div class="reticle-top-left"></div>
@@ -821,9 +828,9 @@
                   </div>
                 </div>
 
-                <!-- Native autoplay/muted/playsinline for instant iOS initiation -->
-                <video id="video-robalo" class="showcase-video" autoplay muted playsinline poster="poster-robalo-r270.jpg?v=3" preload="auto">
-                  <source src="spec-robalo-r270.mp4?v=3" type="video/mp4">
+                <video id="video-robalo" class="showcase-video" autoplay muted playsinline poster="poster-robalo-r270.jpg?v=4" preload="auto"
+                  data-desktop-src="spec-robalo-desktop.mp4?v=4"
+                  data-mobile-src="spec-robalo-mobile.mp4?v=4">
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -861,7 +868,9 @@
                   </div>
                 </div>
 
-                <video id="video-canam" class="showcase-video" muted playsinline poster="poster-canam-maverick.jpg?v=3" preload="none" data-src="spec-canam-maverick.mp4?v=3">
+                <video id="video-canam" class="showcase-video" muted playsinline poster="poster-canam-maverick.jpg?v=4" preload="none"
+                  data-desktop-src="spec-canam-desktop.mp4?v=4"
+                  data-mobile-src="spec-canam-mobile.mp4?v=4">
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -899,7 +908,9 @@
                   </div>
                 </div>
 
-                <video id="video-sportsman" class="showcase-video" muted playsinline poster="poster-sportsman-247.jpg?v=3" preload="none" data-src="spec-sportsman-247.mp4?v=3">
+                <video id="video-sportsman" class="showcase-video" muted playsinline poster="poster-sportsman-247.jpg?v=4" preload="none"
+                  data-desktop-src="spec-sportsman-desktop.mp4?v=4"
+                  data-mobile-src="spec-sportsman-mobile.mp4?v=4">
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -1151,20 +1162,26 @@
     }
 
     /* ==============================================================
-       MOBILE-FIRST RESILIENT VIDEO CAROUSEL ENGINE
+       ADAPTIVE SMART-DEVICE VIDEO CAROUSEL ENGINE
     ============================================================== */
+    const isMobileDevice = window.matchMedia('(max-width: 768px)').matches || ('ontouchstart' in window);
     const sequenceOrder = ['video-robalo', 'video-canam', 'video-sportsman'];
     let currentIdx = 0;
     let sequenceActive = true;
-    const loadedSlots = { 'video-robalo': true };
+    const loadedSlots = {};
 
-    function ensureSourceMounted(videoEl) {
+    function mountAdaptiveSource(videoEl) {
       if (!videoEl || loadedSlots[videoEl.id]) return;
-      if (videoEl.dataset.src) {
-        const src = document.createElement('source');
-        src.src = videoEl.dataset.src;
-        src.type = 'video/mp4';
-        videoEl.appendChild(src);
+
+      const targetSrc = isMobileDevice 
+        ? videoEl.dataset.mobileSrc 
+        : videoEl.dataset.desktopSrc;
+
+      if (targetSrc) {
+        const srcTag = document.createElement('source');
+        srcTag.src = targetSrc;
+        srcTag.type = 'video/mp4';
+        videoEl.appendChild(srcTag);
         videoEl.load();
         loadedSlots[videoEl.id] = true;
       }
@@ -1177,10 +1194,10 @@
       const targetId = sequenceOrder[currentIdx];
       const targetVideo = document.getElementById(targetId);
 
-      // Mount next video's data source if not mounted yet
-      ensureSourceMounted(targetVideo);
+      // Mount the correct bitrate file if not yet loaded
+      mountAdaptiveSource(targetVideo);
 
-      // Stop and reset all other videos
+      // Pause and reset other videos
       sequenceOrder.forEach((id, i) => {
         if (i !== currentIdx) {
           const v = document.getElementById(id);
@@ -1194,17 +1211,16 @@
       if (targetVideo) {
         targetVideo.muted = true;
         targetVideo.currentTime = 0;
-        const p = targetVideo.play();
-        if (p !== undefined) {
-          p.catch(() => {
-            // If iOS halts, unlock on first user scroll or touch
-            const unlock = () => {
+        const playPromise = targetVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            const unlockTouch = () => {
               if (sequenceActive) targetVideo.play();
-              window.removeEventListener('touchstart', unlock);
-              window.removeEventListener('scroll', unlock);
+              window.removeEventListener('touchstart', unlockTouch);
+              window.removeEventListener('scroll', unlockTouch);
             };
-            window.addEventListener('touchstart', unlock, { once: true, passive: true });
-            window.addEventListener('scroll', unlock, { once: true, passive: true });
+            window.addEventListener('touchstart', unlockTouch, { once: true, passive: true });
+            window.addEventListener('scroll', unlockTouch, { once: true, passive: true });
           });
         }
       }
@@ -1219,7 +1235,7 @@
         v.addEventListener('timeupdate', () => {
           if (v.currentTime > 2.5) {
             const nextVid = document.getElementById(sequenceOrder[(idx + 1) % sequenceOrder.length]);
-            ensureSourceMounted(nextVid);
+            mountAdaptiveSource(nextVid);
           }
         });
 
@@ -1305,16 +1321,22 @@
       if (container) initialFormHTML = container.innerHTML;
       attachFormSubmitListener();
 
-      // Mobile Safari hardware kickstart: If Slot 1 doesn't autoplay naturally, start it on first touch
+      // Mount slot 1 immediately based on detected platform
       const firstVid = document.getElementById('video-robalo');
-      if (firstVid && firstVid.paused) {
-        const startTouch = () => {
-          firstVid.play().catch(() => {});
-          window.removeEventListener('touchstart', startTouch);
-          window.removeEventListener('scroll', startTouch);
-        };
-        window.addEventListener('touchstart', startTouch, { once: true, passive: true });
-        window.addEventListener('scroll', startTouch, { once: true, passive: true });
+      if (firstVid) {
+        mountAdaptiveSource(firstVid);
+        const playPromise = firstVid.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            const startTouch = () => {
+              firstVid.play().catch(() => {});
+              window.removeEventListener('touchstart', startTouch);
+              window.removeEventListener('scroll', startTouch);
+            };
+            window.addEventListener('touchstart', startTouch, { once: true, passive: true });
+            window.addEventListener('scroll', startTouch, { once: true, passive: true });
+          });
+        }
       }
     });
 

@@ -991,7 +991,7 @@
           <!-- Highlighted & Styled 3rd Bullet -->
           <div style="display: flex; align-items: flex-start; gap: 14px; background: rgba(56, 189, 248, 0.07); border: 1px solid rgba(56, 189, 248, 0.28); border-radius: 12px; padding: 16px 20px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);">
             <span style="color: #00e599; font-weight: 900; font-size: 1.45rem; line-height: 1; flex-shrink: 0; margin-top: 1px;">▸</span>
-            <div style="flex-direction: column; gap: 4px; display: flex;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
               <span style="font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 800; color: #00e599; letter-spacing: 0.1em; text-transform: uppercase;">// FULL FEED AUTOMATION</span>
               <span style="font-size: 1.15rem; color: #ffffff; font-weight: 400; line-height: 1.5;">
                 <strong style="font-style: italic; font-weight: 800; color: #38bdf8; text-shadow: 0 0 14px rgba(56, 189, 248, 0.4);">Revive Dormant Social Media Accounts:</strong> Complete hands-free distribution. We produce the commercial cut, write high-converting buyer copy, and post directly to your Instagram, TikTok, Facebook, or any other social media feed.
@@ -1031,7 +1031,7 @@
           <!-- 3-Slot Showcase Grid -->
           <div class="spec-grid">
 
-            <!-- SLOT 1: BENT MARINE -->
+            <!-- SLOT 1: BENT MARINE (Initial Stream Source Active) -->
             <article class="spec-card" id="slot-robalo">
               <div class="video-shell">
                 <div class="reticle-top-left"></div>
@@ -1052,7 +1052,7 @@
                   </div>
                 </div>
 
-                <video id="video-robalo" class="showcase-video" preload="auto" playsinline muted poster="poster-robalo-r270.jpg?v=2">
+                <video id="video-robalo" class="showcase-video" playsinline muted poster="poster-robalo-r270.jpg?v=2" preload="auto">
                   <source src="spec-robalo-r270.mp4?v=2" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
@@ -1077,7 +1077,7 @@
               </div>
             </article>
 
-            <!-- SLOT 2: NEW ORLEANS POWERSPORTS -->
+            <!-- SLOT 2: NEW ORLEANS POWERSPORTS (Progressive Lazy Load) -->
             <article class="spec-card" id="slot-canam">
               <div class="video-shell">
                 <div class="reticle-top-left"></div>
@@ -1098,8 +1098,8 @@
                   </div>
                 </div>
 
-                <video id="video-canam" class="showcase-video" preload="auto" playsinline muted poster="poster-canam-maverick.jpg?v=2">
-                  <source src="spec-canam-maverick.mp4?v=2" type="video/mp4">
+                <video id="video-canam" class="showcase-video" playsinline muted poster="poster-canam-maverick.jpg?v=2" preload="none" data-src="spec-canam-maverick.mp4?v=2">
+                  <!-- Stream source injected dynamically by sequential lazy buffer -->
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -1123,7 +1123,7 @@
               </div>
             </article>
 
-            <!-- SLOT 3: BOAT STUF -->
+            <!-- SLOT 3: BOAT STUF (Progressive Lazy Load) -->
             <article class="spec-card" id="slot-sportsman">
               <div class="video-shell">
                 <div class="reticle-top-left"></div>
@@ -1144,8 +1144,8 @@
                   </div>
                 </div>
 
-                <video id="video-sportsman" class="showcase-video" preload="auto" playsinline muted poster="poster-sportsman-247.jpg?v=2">
-                  <source src="spec-sportsman-247.mp4?v=2" type="video/mp4">
+                <video id="video-sportsman" class="showcase-video" playsinline muted poster="poster-sportsman-247.jpg?v=2" preload="none" data-src="spec-sportsman-247.mp4?v=2">
+                  <!-- Stream source injected dynamically by sequential lazy buffer -->
                   Your browser does not support HTML5 video.
                 </video>
               </div>
@@ -1445,18 +1445,27 @@
     }
 
     /* ==============================================================
-       MOBILE-OPTIMIZED AUTOPLAY CAROUSEL SEQUENCE (WITH PRE-BUFFER)
+       TRUE PROGRESSIVE LAZY-BUFFERING PLAYBACK ENGINE
     ============================================================== */
     const sequenceOrder = ['video-robalo', 'video-canam', 'video-sportsman'];
     let currentVideoIdx = 0;
     let sequenceActive = true;
+    const preloadedSlots = { 'video-robalo': true };
 
-    // Forces browser network thread to buffer upcoming video before current video ends
-    function warmUpNextVideo(currentIndex) {
-      const nextIdx = (currentIndex + 1) % sequenceOrder.length;
-      const nextVid = document.getElementById(sequenceOrder[nextIdx]);
-      if (nextVid && nextVid.readyState < 2) {
+    // Dynamically attaches stream source to upcoming video without locking network
+    function prepareNextVideoSource(nextIndex) {
+      const targetId = sequenceOrder[nextIndex % sequenceOrder.length];
+      if (preloadedSlots[targetId]) return;
+
+      const nextVid = document.getElementById(targetId);
+      if (nextVid && nextVid.dataset.src) {
+        const sourceElem = document.createElement('source');
+        sourceElem.src = nextVid.dataset.src;
+        sourceElem.type = 'video/mp4';
+        nextVid.appendChild(sourceElem);
+        nextVid.preload = 'auto';
         nextVid.load();
+        preloadedSlots[targetId] = true;
       }
     }
 
@@ -1467,7 +1476,12 @@
       const targetId = sequenceOrder[currentVideoIdx];
       const targetVideo = document.getElementById(targetId);
 
-      // Pause non-active videos and reset head to frame 0 cleanly WITHOUT re-purging buffers
+      // Ensure target video has its source mounted
+      if (targetVideo && !preloadedSlots[targetId] && targetVideo.dataset.src) {
+        prepareNextVideoSource(currentVideoIdx);
+      }
+
+      // Quietly pause all non-active videos and reset frame head
       sequenceOrder.forEach((id, i) => {
         if (i !== currentVideoIdx) {
           const v = document.getElementById(id);
@@ -1488,36 +1502,43 @@
 
         const playPromise = targetVideo.play();
         if (playPromise !== undefined) {
-          playPromise.then(() => {
-            // While this video plays, immediately fetch bytes for the next video
-            warmUpNextVideo(currentVideoIdx);
-          }).catch(() => {
-            const retryOnUser = () => {
+          playPromise.catch(() => {
+            const retryOnTouch = () => {
               if (sequenceActive) playSequenceVideo(currentVideoIdx);
-              window.removeEventListener('click', retryOnUser);
-              window.removeEventListener('touchstart', retryOnUser);
+              window.removeEventListener('click', retryOnTouch);
+              window.removeEventListener('touchstart', retryOnTouch);
             };
-            window.addEventListener('click', retryOnUser, { once: true });
-            window.addEventListener('touchstart', retryOnUser, { once: true });
+            window.addEventListener('click', retryOnTouch, { once: true });
+            window.addEventListener('touchstart', retryOnTouch, { once: true });
           });
         }
       }
     }
 
+    // Attach listeners across all 3 slots
     sequenceOrder.forEach((id, idx) => {
       const v = document.getElementById(id);
       if (v) {
         v.muted = true;
 
+        // Predictive Lookahead: When current video hits 3s, load the next video in background
+        v.addEventListener('timeupdate', function() {
+          if (v.currentTime > 2.8) {
+            prepareNextVideoSource(idx + 1);
+          }
+        });
+
+        // Sequential step when video reaches the end
         v.addEventListener('ended', function() {
           if (!sequenceActive) return;
           v.pause();
           try {
-            v.currentTime = 0; // Rewind cleanly to frame 0 from memory
+            v.currentTime = 0;
           } catch(e) {}
           playSequenceVideo(idx + 1);
         });
 
+        // User touch pauses autoplay loop
         v.addEventListener('click', function() {
           sequenceActive = false;
         });
@@ -1713,7 +1734,7 @@
       }
       attachFormSubmitListener();
 
-      // Kick off sequential autoplay on load
+      // Launch sequential autoplay with slot 1
       playSequenceVideo(0);
     });
 

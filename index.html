@@ -315,6 +315,23 @@
       border-bottom: 1px solid var(--line);
     }
 
+    .video-poster-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 3;
+      transition: opacity 0.35s ease-in-out;
+      pointer-events: none;
+    }
+
+    .video-poster-overlay.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
     .reticle-top-left, .reticle-bottom-right, .reticle-top-right, .reticle-bottom-left {
       position: absolute;
       width: 16px;
@@ -808,7 +825,7 @@
 
           <div class="spec-grid">
 
-            <!-- SLOT 1: BENT MARINE (Robalo R270) -->
+            <!-- SLOT 1: BENT MARINE -->
             <article class="spec-card" id="slot-robalo">
               <div class="video-shell">
                 <div class="reticle-top-left"></div>
@@ -828,7 +845,8 @@
                   </div>
                 </div>
 
-                <video id="video-robalo" class="showcase-video" autoplay muted playsinline poster="poster-robalo-r270.jpg?v=5" preload="auto">
+                <img src="poster-robalo-r270.jpg?v=5" alt="Robalo R270" class="video-poster-overlay" id="poster-robalo">
+                <video id="video-robalo" class="showcase-video" autoplay muted playsinline preload="auto">
                   <source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-robalo-r270.mp4" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
@@ -847,7 +865,7 @@
               </div>
             </article>
 
-            <!-- SLOT 2: NEW ORLEANS POWERSPORTS (Can-Am Maverick R) -->
+            <!-- SLOT 2: NEW ORLEANS POWERSPORTS -->
             <article class="spec-card" id="slot-canam">
               <div class="video-shell">
                 <div class="reticle-top-left"></div>
@@ -867,7 +885,8 @@
                   </div>
                 </div>
 
-                <video id="video-canam" class="showcase-video" muted playsinline poster="poster-canam-maverick.jpg?v=5" preload="auto">
+                <img src="poster-canam-maverick.jpg?v=5" alt="Can-Am Maverick" class="video-poster-overlay" id="poster-canam">
+                <video id="video-canam" class="showcase-video" muted playsinline preload="auto">
                   <source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-canam-maverick.mp4" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
@@ -886,7 +905,7 @@
               </div>
             </article>
 
-            <!-- SLOT 3: BOAT STUF (Sportsman 247) -->
+            <!-- SLOT 3: BOAT STUF -->
             <article class="spec-card" id="slot-sportsman">
               <div class="video-shell">
                 <div class="reticle-top-left"></div>
@@ -906,7 +925,8 @@
                   </div>
                 </div>
 
-                <video id="video-sportsman" class="showcase-video" muted playsinline poster="poster-sportsman-247.jpg?v=5" preload="auto">
+                <img src="poster-sportsman-247.jpg?v=5" alt="Sportsman 247" class="video-poster-overlay" id="poster-sportsman">
+                <video id="video-sportsman" class="showcase-video" muted playsinline preload="auto">
                   <source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-sportsman-247.mp4" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
@@ -1159,27 +1179,43 @@
     }
 
     /* ==============================================================
-       NATIVE HARDWARE-SYNCED CAROUSEL RELAY ENGINE
+       NATIVE HARDWARE-SYNCED CAROUSEL RELAY ENGINE (ZERO-FLICKER)
     ============================================================== */
-    const sequenceOrder = ['video-robalo', 'video-canam', 'video-sportsman'];
+    const videoSlots = [
+      { videoId: 'video-robalo', posterId: 'poster-robalo' },
+      { videoId: 'video-canam', posterId: 'poster-canam' },
+      { videoId: 'video-sportsman', posterId: 'poster-sportsman' }
+    ];
+
     let currentIdx = 0;
     let sequenceActive = true;
+
+    function showPoster(posterId) {
+      const img = document.getElementById(posterId);
+      if (img) img.classList.remove('is-hidden');
+    }
+
+    function hidePoster(posterId) {
+      const img = document.getElementById(posterId);
+      if (img) img.classList.add('is-hidden');
+    }
 
     function transitionToNext(nextIndex) {
       if (!sequenceActive) return;
 
-      currentIdx = nextIndex % sequenceOrder.length;
-      const targetId = sequenceOrder[currentIdx];
-      const targetVideo = document.getElementById(targetId);
+      currentIdx = nextIndex % videoSlots.length;
+      const currentSlot = videoSlots[currentIdx];
+      const targetVideo = document.getElementById(currentSlot.videoId);
 
-      // Stop other slots cleanly
-      sequenceOrder.forEach((id, i) => {
+      // Reset inactive slots cleanly and restore their overlay thumbnails
+      videoSlots.forEach((slot, i) => {
         if (i !== currentIdx) {
-          const v = document.getElementById(id);
+          const v = document.getElementById(slot.videoId);
           if (v) {
             v.pause();
             try { v.currentTime = 0; } catch(e) {}
           }
+          showPoster(slot.posterId);
         }
       });
 
@@ -1201,10 +1237,15 @@
       }
     }
 
-    sequenceOrder.forEach((id, idx) => {
-      const v = document.getElementById(id);
+    videoSlots.forEach((slot, idx) => {
+      const v = document.getElementById(slot.videoId);
       if (v) {
         v.muted = true;
+
+        // Hide overlay only when frame rendering actually begins
+        v.addEventListener('playing', () => {
+          hidePoster(slot.posterId);
+        });
 
         v.addEventListener('ended', () => {
           transitionToNext(idx + 1);
@@ -1285,7 +1326,7 @@
       if (container) initialFormHTML = container.innerHTML;
       attachFormSubmitListener();
 
-      // Ensure Slot 1 kicks off smoothly on desktop & mobile
+      // Launch Slot 1 playback
       const firstVid = document.getElementById('video-robalo');
       if (firstVid) {
         firstVid.muted = true;

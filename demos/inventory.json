@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "demonstrations": [
+    {
+      "id": "robalo-r270",
+      "dealership": {
+        "name": "Bent Marine",
+        "verified": false
+      },
+      "inventory": {
+        "title": "2026 Robalo R270",
+        "reference": "12405",
+        "referenceLabel": "Stock number",
+        "description": "Deep-V coastal hull architecture, integrated digital tournament helm, and tournament livewell package."
+      },
+      "videoUrl": "https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-robalo-r270.mp4",
+      "posterUrl": "poster-robalo-r270.jpg",
+      "caption": "Explore the 2026 Robalo R270. Deep-V coastal hull architecture, integrated digital tournament helm, and tournament livewell package."
+    },
+    {
+      "id": "canam-maverick",
+      "dealership": {
+        "name": "New Orleans Powersports",
+        "verified": false
+      },
+      "inventory": {
+        "title": "2027 Can-Am Maverick X3",
+        "reference": "CA3219 LPS",
+        "referenceLabel": "Stock number",
+        "description": "X rs Turbo RR package. High-boost Rotax ACE powertrain, Smart-Shox suspension, and factory wide stance."
+      },
+      "videoUrl": "https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-canam-maverick.mp4",
+      "posterUrl": "poster-canam-maverick.jpg",
+      "caption": "Explore the 2027 Can-Am Maverick X3. X rs Turbo RR package. High-boost Rotax ACE powertrain, Smart-Shox suspension, and factory wide stance."
+    },
+    {
+      "id": "sportsman-247",
+      "dealership": {
+        "name": "Boat Stuf",
+        "verified": false
+      },
+      "inventory": {
+        "title": "2026 Sportsman 247",
+        "reference": "69A73",
+        "referenceLabel": "Unit ID",
+        "description": "Masters 247 shallow-draft layout with integrated digital helm and tournament rigging tailored for marsh anglers."
+      },
+      "videoUrl": "https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-sportsman-247.mp4",
+      "posterUrl": "poster-sportsman-247.jpg",
+      "caption": "Explore the 2026 Sportsman 247. Masters 247 shallow-draft layout with integrated digital helm and tournament rigging tailored for marsh anglers."
+    }
+  ]
+}

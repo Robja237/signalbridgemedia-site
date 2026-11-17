@@ -1,0 +1,59 @@
+:root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1b2939; background: #f1f4f7; line-height: 1.6; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: #165c85; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, video:focus-visible, [tabindex]:focus-visible { outline: 3px solid #bd5108; outline-offset: 4px; }
+.skip-link { position: fixed; top: -100px; left: 12px; z-index: 20; background: white; padding: 12px; }
+.skip-link:focus { top: 8px; }
+.site-header { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 20px; padding: 16px max(18px, calc((100% - 1120px)/2)); background: #102436; color: white; }
+.brand { font-weight: 800; font-size: 1.1rem; color: white; text-decoration: none; letter-spacing: -.04em; }
+.brand span { color: #83c4db; font-weight: 400; margin-left: 3px; }
+.simulation-label { background: #d9eef5; color: #17425b; border-radius: 6px; padding: 5px 9px; font-size: .68rem; font-weight: 800; letter-spacing: .08em; }
+.back-link { color: white; font-size: .85rem; }
+main { max-width: 1120px; margin: auto; padding: 0 20px 48px; }
+.intro { max-width: 740px; padding: 38px 0 22px; }
+.eyebrow { font-size: .72rem; font-weight: 800; letter-spacing: .1em; color: #276079; }
+h1 { font-size: clamp(2rem, 5vw, 3.3rem); letter-spacing: -.05em; line-height: 1.1; margin: 10px 0 16px; }
+h2 { line-height: 1.3; letter-spacing: -.025em; }
+.disclosure, .small { font-size: .8rem; color: #506174; }
+.layout { display: grid; grid-template-columns: minmax(0, 650px) minmax(0, 330px); gap: 36px; align-items: start; }
+.feed-column { min-width: 0; }
+.feed-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.feed-heading h2 { font-size: 1.1rem; }
+.feed-heading span { font-size: .8rem; color: #506174; }
+#status { font-size: .85rem; overflow-wrap: anywhere; }
+.post { background: white; border: 1px solid #d5dee7; border-radius: 14px; overflow: hidden; margin-bottom: 24px; box-shadow: 0 4px 18px #10243605; }
+.post-heading { display: flex; align-items: center; gap: 12px; padding: 18px; }
+.avatar { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; background: #e5eff3; color: #20556c; border-radius: 50%; font-weight: 800; font-size: .85rem; }
+.post-identity { min-width: 0; flex: 1; }
+.dealer-name { margin: 0; font-weight: 750; overflow-wrap: anywhere; }
+.post-meta { margin: 0; font-size: .75rem; color: #576777; }
+.post-more { color: #6a7989; letter-spacing: .1em; }
+.selected-tag { background: #e6f3ee; color: #235e46; padding: 7px 18px; font-size: .72rem; font-weight: 700; }
+.video-wrap { background: #101827; }
+video { display: block; width: 100%; aspect-ratio: 16/9; background: #101827; object-fit: contain; }
+.video-error { padding: 16px; background: #fff2e8; color: #703700; margin: 0; font-size: .9rem; }
+.post-body { padding: 16px 18px 20px; }
+.post-actions { display: flex; gap: 14px; align-items: center; padding-bottom: 12px; }
+.action-symbol { display: inline-flex; color: #556778; }
+.action-symbol svg { width: 24px; height: 24px; }
+.share-button { margin-left: auto; border: 0; background: none; font: inherit; color: #165c85; font-size: .8rem; font-weight: 650; padding: 10px 0 10px 12px; cursor: pointer; }
+.inventory-title { margin: 0 0 6px; font-size: 1.1rem; }
+.reference { display: inline-block; background: #f0f3f6; padding: 3px 8px; font-size: .78rem; border-radius: 4px; margin: 0 0 12px; }
+.caption { margin: 0 0 14px; font-size: .95rem; }
+.post-note { font-size: .75rem; color: #576777; padding-top: 12px; border-top: 1px solid #e5eaf0; margin: 0; }
+#samples { display: flex; gap: 12px; flex-wrap: wrap; font-size: .85rem; margin: 24px 0; }
+.service-card { position: sticky; top: 24px; background: white; border: 1px solid #d5dee7; border-radius: 14px; padding: 26px; margin-top: 62px; }
+.service-card h2 { font-size: 1.7rem; margin: 8px 0 18px; }
+.service-card p, .service-card li { font-size: .9rem; }
+.service-card ol { padding-left: 20px; }
+.service-card li { padding-left: 4px; margin: 14px 0; }
+.primary-link { display: block; padding: 14px; background: #174f69; color: white; border-radius: 8px; text-align: center; text-decoration: none; font-weight: 650; }
+.secondary-link { display: block; padding: 14px 0; text-align: center; font-size: .85rem; }
+footer { text-align: center; font-size: .8rem; color: #506174; padding: 28px 18px; border-top: 1px solid #d5dee7; }
+@media (max-width: 800px) { .layout { grid-template-columns: minmax(0, 620px); justify-content: center; gap: 8px; } .intro { padding-top: 26px; } .service-card { position: static; margin-top: 0; } }
+@media (max-width: 480px) { main { padding: 0 12px 32px; } .site-header { padding: 14px 12px; } .back-link { width: 100%; } .intro { padding: 20px 4px 8px; } .post { border-radius: 10px; } .post-heading { padding: 14px; gap: 10px; } .post-body { padding: 12px 14px 16px; } .feed-heading span { font-size: .75rem; } }
+
+#feed, #service { scroll-margin-top: 120px; }
+.intro-cta { display: inline-block; padding: 8px 0; font-weight: 650; font-size: .9rem; }
+.share-result { overflow-wrap: anywhere; font-size: .8rem; }

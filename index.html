@@ -306,6 +306,10 @@
       box-shadow: var(--shadow);
     }
 
+    .showcase-preview-link { display: block; text-decoration: none; }
+    .showcase-preview-link::after { content: "View simulated social feed ↗"; position: absolute; left: 8px; bottom: 34px; z-index: 7; padding: 5px 8px; border-radius: 4px; background: #030712; color: #fff; font: 600 0.72rem Inter, sans-serif; }
+    .showcase-preview-link:focus-visible { outline: 3px solid var(--accent2); outline-offset: 4px; }
+
     .video-shell {
       position: relative;
       width: 100%;
@@ -827,7 +831,7 @@
 
             <!-- SLOT 1: BENT MARINE -->
             <article class="spec-card" id="slot-robalo">
-              <div class="video-shell">
+              <a class="video-shell showcase-preview-link" href="preview.html?inventory=robalo-r270" aria-label="Open simulated social feed for robalo r270">
                 <div class="reticle-top-left"></div>
                 <div class="reticle-top-right"></div>
                 <div class="reticle-bottom-left"></div>
@@ -850,7 +854,7 @@
                   <source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-robalo-r270.mp4" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
-              </div>
+              </a>
 
               <div class="spec-card-body">
                 <div class="spec-meta-tag">// OFFSHORE PERFORMANCE</div>
@@ -867,7 +871,7 @@
 
             <!-- SLOT 2: NEW ORLEANS POWERSPORTS -->
             <article class="spec-card" id="slot-canam">
-              <div class="video-shell">
+              <a class="video-shell showcase-preview-link" href="preview.html?inventory=canam-maverick" aria-label="Open simulated social feed for canam maverick">
                 <div class="reticle-top-left"></div>
                 <div class="reticle-top-right"></div>
                 <div class="reticle-bottom-left"></div>
@@ -890,7 +894,7 @@
                   <source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-canam-maverick.mp4" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
-              </div>
+              </a>
 
               <div class="spec-card-body">
                 <div class="spec-meta-tag">// EXTREME SPORT UTV</div>
@@ -907,7 +911,7 @@
 
             <!-- SLOT 3: BOAT STUF -->
             <article class="spec-card" id="slot-sportsman">
-              <div class="video-shell">
+              <a class="video-shell showcase-preview-link" href="preview.html?inventory=sportsman-247" aria-label="Open simulated social feed for sportsman 247">
                 <div class="reticle-top-left"></div>
                 <div class="reticle-top-right"></div>
                 <div class="reticle-bottom-left"></div>
@@ -930,7 +934,7 @@
                   <source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-sportsman-247.mp4" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
-              </div>
+              </a>
 
               <div class="spec-card-body">
                 <div class="spec-meta-tag">// COASTAL BAY HYBRID</div>

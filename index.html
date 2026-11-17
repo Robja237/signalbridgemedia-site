@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>SignalBridge Media | Dealership Video Merchandising &amp; Inventory Velocity</title>
-  <meta name="description" content="Turn static powersports and marine inventory listings into broadcast-grade cinematic action commercials within 24 hours. Hands-free social feeds. Zero lot disruption.">
+  <title>SignalBridge Media | Managed Social Content for Dealerships</title>
+  <meta name="description" content="Keep dealership social accounts active. SignalBridge Media creates videos from existing inventory photos, writes captions, and publishes approved content on an agreed schedule.">
   <meta name="keywords" content="dealership video marketing, powersports merchandising, marine dealer video ads, boat inventory videos, ATV UTV marketing, aged inventory velocity">
   <link rel="canonical" href="https://signalbridgemedia.com/">
 
@@ -307,7 +307,7 @@
     }
 
     .showcase-preview-link { display: block; text-decoration: none; }
-    .showcase-preview-link::after { content: "View simulated social feed ↗"; position: absolute; left: 8px; bottom: 34px; z-index: 7; padding: 5px 8px; border-radius: 4px; background: #030712; color: #fff; font: 600 0.72rem Inter, sans-serif; }
+    .showcase-preview-link::after { content: "View simulated social feed →"; position: absolute; left: 8px; bottom: 34px; z-index: 7; padding: 5px 8px; border-radius: 4px; background: #030712; color: #fff; font: 600 0.72rem Inter, sans-serif; }
     .showcase-preview-link:focus-visible { outline: 3px solid var(--accent2); outline-offset: 4px; }
 
     .video-shell {
@@ -753,292 +753,62 @@
       .spec-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="homepage.css">
+  <script src="homepage.js" defer></script>
 </head>
 <body>
 
-  <header>
-    <a onclick="showView('home')" class="logo">Signal<span>Bridge</span><span class="logo-media">Media</span></a>
-
-    <nav class="header-nav">
-      <button onclick="showView('home')" id="nav-home" class="nav-btn active">Home</button>
-      <button onclick="scrollToInventory()" id="nav-inventory" class="nav-btn">Live Inventory</button>
-      <button onclick="scrollToWorkflow()" id="nav-workflow" class="nav-btn">Workflow</button>
-      <button onclick="showView('plans')" id="nav-plans" class="nav-btn">Plans</button>
+  <a class="home-skip" href="#main-content">Skip to content</a>
+  <header class="site-navigation">
+    <a href="#home" onclick="showView('home'); return false" class="wordmark" aria-label="SignalBridge Media home">SignalBridge<span>Media</span><i aria-hidden="true">/</i></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu <span aria-hidden="true">+</span></button>
+    <nav class="header-nav" id="primary-navigation" aria-label="Main navigation">
+      <a href="#home" onclick="showView('home'); return false" id="nav-home" class="nav-btn active">Home</a>
+      <a href="#inventory" onclick="scrollToInventory(); return false" id="nav-inventory" class="nav-btn">See the work</a>
+      <a href="#workflow" onclick="scrollToWorkflow(); return false" id="nav-workflow" class="nav-btn">How it works</a>
+      <a href="#plans" onclick="showView('plans'); return false" id="nav-plans" class="nav-btn">Plans</a>
+      <a class="nav-contact" href="mailto:rob@signalbridgemedia.com">Let’s talk <span aria-hidden="true">→</span></a>
     </nav>
   </header>
 
-  <main>
-    <!-- VIEW 1: HOME PAGE -->
+  <main id="main-content" tabindex="-1">
+    <!-- Homepage redesign. Plans and intake remain unchanged. -->
     <div id="view-home" class="page-view active">
-      <section class="hero">
-        <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: #ff8833; background: rgba(255, 106, 0, 0.1); border: 1px solid rgba(255, 106, 0, 0.3); border-radius: 9999px; padding: 5px 16px; margin-bottom: 20px; font-weight: 700;">// TURNKEY VIDEO MERCHANDISING</div>
-        
-        <h1 class="hero-title">
-          <span class="hero-title-line-1">TURN STAGNANT INVENTORY</span>
-          <span class="hero-title-line-2"><span class="glow-orange">INTO CINEMATIC ACTION VIDEO</span></span>
-        </h1>
-        
-        <div style="display: flex; flex-direction: column; gap: 16px; text-align: left; max-width: 820px; margin: 0 auto 34px auto; width: 100%;">
-          <div style="display: flex; align-items: flex-start; gap: 14px; font-size: 1.05rem; color: #cbd5e1; line-height: 1.55; padding: 0 6px;">
-            <span style="color: #ff6a00; font-weight: 900; font-size: 1.25rem; flex-shrink: 0; margin-top: 2px;">▸</span>
-            <span><strong style="color: #ffffff;">Cinematic Motion Assets:</strong> We transform static lot stills into high-energy lifestyle footage—placing your exact boats and rigs out on local waters and trails.</span>
-          </div>
-          
-          <div style="display: flex; align-items: flex-start; gap: 14px; font-size: 1.05rem; color: #cbd5e1; line-height: 1.55; padding: 0 6px;">
-            <span style="color: #38bdf8; font-weight: 900; font-size: 1.25rem; flex-shrink: 0; margin-top: 2px;">▸</span>
-            <span><strong style="color: #ffffff;">Zero Friction Pipeline:</strong> No cameras on your lot and zero sales downtime. Simply submit a live listing URL, and we deliver 4K broadcast cuts in under 24 hours.</span>
-          </div>
-
-          <div style="display: flex; align-items: flex-start; gap: 14px; background: rgba(56, 189, 248, 0.07); border: 1px solid rgba(56, 189, 248, 0.28); border-radius: 12px; padding: 16px 20px;">
-            <span style="color: #00e599; font-weight: 900; font-size: 1.45rem; flex-shrink: 0; margin-top: 1px;">▸</span>
-            <div style="display: flex; flex-direction: column; gap: 4px;">
-              <span style="font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 800; color: #00e599; letter-spacing: 0.1em; text-transform: uppercase;">// FULL FEED AUTOMATION</span>
-              <span style="font-size: 1.15rem; color: #ffffff; line-height: 1.5;">
-                <strong style="font-style: italic; font-weight: 800; color: #38bdf8;">Revive Dormant Social Media Accounts:</strong> Complete hands-free distribution. We produce the commercial cut, write high-converting buyer copy, and post directly to your Instagram, TikTok, Facebook, or any other social media feed.
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <button onclick="openRequestForm('Start With a Single Unit for $199')" class="cta-button">START WITH A SINGLE UNIT FOR $199 &rarr;</button>
-        
-        <div class="hero-pills">
-          <div class="hero-pill">24-Hour Turnaround</div>
-          <div class="hero-pill">100% Hands-Free Social Posting</div>
-          <div class="hero-pill">Zero Lot Disruption</div>
-        </div>
-
-        <br>
-        <span onclick="scrollToInventory()" class="hero-scroll-notice">// SCROLL DOWN TO VIEW ACTIVE SPEC SHOWCASE &darr;</span>
-      </section>
-
-      <!-- ACTIVE 3-SLOT SPEC SHOWCASE -->
-      <section class="section" id="inventory">
-        <div class="section-title">
-          <span>// ACTIVE SPEC SHOWCASE // LIVE INVENTORY MOTION</span>
-          <span style="color: var(--accent2);">NOLA METRO MARKET</span>
-        </div>
-        
-        <div class="card" style="padding-bottom: 36px;">
-          <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; margin-top:0; font-size: 1.4rem; margin-bottom: 10px; color: var(--text);">
-            Frontline Commercial Editorial Cuts
-          </h2>
-          <p style="color: var(--muted); margin-bottom: 24px; max-width: 760px;">
-            Preview active broadcast-grade lifestyle and action edits engineered for in-stock showroom units. High-tempo cuts, sound design, and kinetic typography built to move frontline metal.
-          </p>
-
-          <div class="spec-grid">
-
-            <!-- SLOT 1: BENT MARINE -->
-            <article class="spec-card" id="slot-robalo">
-              <a class="video-shell showcase-preview-link" href="preview.html?inventory=robalo-r270" aria-label="Open simulated social feed for robalo r270">
-                <div class="reticle-top-left"></div>
-                <div class="reticle-top-right"></div>
-                <div class="reticle-bottom-left"></div>
-                <div class="reticle-bottom-right"></div>
-                <div class="video-scanlines"></div>
-                <div class="video-stock-badge">STOCK #12405</div>
-                
-                <div class="hud-ticker-wrap">
-                  <div class="hud-status-badge"><span class="rec-dot"></span> LIVE HUD</div>
-                  <div class="hud-ticker-track">
-                    <span class="hud-ticker-item">// OFFSHORE FLAGSHIP</span>
-                    <span class="hud-ticker-item">// TWIN YAMAHA POWER</span>
-                    <span class="hud-ticker-item">// TOURNAMENT HELM</span>
-                    <span class="hud-ticker-item">// 4K RENDER READY</span>
-                  </div>
-                </div>
-
-                <img src="poster-robalo-r270.jpg?v=5" alt="Robalo R270" class="video-poster-overlay" id="poster-robalo">
-                <video id="video-robalo" class="showcase-video" autoplay muted playsinline preload="auto">
-                  <source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-robalo-r270.mp4" type="video/mp4">
-                  Your browser does not support HTML5 video.
-                </video>
-              </a>
-
-              <div class="spec-card-body">
-                <div class="spec-meta-tag">// OFFSHORE PERFORMANCE</div>
-                <h3 class="spec-card-title">2026 Robalo R270</h3>
-                <p class="spec-card-desc">Deep-V coastal hull architecture, integrated digital tournament helm, and tournament livewell package.</p>
-                
-                <div class="spec-pill-specs">
-                  <span>Center Console</span><span>/</span><span>Twin Digital</span><span>/</span><span class="spec-hi">Ready for Water</span>
-                </div>
-
-                <button onclick="showView('plans')" class="claim-action-btn">START NOW &rarr;</button>
-              </div>
-            </article>
-
-            <!-- SLOT 2: NEW ORLEANS POWERSPORTS -->
-            <article class="spec-card" id="slot-canam">
-              <a class="video-shell showcase-preview-link" href="preview.html?inventory=canam-maverick" aria-label="Open simulated social feed for canam maverick">
-                <div class="reticle-top-left"></div>
-                <div class="reticle-top-right"></div>
-                <div class="reticle-bottom-left"></div>
-                <div class="reticle-bottom-right"></div>
-                <div class="video-scanlines"></div>
-                <div class="video-stock-badge">STOCK #CA3219 LPS</div>
-                
-                <div class="hud-ticker-wrap">
-                  <div class="hud-status-badge"><span class="rec-dot"></span> LIVE HUD</div>
-                  <div class="hud-ticker-track">
-                    <span class="hud-ticker-item">// 200 HP TURBO RR</span>
-                    <span class="hud-ticker-item">// 72-INCH STANCE</span>
-                    <span class="hud-ticker-item">// SMART-SHOX ACTIVE</span>
-                    <span class="hud-ticker-item">// 4K RENDER READY</span>
-                  </div>
-                </div>
-
-                <img src="poster-canam-maverick.jpg?v=5" alt="Can-Am Maverick" class="video-poster-overlay" id="poster-canam">
-                <video id="video-canam" class="showcase-video" muted playsinline preload="auto">
-                  <source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-canam-maverick.mp4" type="video/mp4">
-                  Your browser does not support HTML5 video.
-                </video>
-              </a>
-
-              <div class="spec-card-body">
-                <div class="spec-meta-tag">// EXTREME SPORT UTV</div>
-                <h3 class="spec-card-title">2027 Can-Am Maverick X3</h3>
-                <p class="spec-card-desc">X rs Turbo RR package. High-boost Rotax ACE powertrain, Smart-Shox suspension, and factory wide stance.</p>
-                
-                <div class="spec-pill-specs">
-                  <span>200 HP Rotax</span><span>/</span><span>Smart-Shox</span><span>/</span><span class="spec-hi">Floor Ready</span>
-                </div>
-
-                <button onclick="showView('plans')" class="claim-action-btn">START NOW &rarr;</button>
-              </div>
-            </article>
-
-            <!-- SLOT 3: BOAT STUF -->
-            <article class="spec-card" id="slot-sportsman">
-              <a class="video-shell showcase-preview-link" href="preview.html?inventory=sportsman-247" aria-label="Open simulated social feed for sportsman 247">
-                <div class="reticle-top-left"></div>
-                <div class="reticle-top-right"></div>
-                <div class="reticle-bottom-left"></div>
-                <div class="reticle-bottom-right"></div>
-                <div class="video-scanlines"></div>
-                <div class="video-stock-badge">UNIT ID #69A73</div>
-                
-                <div class="hud-ticker-wrap">
-                  <div class="hud-status-badge"><span class="rec-dot"></span> LIVE HUD</div>
-                  <div class="hud-ticker-track">
-                    <span class="hud-ticker-item">// COASTAL BAY HYBRID</span>
-                    <span class="hud-ticker-item">// HALF-TOWER READY</span>
-                    <span class="hud-ticker-item">// DUAL LIVEWELLS</span>
-                    <span class="hud-ticker-item">// 4K RENDER READY</span>
-                  </div>
-                </div>
-
-                <img src="poster-sportsman-247.jpg?v=5" alt="Sportsman 247" class="video-poster-overlay" id="poster-sportsman">
-                <video id="video-sportsman" class="showcase-video" muted playsinline preload="auto">
-                  <source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-sportsman-247.mp4" type="video/mp4">
-                  Your browser does not support HTML5 video.
-                </video>
-              </a>
-
-              <div class="spec-card-body">
-                <div class="spec-meta-tag">// COASTAL BAY HYBRID</div>
-                <h3 class="spec-card-title">2026 Sportsman 247</h3>
-                <p class="spec-card-desc">Masters 247 shallow-draft layout with integrated digital helm and tournament rigging tailored for marsh anglers.</p>
-                
-                <div class="spec-pill-specs">
-                  <span>Bay Hybrid</span><span>/</span><span>Garmin Touch</span><span>/</span><span class="spec-hi">Immediate Delivery</span>
-                </div>
-
-                <button onclick="showView('plans')" class="claim-action-btn">START NOW &rarr;</button>
-              </div>
-            </article>
-
-          </div>
-
-          <!-- Turnkey Capabilities -->
-          <div class="turnkey-system-strip">
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;">
-              // THE TURNKEY INVENTORY-TURN ENGINE
-            </div>
-            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.25rem; color: #ffffff; margin-top: 4px;">
-              End-to-End Social Distribution Without Sales Team Downtime
-            </h3>
-
-            <div class="turnkey-pillars">
-              <div class="turnkey-pillar-box">
-                <div class="num">01 // PRODUCTION</div>
-                <h4>High-Impact Frontline Cuts</h4>
-                <p>15-to-30s kinetic commercial spots created from your lot listings to move high-margin units and cut floorplan interest.</p>
-              </div>
-              <div class="turnkey-pillar-box">
-                <div class="num">02 // MANAGEMENT</div>
-                <h4>Social Feed Revival & Takeover</h4>
-                <p>Complete management of dormant Instagram, Facebook, and TikTok pages with scheduled weekly drops—hands-free for your sales reps.</p>
-              </div>
-              <div class="turnkey-pillar-box">
-                <div class="num">03 // SEO & REACH</div>
-                <h4>Local Discovery & Social SEO</h4>
-                <p>Strategic geotagging, regional sportsman keywords, and direct links that capture buyers actively shopping in your metro area.</p>
-              </div>
-            </div>
-          </div>
+      <section class="home-intro" aria-labelledby="home-title">
+        <p class="home-eyebrow"><span></span> CONTENT CREATION &amp; MANAGED SOCIAL PUBLISHING</p>
+        <div class="intro-grid">
+          <h1 id="home-title">Great inventory.<br>Give it a <em>social life.</em></h1>
+          <div class="intro-copy"><p>Keep your dealership’s social accounts active, without adding to your team’s to-do list.</p><p class="home-muted">We turn your existing inventory photos into professional videos, write the captions, and publish approved posts on an agreed schedule.</p><a class="home-button" href="#inventory" onclick="scrollToInventory(); return false">Explore the social previews <span aria-hidden="true">→</span></a></div>
         </div>
       </section>
 
-      <!-- Single Unit Conversion Strip -->
-      <section class="section">
-        <div class="card" style="border: 1px solid rgba(56, 189, 248, 0.25); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 52px 32px;">
-          <div class="section-title" style="margin: 0 auto 16px auto; display: inline-block;">// ONE-CLICK FEED REVIVAL</div>
-          <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: clamp(1.6rem, 3.2vw, 2.35rem); font-style: italic; line-height: 1.25; margin-bottom: 24px; text-align: center; color: #ffffff;">
-            REVIVE YOUR SOCIAL FEEDS<br>
-            <span style="color: #ff6a00;">WITH A SINGLE LOT UNIT // $199</span>
-          </h2>
-          
-          <div style="display: flex; flex-direction: column; gap: 16px; text-align: left; max-width: 820px; margin: 0 auto 34px auto; width: 100%;">
-            <div style="display: flex; align-items: flex-start; gap: 14px; font-size: 1.02rem; color: #cbd5e1; line-height: 1.55; padding: 0 6px;">
-              <span style="color: #ff6a00; font-weight: 900; font-size: 1.25rem; flex-shrink: 0; margin-top: 2px;">▸</span>
-              <span><strong style="color: #ffffff;">Stop Floorplan Hemorrhaging:</strong> Clear out aging showroom inventory by replacing stagnant lot photography with cinematic buyer-ready action reels.</span>
-            </div>
-
-            <div style="display: flex; align-items: flex-start; gap: 14px; font-size: 1.02rem; color: #cbd5e1; line-height: 1.55; padding: 0 6px;">
-              <span style="color: #38bdf8; font-weight: 900; font-size: 1.25rem; flex-shrink: 0; margin-top: 2px;">▸</span>
-              <span><strong style="color: #ffffff;">Total Hands-Off Delivery:</strong> Send a listing URL or smartphone photo. We handle sound design, motion typography, and local buyer captions.</span>
-            </div>
-
-            <div style="display: flex; align-items: flex-start; gap: 14px; background: rgba(255, 106, 0, 0.07); border: 1px solid rgba(255, 106, 0, 0.3); border-radius: 12px; padding: 16px 20px;">
-              <span style="color: #ff6a00; font-weight: 900; font-size: 1.45rem; flex-shrink: 0; margin-top: 1px;">▸</span>
-              <div style="display: flex; flex-direction: column; gap: 4px;">
-                <span style="font-family: 'Orbitron', sans-serif; font-size: 0.72rem; font-weight: 800; color: #ff6a00; letter-spacing: 0.1em; text-transform: uppercase;">// IMMEDIATE TURNAROUND</span>
-                <span style="font-size: 1.12rem; color: #ffffff; font-weight: 500; line-height: 1.5;"><strong>Guaranteed 24-Hour Turn:</strong> Delivered ready-to-post or published directly to your Facebook, Instagram, and TikTok feeds with zero long-term contracts.</span>
-              </div>
-            </div>
-          </div>
-
-          <div style="display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;">
-            <button onclick="openRequestForm('Start With a Single Unit for $199')" class="cta-button">START WITH A SINGLE UNIT FOR $199 &rarr;</button>
-            <button onclick="showView('plans')" class="nav-btn" style="padding: 12px 24px; border: 1px solid var(--line); background: rgba(15, 23, 42, 0.8);">Explore Monthly Plans</button>
-          </div>
-        </div>
+      <section class="home-feature" aria-label="Featured inventory video demonstration">
+        <a class="feature-film" href="preview.html?inventory=robalo-r270" aria-label="Open simulated social feed for 2026 Robalo R270">
+          <video id="video-robalo" class="home-preview-video" muted loop playsinline preload="none" poster="poster-robalo-r270.jpg"><source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-robalo-r270.mp4" type="video/mp4"></video>
+          <div class="film-shade"></div><div class="film-label"><span class="film-category">MARINE / SAMPLE SOCIAL CONTENT</span><div><h2>From the lot.<br>Into the moment.</h2><span class="film-play" aria-hidden="true">→</span></div><p>2026 Robalo R270 <span>·</span> Stock #12405</p></div>
+        </a>
+        <div class="feature-caption"><p>Your inventory photography. A new way to show up.</p><button id="preview-motion" type="button" aria-pressed="false">Play video previews</button></div>
       </section>
 
-      <!-- Workflow Section -->
-      <section class="section" id="workflow">
-        <div class="section-title">Zero Friction Engine</div>
-        <h2 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--text);">Engineered for Dealership Velocity</h2>
-        <div class="grid-3">
-          <div class="feature-card">
-            <div class="feature-num">01</div>
-            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">Send Your Listing Link</h3>
-            <p style="color: var(--muted); font-size: 0.92rem;">Submit a live inventory URL or a quick smartphone photo of any unit on your lot. No staging, no lot shuffling, and zero sales team downtime.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-num">02</div>
-            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">24-Hour Studio Production</h3>
-            <p style="color: var(--muted); font-size: 0.92rem;">We replace static dealership asphalt with authentic real-world terrain, cinematic motion lighting, and your custom dealership branding.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-num">03</div>
-            <h3 style="font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">Automated Feed Publishing</h3>
-            <p style="color: var(--muted); font-size: 0.92rem;">We deliver and schedule broadcast-grade video assets directly across your social feeds and inventory pages to accelerate showroom velocity.</p>
-          </div>
-        </div>
+      <section class="home-service" aria-labelledby="service-title">
+        <p class="home-eyebrow">MORE THAN A VIDEO. A CONSISTENT PRESENCE.</p>
+        <div class="service-grid"><h2 id="service-title">Your next post.<br>And the one after that.</h2><div><p>You’re already investing in advertising. Your social accounts should feel just as active as your business.</p><p class="home-muted">We handle the ongoing rhythm of content creation and publishing, using the photos and product details you already have. As inventory changes, fresh content keeps your feed moving.</p><p class="home-service-note">Built for marine and powersports dealerships.<br>Ready for other inventory-driven businesses.</p></div></div>
       </section>
+
+      <section id="inventory" class="home-work" aria-labelledby="work-title">
+        <div class="work-heading"><div><p class="home-eyebrow">INVENTORY, REIMAGINED FOR THE FEED</p><h2 id="work-title">See what your next<br>post could look like.</h2></div><p class="home-muted">Open a personalized social feed preview.<br>Real inventory details. Simulated posts.</p></div>
+        <div class="work-grid">
+          <article><a class="work-film" href="preview.html?inventory=canam-maverick" aria-label="Open simulated social feed for 2027 Can-Am Maverick X3"><video id="video-canam" class="home-preview-video" muted loop playsinline preload="none" poster="poster-canam-maverick.jpg"><source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-canam-maverick.mp4" type="video/mp4"></video><span class="work-open" aria-hidden="true">→</span></a><div class="work-meta"><span>POWERSPORTS</span><span>STOCK #CA3219 LPS</span></div><h3>2027 Can-Am Maverick X3</h3><a class="work-link" href="preview.html?inventory=canam-maverick">Explore social feed preview →</a></article>
+          <article><a class="work-film" href="preview.html?inventory=sportsman-247" aria-label="Open simulated social feed for 2026 Sportsman 247"><video id="video-sportsman" class="home-preview-video" muted loop playsinline preload="none" poster="poster-sportsman-247.jpg"><source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-sportsman-247.mp4" type="video/mp4"></video><span class="work-open" aria-hidden="true">→</span></a><div class="work-meta"><span>MARINE</span><span>UNIT ID #69A73</span></div><h3>2026 Sportsman 247</h3><a class="work-link" href="preview.html?inventory=sportsman-247">Explore social feed preview →</a></article>
+        </div>
+        <p class="home-demo-note">Demonstrations only, not published posts or dealership endorsements. Each shareable preview opens with its selected inventory video, followed by additional sample posts.</p>
+      </section>
+
+      <section class="home-process" id="workflow" aria-labelledby="process-title">
+        <div><p class="home-eyebrow">A SIMPLE HANDOFF. AN ONGOING SERVICE.</p><h2 id="process-title">You run the business.<br>We keep the feed moving.</h2></div>
+        <ol class="process-list"><li><span>01</span><div><h3>Start with what you have.</h3><p>Share existing inventory photography, listing details, and stock numbers. No new shoot required.</p></div></li><li><span>02</span><div><h3>We make it worth watching.</h3><p>Professional editing, motion graphics, and generative AI bring your inventory to life. We prepare the captions and posts for your approval.</p></div></li><li><span>03</span><div><h3>Approved. Scheduled. Published.</h3><p>With authorized access, we publish directly to your social accounts on an agreed schedule, then keep creating as your inventory changes.</p></div></li></ol>
+      </section>
+      <section class="home-closing" aria-labelledby="closing-title"><p class="home-eyebrow">A MORE ACTIVE FEED STARTS HERE</p><h2 id="closing-title">Let’s put your<br>inventory in motion.</h2><p>Consistent content. Professional publishing.<br>One less thing on your team’s plate.</p><div><a class="home-button" href="mailto:rob@signalbridgemedia.com">Let’s talk about your social presence →</a><a class="home-text-link" href="#plans" onclick="showView('plans'); return false">Explore existing plans →</a></div></section>
     </div>
 
     <!-- VIEW 2: PLANS -->
@@ -1153,9 +923,13 @@
     }
 
     function showView(viewId, isBackNavigation) {
+      if (!document.getElementById('view-' + viewId)) viewId = 'home';
       document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
       document.getElementById('view-' + viewId).classList.add('active');
       window.scrollTo(0, 0);
+      document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+      document.getElementById('primary-navigation').classList.remove('is-open');
+      document.getElementById('main-content').focus({ preventScroll: true });
 
       if (viewId === 'home') updateNavState('nav-home');
       else if (viewId === 'plans') updateNavState('nav-plans');
@@ -1181,85 +955,6 @@
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       }, 50);
     }
-
-    /* ==============================================================
-       NATIVE HARDWARE-SYNCED CAROUSEL RELAY ENGINE (ZERO-FLICKER)
-    ============================================================== */
-    const videoSlots = [
-      { videoId: 'video-robalo', posterId: 'poster-robalo' },
-      { videoId: 'video-canam', posterId: 'poster-canam' },
-      { videoId: 'video-sportsman', posterId: 'poster-sportsman' }
-    ];
-
-    let currentIdx = 0;
-    let sequenceActive = true;
-
-    function showPoster(posterId) {
-      const img = document.getElementById(posterId);
-      if (img) img.classList.remove('is-hidden');
-    }
-
-    function hidePoster(posterId) {
-      const img = document.getElementById(posterId);
-      if (img) img.classList.add('is-hidden');
-    }
-
-    function transitionToNext(nextIndex) {
-      if (!sequenceActive) return;
-
-      currentIdx = nextIndex % videoSlots.length;
-      const currentSlot = videoSlots[currentIdx];
-      const targetVideo = document.getElementById(currentSlot.videoId);
-
-      // Reset inactive slots cleanly and restore their overlay thumbnails
-      videoSlots.forEach((slot, i) => {
-        if (i !== currentIdx) {
-          const v = document.getElementById(slot.videoId);
-          if (v) {
-            v.pause();
-            try { v.currentTime = 0; } catch(e) {}
-          }
-          showPoster(slot.posterId);
-        }
-      });
-
-      if (targetVideo) {
-        targetVideo.muted = true;
-        try { targetVideo.currentTime = 0; } catch(e) {}
-        const p = targetVideo.play();
-        if (p !== undefined) {
-          p.catch(() => {
-            const unlockUser = () => {
-              if (sequenceActive) targetVideo.play();
-              window.removeEventListener('click', unlockUser);
-              window.removeEventListener('touchstart', unlockUser);
-            };
-            window.addEventListener('click', unlockUser, { once: true });
-            window.addEventListener('touchstart', unlockUser, { once: true });
-          });
-        }
-      }
-    }
-
-    videoSlots.forEach((slot, idx) => {
-      const v = document.getElementById(slot.videoId);
-      if (v) {
-        v.muted = true;
-
-        // Hide overlay only when frame rendering actually begins
-        v.addEventListener('playing', () => {
-          hidePoster(slot.posterId);
-        });
-
-        v.addEventListener('ended', () => {
-          transitionToNext(idx + 1);
-        });
-
-        v.addEventListener('click', () => {
-          sequenceActive = false;
-        });
-      }
-    });
 
     let initialFormHTML = null;
     function openRequestForm(packageName, defaultUnit) {
@@ -1330,29 +1025,14 @@
       if (container) initialFormHTML = container.innerHTML;
       attachFormSubmitListener();
 
-      // Launch Slot 1 playback
-      const firstVid = document.getElementById('video-robalo');
-      if (firstVid) {
-        firstVid.muted = true;
-        const p = firstVid.play();
-        if (p !== undefined) {
-          p.catch(() => {
-            const kickstart = () => {
-              firstVid.play();
-              window.removeEventListener('click', kickstart);
-              window.removeEventListener('touchstart', kickstart);
-            };
-            window.addEventListener('click', kickstart, { once: true });
-            window.addEventListener('touchstart', kickstart, { once: true });
-          });
-        }
-      }
     });
 
     window.addEventListener('popstate', (e) => {
-      showView(e.state && e.state.view ? e.state.view : 'home', true);
+      showView(e.state && e.state.view ? e.state.view : location.hash === '#plans' ? 'plans' : 'home', true);
     });
-    history.replaceState({ view: 'home' }, '', '#home');
+    const initialView = location.hash === '#plans' ? 'plans' : 'home';
+    showView(initialView, true);
+    history.replaceState({ view: initialView }, '', location.hash || '#home');
   </script>
 </body>
 </html>

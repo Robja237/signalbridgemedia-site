@@ -774,20 +774,28 @@
   <main id="main-content" tabindex="-1">
     <!-- Homepage redesign. Plans and intake remain unchanged. -->
     <div id="view-home" class="page-view active">
-      <section class="home-intro" aria-labelledby="home-title">
-        <p class="home-eyebrow"><span></span> CONTENT CREATION &amp; MANAGED SOCIAL PUBLISHING</p>
-        <div class="intro-grid">
+      <section class="home-intro home-feed-intro" aria-labelledby="home-title">
+        <div class="feed-intro-copy">
+          <p class="home-eyebrow"><span></span> CONTENT CREATION &amp; MANAGED SOCIAL PUBLISHING</p>
           <h1 id="home-title">Great inventory.<br>Give it a <em>social life.</em></h1>
-          <div class="intro-copy"><p>Keep your dealership’s social accounts active, without adding to your team’s to-do list.</p><p class="home-muted">We turn your existing inventory photos into professional videos, write the captions, and publish approved posts on an agreed schedule.</p><a class="home-button" href="#inventory" onclick="scrollToInventory(); return false">Explore the social previews <span aria-hidden="true">→</span></a></div>
+          <div class="intro-copy"><p>Keep your dealership’s social accounts active, without adding to your team’s to-do list.</p><p class="home-muted">We turn your existing inventory photos into professional videos, write the captions, and publish approved posts on an agreed schedule.</p><a class="home-button" href="mailto:rob@signalbridgemedia.com">Let’s talk social →</a></div>
+          <p class="feed-intro-note">Your photos. Our creative. A feed that keeps moving.</p>
         </div>
-      </section>
-
-      <section class="home-feature" aria-label="Featured inventory video demonstration">
-        <a class="feature-film" href="preview.html?inventory=robalo-r270" aria-label="Open simulated social feed for 2026 Robalo R270">
-          <video id="video-robalo" class="home-preview-video" muted loop playsinline preload="none" poster="poster-robalo-r270.jpg"><source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-robalo-r270.mp4" type="video/mp4"></video>
-          <div class="film-shade"></div><div class="film-label"><span class="film-category">MARINE / SAMPLE SOCIAL CONTENT</span><div><h2>From the lot.<br>Into the moment.</h2><span class="film-play" aria-hidden="true">→</span></div><p>2026 Robalo R270 <span>·</span> Stock #12405</p></div>
-        </a>
-        <div class="feature-caption"><p>Your inventory photography. A new way to show up.</p><button id="preview-motion" type="button" aria-pressed="false">Play video previews</button></div>
+        <section class="social-showcase" aria-label="Signal Bridge Media simulated social feed" aria-roledescription="carousel">
+          <div class="showcase-topline"><span>THE SOCIAL PREVIEW</span><span class="showcase-simulation">SIMULATED FEED</span></div>
+          <article class="showcase-post" aria-labelledby="showcase-title">
+            <div class="showcase-profile"><span class="showcase-avatar" aria-hidden="true">SB</span><div><p>Signal Bridge Media</p><span>Inventory stories · Demonstration</span></div><span class="showcase-mark" aria-hidden="true">•••</span></div>
+            <div class="showcase-media">
+              <video id="showcase-video" muted playsinline preload="none" poster="poster-robalo-r270.jpg" aria-label="2026 Robalo R270 sample social video"></video>
+              <span class="showcase-media-label">SAMPLE SOCIAL CONTENT · MUTED</span>
+            </div>
+            <div class="showcase-copy"><div class="showcase-vehicle"><h2 id="showcase-title">2026 Robalo R270</h2><p id="showcase-reference">Stock number: 12405</p></div><p id="showcase-caption">Less lot. More open water. Meet the Robalo R270—made for a different kind of scroll.</p><a id="showcase-demo-link" href="preview.html?inventory=robalo-r270">Explore this inventory’s full feed preview →</a></div>
+          </article>
+          <div class="showcase-controls"><button id="showcase-previous" type="button" aria-label="Previous inventory video" disabled>←</button><span id="showcase-position">1 / 3</span><button id="showcase-next" type="button" aria-label="Next inventory video" disabled>→</button><button id="showcase-toggle" type="button" aria-label="Pause sequential video playback" disabled>Pause</button></div>
+          <p id="showcase-status" class="showcase-status" role="status">Loading sample posts…</p>
+          <p class="showcase-disclaimer">A fictional feed showing our creative service. Not a dealership account, published post, or endorsement.</p>
+          <noscript><p class="showcase-status">Enable JavaScript for the video sequence, or open the full feed preview above.</p></noscript>
+        </section>
       </section>
 
       <section class="home-service" aria-labelledby="service-title">
@@ -798,8 +806,8 @@
       <section id="inventory" class="home-work" aria-labelledby="work-title">
         <div class="work-heading"><div><p class="home-eyebrow">INVENTORY, REIMAGINED FOR THE FEED</p><h2 id="work-title">See what your next<br>post could look like.</h2></div><p class="home-muted">Open a personalized social feed preview.<br>Real inventory details. Simulated posts.</p></div>
         <div class="work-grid">
-          <article><a class="work-film" href="preview.html?inventory=canam-maverick" aria-label="Open simulated social feed for 2027 Can-Am Maverick X3"><video id="video-canam" class="home-preview-video" muted loop playsinline preload="none" poster="poster-canam-maverick.jpg"><source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-canam-maverick.mp4" type="video/mp4"></video><span class="work-open" aria-hidden="true">→</span></a><div class="work-meta"><span>POWERSPORTS</span><span>STOCK #CA3219 LPS</span></div><h3>2027 Can-Am Maverick X3</h3><a class="work-link" href="preview.html?inventory=canam-maverick">Explore social feed preview →</a></article>
-          <article><a class="work-film" href="preview.html?inventory=sportsman-247" aria-label="Open simulated social feed for 2026 Sportsman 247"><video id="video-sportsman" class="home-preview-video" muted loop playsinline preload="none" poster="poster-sportsman-247.jpg"><source src="https://pub-da7a6ccf230143998bba2709188649cb.r2.dev/spec-sportsman-247.mp4" type="video/mp4"></video><span class="work-open" aria-hidden="true">→</span></a><div class="work-meta"><span>MARINE</span><span>UNIT ID #69A73</span></div><h3>2026 Sportsman 247</h3><a class="work-link" href="preview.html?inventory=sportsman-247">Explore social feed preview →</a></article>
+          <article><a class="work-film" href="preview.html?inventory=canam-maverick" aria-label="Open simulated social feed for 2027 Can-Am Maverick X3"><img src="poster-canam-maverick.jpg" alt="Can-Am Maverick X3 sample video poster" loading="lazy" width="1280" height="720"><span class="work-open" aria-hidden="true">→</span></a><div class="work-meta"><span>POWERSPORTS</span><span>STOCK #CA3219 LPS</span></div><h3>2027 Can-Am Maverick X3</h3><a class="work-link" href="preview.html?inventory=canam-maverick">Explore social feed preview →</a></article>
+          <article><a class="work-film" href="preview.html?inventory=sportsman-247" aria-label="Open simulated social feed for 2026 Sportsman 247"><img src="poster-sportsman-247.jpg" alt="Sportsman 247 sample video poster" loading="lazy" width="1280" height="720"><span class="work-open" aria-hidden="true">→</span></a><div class="work-meta"><span>MARINE</span><span>UNIT ID #69A73</span></div><h3>2026 Sportsman 247</h3><a class="work-link" href="preview.html?inventory=sportsman-247">Explore social feed preview →</a></article>
         </div>
         <p class="home-demo-note">Demonstrations only, not published posts or dealership endorsements. Each shareable preview opens with its selected inventory video, followed by additional sample posts.</p>
       </section>
